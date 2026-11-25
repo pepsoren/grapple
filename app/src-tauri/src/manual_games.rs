@@ -315,7 +315,8 @@ mod tests {
         assert_eq!((g.store, g.installed, g.sort_name.as_str()), (Store::Manual, false, "tool"));
         m.entry = ManualEntry { exe: "retroarch".into(), kind: ManualKind::Command, ..Default::default() };
         assert!(to_game(&m).installed, "a command is looked up on PATH at launch");
-        m.entry.exe = "/bin/sh".into();
+        // A program that exists on every OS: this test binary itself.
+        m.entry.exe = std::env::current_exe().unwrap().to_string_lossy().into_owned();
         m.entry.kind = ManualKind::Native;
         assert!(to_game(&m).installed);
     }
