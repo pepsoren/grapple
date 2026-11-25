@@ -1,0 +1,88 @@
+[package]
+name = "grapple"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Grapple: a fast game launcher"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+url = "2"
+grapple-core.workspace = true
+# Only needed by the `real` backend (see src/backend/mod.rs).
+grapple-scan = { workspace = true, optional = true }
+grapple-launch = { workspace = true, optional = true }
+grapple-tether = { workspace = true, optional = true }
+grapple-store = { workspace = true, optional = true }
+grapple-download = { workspace = true, optional = true }
+futures-util = { version = "0.3", default-features = false, features = ["std"], optional = true }
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-single-instance = "2"
+# `grapple://invite/<id>` (game invites from tether): the scheme in tauri.conf.json is what installers register;
+# the links themselves arrive as a command-line argument, through the single-instance handoff (main.rs).
+tauri-plugin-deep-link = "2.6"
+# File pickers go through the XDG desktop portal on Linux (the in-process GTK chooser aborts the whole app when the
+# GSettings schemas are missing, as they are for a program started from the desktop session on NixOS).
+tauri-plugin-dialog = { version = "2", default-features = false, features = ["xdg-portal"], optional = true }
+# Game icons for tether: decode the game's icon/cover, scale to 128 px, encode a small PNG.
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "ico"], optional = true }
+sha2 = { version = "0.10", optional = true }
+uuid = { version = "1", features = ["v4"], optional = true }
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+anyhow.workspace = true
+# Local week days for "this week" (Settings › Library › Week starts on). Same version grapple-core uses.
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+
+# The store window (src/store_window.rs) is a plain WebKitGTK view, outside Tauri's IPC. Same versions tauri uses.
+[target.'cfg(target_os = "linux")'.dependencies]
+gtk = "0.18"
+webkit2gtk = { version = "2.0", features = ["v2_40"] }
+gdkwayland-sys = { version = "0.18", features = ["v3_24_22"] }
+# Controllers (src/controllers/evdev.rs): evdev ioctls, inotify and poll, no udev library.
+libc = "0.2"
+
+# Controllers on Windows and macOS (src/controllers/gil.rs). Linux reads evdev itself (gilrs would need libudev).
+[target.'cfg(not(target_os = "linux"))'.dependencies]
+gilrs = { version = "0.11", optional = true }
+
+# Windows. The store window (src/store_window_win.rs) is a WebView2 view made with wry directly in a plain Tauri
+# window (Tauri's window builder is behind its `unstable` feature); webview2-com and windows-core set what wry does
+# not. Same versions tauri uses. ShellExecute (src/system.rs) and toasts (src/store.rs).
+[target.'cfg(windows)'.dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png", "unstable"] }
+wry = { version = "0.57", default-features = false, features = ["os-webview"] }
+webview2-com = "0.39"
+windows-core = "0.62"
+windows-sys = { version = "0.61", features = ["Win32_UI_Shell", "Win32_UI_WindowsAndMessaging"] }
+tauri-winrt-notification = "0.7"
+
+[features]
+# `real` (the default) is the backend on the grapple crates: scan, launch, tether.
+# `mock` is the UI-only backend with fixture games (src/backend/mock.rs); build it with
+# `--no-default-features --features mock`. If both are on, `real` wins.
+default = ["real"]
+mock = []
+real = ["dep:grapple-scan", "dep:grapple-launch", "dep:grapple-download", "dep:grapple-tether", "dep:grapple-store", "dep:futures-util", "dep:tauri-plugin-dialog", "dep:image", "dep:sha2", "dep:uuid", "dep:gilrs"]
+# Set by `tauri build`; needed for `cargo build --release` to embed ui/dist instead of loading devUrl.
+custom-protocol = ["tauri/custom-protocol"]
+# Test hooks for examples/store_probe.rs only (never in a grapple build).
+store-probe = []
+
+[[example]]
+name = "store_probe"
+required-features = ["store-probe", "real"]
+
+[dev-dependencies]
+# The opt-in dev:lite test stands in for the browser with plain HTTP calls.
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "json", "form"] }
+tokio = { workspace = true, features = ["test-util", "macros"] }
+
+# examples/store_probe.rs reads values back from the store window's pages.
+[target.'cfg(target_os = "linux")'.dev-dependencies]
+javascriptcore-rs = "1"

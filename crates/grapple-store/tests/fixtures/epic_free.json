@@ -1,0 +1,350 @@
+{
+ "data": {
+  "Catalog": {
+   "searchStore": {
+    "elements": [
+     {
+      "title": "Them's Fightin' Herds",
+      "id": "1f723b00df58467998c4984ca39915ad",
+      "namespace": "a567c32599bf4d4fb609e424f3691b39",
+      "effectiveDate": "2022-12-19T16:00:00.000Z",
+      "offerType": "BASE_GAME",
+      "expiryDate": null,
+      "viewableDate": "2022-12-19T15:55:00.000Z",
+      "status": "ACTIVE",
+      "isCodeRedemptionOnly": false,
+      "keyImages": [
+       {
+        "type": "OfferImageWide",
+        "url": "https://cdn1.epicgames.com/offer/a567c32599bf4d4fb609e424f3691b39/EGS_ThemsFightinHerds_Mane6Inc_S1_2560x1440-da3a940faafe30c602d3966d2c295825"
+       },
+       {
+        "type": "OfferImageTall",
+        "url": "https://cdn1.epicgames.com/offer/a567c32599bf4d4fb609e424f3691b39/EGS_ThemsFightinHerds_Mane6Inc_S2_1200x1600-9793ee024c43026c5c2b1612c7a487d0"
+       },
+       {
+        "type": "Thumbnail",
+        "url": "https://cdn1.epicgames.com/offer/a567c32599bf4d4fb609e424f3691b39/EGS_ThemsFightinHerds_Mane6Inc_S2_1200x1600-9793ee024c43026c5c2b1612c7a487d0_1200x1600-9793ee024c43026c5c2b1612c7a487d0"
+       }
+      ],
+      "seller": {
+       "id": "o-znrmullaj65y32mwjfa5dzabpprtmt",
+       "name": "Gameplay Group International Inc."
+      },
+      "productSlug": "thems-fightin-herds/home",
+      "urlSlug": "thems-fightin-herds",
+      "url": null,
+      "catalogNs": {
+       "mappings": [
+        {
+         "pageSlug": "thems-fightin-herds",
+         "pageType": "productHome"
+        }
+       ]
+      },
+      "offerMappings": [
+       {
+        "pageSlug": "thems-fightin-herds",
+        "pageType": "productHome"
+       }
+      ],
+      "price": {
+       "totalPrice": {
+        "discountPrice": 14099,
+        "originalPrice": 14099,
+        "voucherDiscount": 0,
+        "discount": 0,
+        "currencyCode": "ZAR",
+        "currencyInfo": {
+         "decimals": 2
+        },
+        "fmtPrice": {
+         "originalPrice": "ZAR\u00a0140.99",
+         "discountPrice": "ZAR\u00a0140.99",
+         "intermediatePrice": "ZAR\u00a0140.99"
+        },
+        "dualPrice": null
+       },
+       "lineOffers": [
+        {
+         "appliedRules": []
+        }
+       ]
+      },
+      "promotions": null
+     },
+     {
+      "title": "Eternal Threads",
+      "id": "921e40c4c69f4d728914ca2a4f0aa407",
+      "namespace": "35eda4ff87f94a7491dc28175b8f3b4f",
+      "effectiveDate": "2023-10-19T15:00:00.000Z",
+      "offerType": "BASE_GAME",
+      "expiryDate": null,
+      "viewableDate": "2023-10-12T15:00:00.000Z",
+      "status": "ACTIVE",
+      "isCodeRedemptionOnly": false,
+      "keyImages": [
+       {
+        "type": "OfferImageWide",
+        "url": "https://cdn1.epicgames.com/spt-assets/08813e055af64315b8a55b2e521f4e04/eternal-threads-1vm6i.jpg"
+       },
+       {
+        "type": "OfferImageTall",
+        "url": "https://cdn1.epicgames.com/spt-assets/08813e055af64315b8a55b2e521f4e04/eternal-threads-1v92y.jpg"
+       },
+       {
+        "type": "Thumbnail",
+        "url": "https://cdn1.epicgames.com/spt-assets/08813e055af64315b8a55b2e521f4e04/eternal-threads-1v92y.jpg"
+       }
+      ],
+      "seller": {
+       "id": "o-rdrzv6e26usvcn4dsevv2mpfr4bytu",
+       "name": "Secret Mode Limited"
+      },
+      "productSlug": null,
+      "urlSlug": "a9152a8924cc4e438f0e61106ec02f7d",
+      "url": null,
+      "catalogNs": {
+       "mappings": [
+        {
+         "pageSlug": "eternal-threads-197169",
+         "pageType": "productHome"
+        }
+       ]
+      },
+      "offerMappings": [
+       {
+        "pageSlug": "eternal-threads-197169",
+        "pageType": "productHome"
+       }
+      ],
+      "price": {
+       "totalPrice": {
+        "discountPrice": 15339,
+        "originalPrice": 15339,
+        "voucherDiscount": 0,
+        "discount": 0,
+        "currencyCode": "ZAR",
+        "currencyInfo": {
+         "decimals": 2
+        },
+        "fmtPrice": {
+         "originalPrice": "ZAR\u00a0153.39",
+         "discountPrice": "ZAR\u00a0153.39",
+         "intermediatePrice": "ZAR\u00a0153.39"
+        },
+        "dualPrice": null
+       },
+       "lineOffers": [
+        {
+         "appliedRules": []
+        }
+       ]
+      },
+      "promotions": {
+       "promotionalOffers": [],
+       "upcomingPromotionalOffers": [
+        {
+         "promotionalOffers": [
+          {
+           "startDate": "2026-10-19T15:00:00.000Z",
+           "endDate": "2026-11-02T16:00:00.000Z",
+           "discountSetting": {
+            "discountType": "PERCENTAGE",
+            "discountPercentage": 20
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": "Sker Ritual",
+      "id": "6aab3ddef4f84fbc9dd81c60f9d8549c",
+      "namespace": "156c17659ff0468bb533eba104a1f19f",
+      "effectiveDate": "2024-07-18T17:00:00.000Z",
+      "offerType": "BASE_GAME",
+      "expiryDate": null,
+      "viewableDate": "2023-10-01T07:00:00.000Z",
+      "status": "ACTIVE",
+      "isCodeRedemptionOnly": false,
+      "keyImages": [
+       {
+        "type": "OfferImageWide",
+        "url": "https://cdn1.epicgames.com/spt-assets/43d96f4437e34c87b7eff08831d1b1de/sker-ritual-1tuka.png"
+       },
+       {
+        "type": "OfferImageTall",
+        "url": "https://cdn1.epicgames.com/spt-assets/43d96f4437e34c87b7eff08831d1b1de/sker-ritual-1cyza.png"
+       },
+       {
+        "type": "Thumbnail",
+        "url": "https://cdn1.epicgames.com/spt-assets/43d96f4437e34c87b7eff08831d1b1de/sker-ritual-1cyza.png"
+       }
+      ],
+      "seller": {
+       "id": "o-rqvssgn2hhj58wv5bc6eueqswz2un4",
+       "name": "Skybound Game Studios, Inc."
+      },
+      "productSlug": null,
+      "urlSlug": "8dbc8d70481d4c0b8412d3aec76a35a1",
+      "url": null,
+      "catalogNs": {
+       "mappings": [
+        {
+         "pageSlug": "sker-ritual-aac702",
+         "pageType": "productHome"
+        }
+       ]
+      },
+      "offerMappings": [
+       {
+        "pageSlug": "sker-ritual-aac702",
+        "pageType": "productHome"
+       }
+      ],
+      "price": {
+       "totalPrice": {
+        "discountPrice": 19169,
+        "originalPrice": 19169,
+        "voucherDiscount": 0,
+        "discount": 0,
+        "currencyCode": "ZAR",
+        "currencyInfo": {
+         "decimals": 2
+        },
+        "fmtPrice": {
+         "originalPrice": "ZAR\u00a0191.69",
+         "discountPrice": "ZAR\u00a0191.69",
+         "intermediatePrice": "ZAR\u00a0191.69"
+        },
+        "dualPrice": null
+       },
+       "lineOffers": [
+        {
+         "appliedRules": []
+        }
+       ]
+      },
+      "promotions": {
+       "promotionalOffers": [],
+       "upcomingPromotionalOffers": [
+        {
+         "promotionalOffers": [
+          {
+           "startDate": "2026-10-22T15:00:00.000Z",
+           "endDate": "2026-10-29T15:00:00.000Z",
+           "discountSetting": {
+            "discountType": "PERCENTAGE",
+            "discountPercentage": 0
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "title": "Bad Cheese",
+      "id": "6a846880836044a2adad614ac771f487",
+      "namespace": "a0c80bf673a548bc97b4bb25abfaf2b4",
+      "effectiveDate": "2026-01-09T16:00:00.000Z",
+      "offerType": "BASE_GAME",
+      "expiryDate": null,
+      "viewableDate": "2026-01-09T16:00:00.000Z",
+      "status": "ACTIVE",
+      "isCodeRedemptionOnly": false,
+      "keyImages": [
+       {
+        "type": "OfferImageWide",
+        "url": "https://cdn1.epicgames.com/spt-assets/6cbb0e3805c4436bafd028cafff48307/bad-cheese-16hj0.png"
+       },
+       {
+        "type": "OfferImageTall",
+        "url": "https://cdn1.epicgames.com/spt-assets/6cbb0e3805c4436bafd028cafff48307/bad-cheese-kcgyv.png"
+       },
+       {
+        "type": "Thumbnail",
+        "url": "https://cdn1.epicgames.com/spt-assets/6cbb0e3805c4436bafd028cafff48307/bad-cheese-kcgyv.png"
+       }
+      ],
+      "seller": {
+       "id": "o-gnr4gznfpfjubhbw6jdxmjxp8jz86q",
+       "name": "FEARDEMIC sp. z o.o."
+      },
+      "productSlug": null,
+      "urlSlug": "ae5d8fc5541f42eea105f64121dba382",
+      "url": null,
+      "catalogNs": {
+       "mappings": [
+        {
+         "pageSlug": "bad-cheese-4256d9",
+         "pageType": "productHome"
+        }
+       ]
+      },
+      "offerMappings": [
+       {
+        "pageSlug": "bad-cheese-4256d9",
+        "pageType": "productHome"
+       }
+      ],
+      "price": {
+       "totalPrice": {
+        "discountPrice": 0,
+        "originalPrice": 9969,
+        "voucherDiscount": 0,
+        "discount": 9969,
+        "currencyCode": "ZAR",
+        "currencyInfo": {
+         "decimals": 2
+        },
+        "fmtPrice": {
+         "originalPrice": "ZAR\u00a099.69",
+         "discountPrice": "0",
+         "intermediatePrice": "0"
+        },
+        "dualPrice": null
+       },
+       "lineOffers": [
+        {
+         "appliedRules": [
+          {
+           "id": "041a72f3ffdd4b7383e797c5a876eace",
+           "endDate": "2026-10-22T15:00:00.000Z",
+           "discountSetting": {
+            "discountType": "PERCENTAGE"
+           }
+          }
+         ]
+        }
+       ]
+      },
+      "promotions": {
+       "promotionalOffers": [
+        {
+         "promotionalOffers": [
+          {
+           "startDate": "2026-10-15T15:00:00.000Z",
+           "endDate": "2026-10-22T15:00:00.000Z",
+           "discountSetting": {
+            "discountType": "PERCENTAGE",
+            "discountPercentage": 0
+           }
+          }
+         ]
+        }
+       ],
+       "upcomingPromotionalOffers": []
+      }
+     }
+    ],
+    "paging": {
+     "count": 40,
+     "total": 14
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "app_name": "Sugar",
+  "app_title": "Rocket League®",
+  "metadata": {
+    "title": "Rocket League®",
+    "categories": [{"path": "public"}, {"path": "games"}, {"path": "applications"}],
+    "mainGameItemList": [],
+    "keyImages": [
+      {"type": "DieselGameBoxTall", "url": "https://cdn.example.test/item/Tall_1200x1600-aaa"},
+      {"type": "DieselGameBox", "url": "https://cdn.example.test/item/Wide_2560x1440-bbb"},
+      {"type": "DieselGameBoxLogo", "url": "https://cdn.example.test/item/Logo-ccc"}
+    ]
+  }
+}

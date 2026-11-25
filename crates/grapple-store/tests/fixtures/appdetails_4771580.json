@@ -1,0 +1,90 @@
+{
+ "4771580": {
+  "success": true,
+  "data": {
+   "type": "game",
+   "name": "Five Nights with Maids",
+   "steam_appid": 4771580,
+   "required_age": 0,
+   "is_free": false,
+   "short_description": "In this survival horror game, play as a night guard watching over a mansion and its maids for five nights. Use lights, shutters, and cameras to spot suspicious activity. Each night grows more intense as the atmosphere shifts and the maids begin to behave strangely. Can you survive till the end?",
+   "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/d8904885f648a26cc0c235669239f8befc5e15e8/header.jpg?t=1792204505",
+   "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/de3ba2707c1c4a1cff18067e4cf9981cc5b7e040/capsule_231x87.jpg?t=1792204505",
+   "developers": [
+    "Now"
+   ],
+   "publishers": [
+    "Saikey Studios"
+   ],
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 7499,
+    "final": 5999,
+    "discount_percent": 20,
+    "initial_formatted": "R 74.99",
+    "final_formatted": "R 59.99"
+   },
+   "platforms": {
+    "windows": true,
+    "mac": false,
+    "linux": false
+   },
+   "categories": [
+    {
+     "id": 2,
+     "description": "Single-player"
+    },
+    {
+     "id": 22,
+     "description": "Steam Achievements"
+    },
+    {
+     "id": 23,
+     "description": "Steam Cloud"
+    },
+    {
+     "id": 62,
+     "description": "Family Sharing"
+    }
+   ],
+   "genres": [
+    {
+     "id": "28",
+     "description": "Simulation"
+    }
+   ],
+   "screenshots": [
+    {
+     "id": 0,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/1db075d7fda20c6821a1f785ed76247cea386040/ss_1db075d7fda20c6821a1f785ed76247cea386040.600x338.jpg?t=1792204505",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/1db075d7fda20c6821a1f785ed76247cea386040/ss_1db075d7fda20c6821a1f785ed76247cea386040.1920x1080.jpg?t=1792204505"
+    },
+    {
+     "id": 1,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/36c2ba98eed19fbf0c8b290c444a67c7cffe3207/ss_36c2ba98eed19fbf0c8b290c444a67c7cffe3207.600x338.jpg?t=1792204505",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/36c2ba98eed19fbf0c8b290c444a67c7cffe3207/ss_36c2ba98eed19fbf0c8b290c444a67c7cffe3207.1920x1080.jpg?t=1792204505"
+    },
+    {
+     "id": 2,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/a88316c5822b5f1894820945187cce5dcaf45463/ss_a88316c5822b5f1894820945187cce5dcaf45463.600x338.jpg?t=1792204505",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/a88316c5822b5f1894820945187cce5dcaf45463/ss_a88316c5822b5f1894820945187cce5dcaf45463.1920x1080.jpg?t=1792204505"
+    },
+    {
+     "id": 3,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/f86f1ba2a1d7ff03dc6eacd14c1ed425b15887d2/ss_f86f1ba2a1d7ff03dc6eacd14c1ed425b15887d2.600x338.jpg?t=1792204505",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/f86f1ba2a1d7ff03dc6eacd14c1ed425b15887d2/ss_f86f1ba2a1d7ff03dc6eacd14c1ed425b15887d2.1920x1080.jpg?t=1792204505"
+    }
+   ],
+   "release_date": {
+    "coming_soon": false,
+    "date": "16 Oct, 2026"
+   },
+   "background": "https://store.akamai.steamstatic.com/images/storepagebackground/app/4771580?t=1792204505",
+   "background_raw": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4771580/e228863d4122d1b27ca3214cfa85cc32556532e8/page_bg_raw.jpg?t=1792204505",
+   "content_descriptors": {
+    "ids": [],
+    "notes": null
+   }
+  }
+ }
+}

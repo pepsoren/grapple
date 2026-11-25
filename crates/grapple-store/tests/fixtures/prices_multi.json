@@ -1,0 +1,84 @@
+{
+ "4954910": {
+  "success": true,
+  "data": {
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 10499,
+    "final": 9449,
+    "discount_percent": 10,
+    "initial_formatted": "R 104.99",
+    "final_formatted": "R 94.49"
+   }
+  }
+ },
+ "990080": {
+  "success": true,
+  "data": {
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 99900,
+    "final": 9990,
+    "discount_percent": 90,
+    "initial_formatted": "R 999.00",
+    "final_formatted": "R 99.90"
+   }
+  }
+ },
+ "632360": {
+  "success": true,
+  "data": {
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 26900,
+    "final": 8877,
+    "discount_percent": 67,
+    "initial_formatted": "R 269.00",
+    "final_formatted": "R 88.77"
+   }
+  }
+ },
+ "5155360": {
+  "success": true,
+  "data": {
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 6499,
+    "final": 6499,
+    "discount_percent": 0,
+    "initial_formatted": "",
+    "final_formatted": "R 64.99"
+   }
+  }
+ },
+ "4001890": {
+  "success": true,
+  "data": {
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 8000,
+    "final": 8000,
+    "discount_percent": 0,
+    "initial_formatted": "",
+    "final_formatted": "R 80.00"
+   }
+  }
+ },
+ "208650": {
+  "success": true,
+  "data": {
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 35500,
+    "final": 5325,
+    "discount_percent": 85,
+    "initial_formatted": "R 355.00",
+    "final_formatted": "R 53.25"
+   }
+  }
+ },
+ "730": {
+  "success": true,
+  "data": []
+ }
+}

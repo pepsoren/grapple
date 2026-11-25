@@ -1,0 +1,26 @@
+"libraryfolders"
+{
+	"0"
+	{
+		"path"		"@ROOT@/steam"
+		"label"		""
+		"apps"
+		{
+			"100"		"1000"
+			"900"		"5"
+		}
+	}
+	"1"
+	{
+		"path"		"@ROOT@/steam/lib2"
+		"label"		""
+		"apps"
+		{
+			"200"		"2000"
+		}
+	}
+	"2"
+	{
+		"path"		"@ROOT@/not-mounted"
+	}
+}

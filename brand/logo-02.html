@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Grapple logo 02</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#0c0c0e;--panel:#18181b;--border:#2a2a30;--text:#f4f4f5;--sec:#a1a1aa;--muted:#8e8e96;--g:#6ee7a0;--ink:#ffffff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--text);font:15px/1.45 Figtree,system-ui,sans-serif;padding:28px}
+h1{font-size:18px;margin:0 0 4px}
+.lead{color:var(--sec);margin:0 0 22px;max-width:980px}
+.lead img{height:90px;vertical-align:middle;border-radius:8px;margin-left:10px;transform:rotate(-2deg)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1240px}
+.c{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px}
+.c h2{font-size:15px;margin:0 0 2px}
+.c p{font-size:13px;color:var(--muted);margin:0 0 16px}
+.icon{width:100%;aspect-ratio:1;border-radius:22%;background:var(--g);display:flex;align-items:center;justify-content:center;box-shadow:0 18px 40px #0009}
+.icon svg{width:78%;height:78%}
+svg{filter:drop-shadow(0 1.2px 0 color-mix(in srgb,var(--g) 55%,#063d22))}
+.row{display:flex;align-items:center;gap:14px;margin-top:16px}
+.mini{border-radius:22%;background:var(--g);display:flex;align-items:center;justify-content:center}
+.mini svg{width:80%;height:80%}
+.word{display:flex;align-items:center;gap:10px;font-weight:800;font-size:26px;letter-spacing:-.5px;margin-top:16px}
+.greens{display:flex;gap:10px;margin:26px 0 8px;flex-wrap:wrap;align-items:center}
+.greens button{border:2px solid transparent;border-radius:12px;padding:0;width:120px;cursor:pointer;background:none;color:var(--sec);font:inherit;font-size:12px;text-align:left}
+.greens button span{display:block;height:46px;border-radius:10px;margin-bottom:6px}
+.greens button.on{border-color:var(--text)}
+.ctx{display:flex;gap:18px;margin-top:26px;flex-wrap:wrap;max-width:1240px}
+.ctx .box{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:18px;flex:1;min-width:300px}
+.dock{display:flex;gap:12px;align-items:center;padding:10px 14px;background:#1f1f23;border-radius:16px;width:max-content}
+.dock .o{width:44px;height:44px;border-radius:22%;background:#2a2a30}
+</style>
+</head>
+<body>
+<h1>Grapple · logo round 2 · from your sketch</h1>
+<p class="lead">Your sketch: ring + tied rope bottom-left, shank across and up the right side, hooking over the top into a sharp point with a barb. White hook on a light green tile. Three levels of jagged, same pose. Pick a green below; it changes every tile.<img src="sketch.jpg" alt="Josh's sketch"></p>
+
+<svg width="0" height="0" style="position:absolute">
+<defs>
+  <!-- the rope through the ring, shared -->
+  <g id="rope" fill="none" stroke="var(--ink)" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="17" cy="47" r="5.2" stroke-width="3.4"/>
+    <path d="M3.5 44 L 19.5 49.5" stroke-width="3"/>
+    <path d="M5 53 L 15 46" stroke-width="3"/>
+  </g>
+
+  <!-- V1 · Faceted: straight cuts, hard corners, a saw-tooth barb -->
+  <symbol id="v1" viewBox="0 0 64 64">
+    <use href="#rope"/>
+    <path fill="var(--ink)" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="miter" stroke-miterlimit="8" d="
+      M21.5 44.5 L 41 37.5 L 47.5 31 L 49.5 13.5 L 45 8.5 L 35.5 8 L 22 12.5
+      L 33.5 13.6 L 30.5 19.5 L 38.5 15 L 41.5 15.6 L 42.5 30 L 38.8 33.6 L 23 39.6 Z"/>
+  </symbol>
+
+  <!-- V2 · Sharp: smooth bend like the sketch, knife point, one deep barb -->
+  <symbol id="v2" viewBox="0 0 64 64">
+    <use href="#rope"/>
+    <path fill="var(--ink)" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="miter" stroke-miterlimit="8" d="
+      M21.5 44.5 C 30 41.5 37 39 42 36 C 47 33 49 29 49.3 22 L 49.6 15
+      C 49.8 10.5 46.5 8 42 8.2 C 36 8.4 28 10.5 21.5 12.8
+      L 34 13.6 L 31 20 L 39 15.4 C 41.6 15.2 42.6 16.6 42.6 19.5 L 42.4 26
+      C 42.2 30 40.8 31.6 37.5 33.3 C 33 35.5 28 37.4 23 39.6 Z"/>
+  </symbol>
+
+  <!-- V3 · Grapnel: the sketch's hook plus a second, shorter prong behind it -->
+  <symbol id="v3" viewBox="0 0 64 64">
+    <use href="#rope"/>
+    <path fill="var(--ink)" opacity=".55" d="M44 33.5 L 55.5 27 L 59.5 18.5 L 54.5 22.5 L 56 15.5 L 50.5 25 L 44.5 28.6 Z"/>
+    <path fill="var(--ink)" stroke="var(--ink)" stroke-width="1.6" stroke-linejoin="miter" stroke-miterlimit="8" d="
+      M21.5 44.5 L 41 37.5 C 45.5 35.5 47.6 32.5 48 28 L 49.5 13.5 L 45 8.5 L 35.5 8 L 22 12.5
+      L 33.5 13.6 L 30.5 19.5 L 38.5 15 L 41.5 15.6 L 42.3 27.5 C 42.3 31 40.8 32.6 38 33.8 L 23 39.6 Z"/>
+  </symbol>
+</defs>
+</svg>
+
+<div class="grid">
+  <div class="c"><h2>1 · Faceted</h2><p>All straight cuts and hard corners, saw-tooth barb. The most "jagged", like a forged or cut-metal hook.</p>
+    <div class="icon"><svg><use href="#v1"/></svg></div>
+    <div class="row"><div class="mini" style="width:48px;height:48px"><svg><use href="#v1"/></svg></div><div class="mini" style="width:32px;height:32px"><svg><use href="#v1"/></svg></div><div class="mini" style="width:20px;height:20px"><svg><use href="#v1"/></svg></div><div class="mini" style="width:16px;height:16px"><svg><use href="#v1"/></svg></div></div>
+    <div class="word"><div class="mini" style="width:38px;height:38px"><svg><use href="#v1"/></svg></div>Grapple</div>
+  </div>
+  <div class="c"><h2>2 · Sharp</h2><p>The smooth bend from your sketch, but a knife point and one deep barb. Closest to the drawing.</p>
+    <div class="icon"><svg><use href="#v2"/></svg></div>
+    <div class="row"><div class="mini" style="width:48px;height:48px"><svg><use href="#v2"/></svg></div><div class="mini" style="width:32px;height:32px"><svg><use href="#v2"/></svg></div><div class="mini" style="width:20px;height:20px"><svg><use href="#v2"/></svg></div><div class="mini" style="width:16px;height:16px"><svg><use href="#v2"/></svg></div></div>
+    <div class="word"><div class="mini" style="width:38px;height:38px"><svg><use href="#v2"/></svg></div>Grapple</div>
+  </div>
+  <div class="c"><h2>3 · Grapnel</h2><p>Your hook plus a second, shorter prong behind it, so it reads as a grappling hook rather than a fishing hook.</p>
+    <div class="icon"><svg><use href="#v3"/></svg></div>
+    <div class="row"><div class="mini" style="width:48px;height:48px"><svg><use href="#v3"/></svg></div><div class="mini" style="width:32px;height:32px"><svg><use href="#v3"/></svg></div><div class="mini" style="width:20px;height:20px"><svg><use href="#v3"/></svg></div><div class="mini" style="width:16px;height:16px"><svg><use href="#v3"/></svg></div></div>
+    <div class="word"><div class="mini" style="width:38px;height:38px"><svg><use href="#v3"/></svg></div>Grapple</div>
+  </div>
+</div>
+
+<div class="greens" id="greens"></div>
+
+<div class="ctx">
+  <div class="box"><div class="sub" style="color:var(--muted);font-size:13px;margin-bottom:10px">In a dock / app launcher, next to neutral icons</div>
+    <div class="dock"><div class="o"></div><div class="o"></div><div class="mini" style="width:44px;height:44px"><svg><use href="#v2"/></svg></div><div class="o"></div><div class="o"></div></div></div>
+  <div class="box"><div class="sub" style="color:var(--muted);font-size:13px;margin-bottom:10px">Next to tether's icon</div>
+    <div class="dock"><div style="width:44px;height:44px;border-radius:22%;background:#18181b;box-shadow:0 0 0 1px #2a2a30;display:flex;align-items:center;justify-content:center"><img src="tether-mark.svg" style="width:34px"></div><div class="mini" style="width:44px;height:44px"><svg><use href="#v2"/></svg></div></div></div>
+</div>
+
+<script>
+const greens=[['#6ee7a0','Mint'],['#86efac','Light mint'],['#4ade80','tether online green'],['#5fd39a','Sage-mint'],['#a3e6b8','Pale']];
+const el=document.getElementById('greens');
+el.innerHTML='<span style="color:var(--muted);font-size:13px;margin-right:6px">Green:</span>'+greens.map(([c,n],i)=>`<button data-c="${c}" class="${i?'':'on'}"><span style="background:${c}"></span>${n} ${c}</button>`).join('');
+el.onclick=e=>{const b=e.target.closest('button');if(!b)return;document.documentElement.style.setProperty('--g',b.dataset.c);el.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b))};
+</script>
+</body>
+</html>

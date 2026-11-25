@@ -1,0 +1,127 @@
+{
+ "1621690": {
+  "success": true,
+  "data": {
+   "type": "game",
+   "name": "Core Keeper",
+   "steam_appid": 1621690,
+   "required_age": 0,
+   "is_free": false,
+   "controller_support": "full",
+   "short_description": "Explore a vast cavern of creatures, relics and resources in a mining sandbox adventure for 1-8 players. Mine, build, fight, craft and farm to unravel the mystery of the ancient Core.",
+   "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/4d3798fbb307f52d9e11ed5b5f665779097b2f55/header_alt_assets_12.jpg?t=1791454740",
+   "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/74ae27901ff218090ff1b122b7c71489df920994/capsule_231x87_alt_assets_12.jpg?t=1791454740",
+   "developers": [
+    "Pugstorm"
+   ],
+   "publishers": [
+    "Fireshine Games",
+    "bilibili"
+   ],
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 18500,
+    "final": 11100,
+    "discount_percent": 40,
+    "initial_formatted": "R 185.00",
+    "final_formatted": "R 111.00"
+   },
+   "platforms": {
+    "windows": true,
+    "mac": false,
+    "linux": true
+   },
+   "metacritic": {
+    "score": 86,
+    "url": "https://www.metacritic.com/game/pc/core-keeper?ftag=MCD-06-10aaa1f"
+   },
+   "categories": [
+    {
+     "id": 2,
+     "description": "Single-player"
+    },
+    {
+     "id": 1,
+     "description": "Multi-player"
+    },
+    {
+     "id": 9,
+     "description": "Co-op"
+    },
+    {
+     "id": 38,
+     "description": "Online Co-op"
+    },
+    {
+     "id": 28,
+     "description": "Full controller support"
+    },
+    {
+     "id": 23,
+     "description": "Steam Cloud"
+    },
+    {
+     "id": 62,
+     "description": "Family Sharing"
+    }
+   ],
+   "genres": [
+    {
+     "id": "1",
+     "description": "Action"
+    },
+    {
+     "id": "25",
+     "description": "Adventure"
+    },
+    {
+     "id": "23",
+     "description": "Indie"
+    },
+    {
+     "id": "3",
+     "description": "RPG"
+    },
+    {
+     "id": "28",
+     "description": "Simulation"
+    }
+   ],
+   "screenshots": [
+    {
+     "id": 0,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/632a42b91e005b2d2daf99fee946732c95a9737c/ss_632a42b91e005b2d2daf99fee946732c95a9737c.600x338.jpg?t=1791454740",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/632a42b91e005b2d2daf99fee946732c95a9737c/ss_632a42b91e005b2d2daf99fee946732c95a9737c.1920x1080.jpg?t=1791454740"
+    },
+    {
+     "id": 1,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/bca1feb5ec1bf64543f80c74effdcaed4216033c/ss_bca1feb5ec1bf64543f80c74effdcaed4216033c.600x338.jpg?t=1791454740",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/bca1feb5ec1bf64543f80c74effdcaed4216033c/ss_bca1feb5ec1bf64543f80c74effdcaed4216033c.1920x1080.jpg?t=1791454740"
+    },
+    {
+     "id": 2,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/804585b7772d3ae5c7d56fc80401469d5bf6fd27/ss_804585b7772d3ae5c7d56fc80401469d5bf6fd27.600x338.jpg?t=1791454740",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/804585b7772d3ae5c7d56fc80401469d5bf6fd27/ss_804585b7772d3ae5c7d56fc80401469d5bf6fd27.1920x1080.jpg?t=1791454740"
+    },
+    {
+     "id": 3,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/ss_1e162c49418038f8042c92810fe3c753449e204b.600x338.jpg?t=1791454740",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/ss_1e162c49418038f8042c92810fe3c753449e204b.1920x1080.jpg?t=1791454740"
+    }
+   ],
+   "recommendations": {
+    "total": 50830
+   },
+   "release_date": {
+    "coming_soon": false,
+    "date": "27 Aug, 2024"
+   },
+   "background": "https://store.akamai.steamstatic.com/images/storepagebackground/app/1621690?t=1791454740",
+   "background_raw": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1621690/d1f34f6dca05c70670a7463ba92c47b12f3827a4/page_bg_raw.jpg?t=1791454740",
+   "content_descriptors": {
+    "ids": [],
+    "notes": null
+   }
+  }
+ }
+}

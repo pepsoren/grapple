@@ -1,0 +1,40 @@
+[package]
+name = "grapple-download"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+description = "Grapple's downloads: Epic games downloaded by grapple itself, Steam downloads watched (or controlled through the opt-in Steam bridge)"
+
+[features]
+# The test-only manifest/chunk writer (src/testkit.rs). Never on in a grapple build.
+testkit = []
+
+[dependencies]
+grapple-core.workspace = true
+grapple-launch.workspace = true
+grapple-scan.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tokio = { workspace = true, features = ["net", "io-util"] }
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "json", "form"] }
+rusqlite = { version = "0.40", features = ["bundled"] }
+flate2 = "1"
+sha1 = "0.10"
+tokio-tungstenite = { version = "0.30", default-features = false, features = ["connect"] }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+url = "2"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.61", features = ["Win32_Storage_FileSystem", "Win32_Foundation"] }
+
+[dev-dependencies]
+grapple-download = { path = ".", features = ["testkit"] }
+axum = { version = "0.8", features = ["ws"] }
+tempfile = "3"
+tokio = { workspace = true, features = ["net", "io-util", "test-util"] }

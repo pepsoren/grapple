@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="grapple">
+<defs><clipPath id="tile"><rect width="100" height="100" rx="33.33"/></clipPath><filter id="edge" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="1.6" stdDeviation="0" flood-color="#1d7a44" flood-opacity="1"/></filter></defs>
+<rect width="100" height="100" rx="33.33" fill="#4ade80"/>
+<g clip-path="url(#tile)"><g><defs><mask id="mgi" maskUnits="userSpaceOnUse" x="-20" y="-20" width="140" height="140">
+  <rect x="-20" y="-20" width="140" height="140" fill="#fff"/>
+  <path d="M68.5 71.5 L26.07 113.93" stroke="#000" stroke-width="7.800000000000001"/>
+</mask></defs><g fill="#ffffff" mask="url(#mgi)"><path d="M75.00 65.72 L71.24 18.00 L28.00 18.00 L21.00 67.00 L29.26 52.60 L41.75 49.91 L33.80 44.68 L41.65 31.00 L59.27 31.00 L62.00 65.72 Z"/><path d="M58.0 71.5 a10.5 10.5 0 1 0 21.0 0 a10.5 10.5 0 1 0 -21.0 0 Z M64.2 71.5 a4.3 4.3 0 1 1 8.6 0 a4.3 4.3 0 1 1 -8.6 0 Z" fill-rule="evenodd"/></g><path d="M67.86 72.14 L26.07 113.93" stroke="#ffffff" stroke-width="4.2" fill="none"/></g></g></svg>

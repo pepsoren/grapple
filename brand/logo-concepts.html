@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Grapple logo concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#0c0c0e;--panel:#18181b;--raised:#1f1f23;--border:#2a2a30;--text:#f4f4f5;--sec:#a1a1aa;--muted:#8e8e96;--rope:#8b7cf6;--hook:#b4aafa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--text);font:15px/1.45 Figtree,system-ui,sans-serif;padding:28px}
+h1{font-size:18px;margin:0 0 4px}
+.lead{color:var(--sec);margin:0 0 26px;max-width:900px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:1240px}
+.c{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px}
+.c h2{font-size:15px;margin:0 0 2px}
+.c p{font-size:13px;color:var(--muted);margin:0 0 18px}
+.row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.big{width:220px;height:220px;background:#141417;border-radius:16px}
+.sq{width:96px;height:96px;border-radius:24px;background:var(--panel);box-shadow:0 0 0 1px var(--border),0 12px 30px #0008;display:flex;align-items:center;justify-content:center}
+.sq.light{background:#f4f4f5}
+.sq svg{width:68px;height:68px}
+.sizes{display:flex;align-items:flex-end;gap:14px}
+.word{display:flex;align-items:center;gap:10px;font-weight:800;font-size:30px;letter-spacing:-.5px}
+.word svg{width:40px;height:40px}
+.tag{display:inline-block;font-size:11px;font-weight:700;color:#111113;background:var(--rope);border-radius:6px;padding:1px 7px;margin-left:8px;vertical-align:2px}
+.tether{display:flex;align-items:center;gap:10px;color:var(--sec);font-size:13px;margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
+.tether img{width:28px;height:28px}
+</style>
+</head>
+<body>
+<h1>Grapple · logo concepts</h1>
+<p class="lead">Same line language as tether's knot (one rope, round caps, violet two-tone: rope <span style="color:var(--rope)">#8b7cf6</span>, hook <span style="color:var(--hook)">#b4aafa</span>), so the two apps read as a family. Each shows the big mark, the app icon, small sizes (32 / 20 / 16 px) and the wordmark.</p>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- The grapnel. Local coords: leading tip up at (0,-6), prongs curl back with barbs, ring at (0,28.5). -->
+    <g id="hook" fill="none" stroke="var(--hook)" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 -6 L0 24" stroke-width="4"/>
+      <path d="M0 0 C -3 0 -12 2 -12 12 L -8.2 8.8" stroke-width="4"/>
+      <path d="M0 0 C 3 0 12 2 12 12 L 8.2 8.8" stroke-width="4"/>
+      <circle cx="0" cy="28.5" r="4" stroke-width="3.4"/>
+    </g>
+    <g id="hook4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 2 C -1.5 3 -6 4.5 -6.5 10.5" stroke="var(--rope)" stroke-width="3.6"/>
+      <path d="M0 2 C 1.5 3 6 4.5 6.5 10.5" stroke="var(--rope)" stroke-width="3.6"/>
+      <use href="#hook"/>
+    </g>
+    <symbol id="A" viewBox="0 0 64 64">
+      <path d="M24.8 39.2 C 20.5 43.5 18.5 43.5 14.5 47.5 S 8.5 54 4.5 58.5" fill="none" stroke="var(--rope)" stroke-width="4.4" stroke-linecap="round"/>
+      <use href="#hook" transform="translate(50.1 13.9) rotate(45) scale(1.1)"/>
+    </symbol>
+    <symbol id="B" viewBox="0 0 64 64">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="4.4">
+        <path d="M46.5 18.5 A 19 19 0 1 0 51 33" stroke="var(--rope)"/>
+        <path d="M51 33 L 37 33 C 32.5 33 31 37.5 33.5 41 L 34.5 36.5" stroke="var(--hook)"/>
+      </g>
+    </symbol>
+    <symbol id="C" viewBox="0 0 64 64">
+      <use href="#hook4" transform="translate(32 52) rotate(180) scale(1.25)"/>
+      <path d="M32 11.4 C 32 6.5 38 3.5 46 5.5" fill="none" stroke="var(--rope)" stroke-width="4.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="D" viewBox="0 0 64 64">
+      <path d="M2.5 46.3 L 12 46.3 C 21 46.3 27.5 41 26 33.5 C 24.8 27.5 16 28 16.5 35 C 17 42 27.5 41.5 31 33" fill="none" stroke="var(--rope)" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <use href="#hook" transform="translate(54.5 7.5) rotate(45) scale(.9)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="grid">
+  <div class="c">
+    <h2>A · Thrown hook</h2>
+    <p>A grappling hook mid-throw toward the top right, rope trailing behind it. Says "launch" and "grab" at once.</p>
+    <div class="row">
+      <svg class="big"><use href="#A"/></svg>
+      <div class="sq"><svg><use href="#A"/></svg></div>
+      <div class="sizes"><svg width="32" height="32"><use href="#A"/></svg><svg width="20" height="20"><use href="#A"/></svg><svg width="16" height="16"><use href="#A"/></svg></div>
+    </div>
+    <div class="row" style="margin-top:18px"><div class="word"><svg><use href="#A"/></svg>Grapple</div></div>
+  </div>
+
+  <div class="c">
+    <h2>B · Rope G</h2>
+    <p>A G drawn in one rope; the crossbar finishes in a hook's barb. Most letter-like, cleanest at 16 px.</p>
+    <div class="row">
+      <svg class="big"><use href="#B"/></svg>
+      <div class="sq"><svg><use href="#B"/></svg></div>
+      <div class="sizes"><svg width="32" height="32"><use href="#B"/></svg><svg width="20" height="20"><use href="#B"/></svg><svg width="16" height="16"><use href="#B"/></svg></div>
+    </div>
+    <div class="row" style="margin-top:18px"><div class="word"><svg><use href="#B"/></svg>Grapple</div></div>
+  </div>
+
+  <div class="c">
+    <h2>C · Grapnel, upright</h2>
+    <p>The hook on its own, standing tall with a short tail of rope. Calm and symmetrical; the most "icon-like" of the four.</p>
+    <div class="row">
+      <svg class="big"><use href="#C"/></svg>
+      <div class="sq"><svg><use href="#C"/></svg></div>
+      <div class="sizes"><svg width="32" height="32"><use href="#C"/></svg><svg width="20" height="20"><use href="#C"/></svg><svg width="16" height="16"><use href="#C"/></svg></div>
+    </div>
+    <div class="row" style="margin-top:18px"><div class="word"><svg><use href="#C"/></svg>Grapple</div></div>
+  </div>
+
+  <div class="c">
+    <h2>D · tether's rope, thrown <span class="tag">family</span></h2>
+    <p>The rope enters from the left at the same height as tether's knot rope, loops once, and flies off into the hook. Put side by side, tether ties, Grapple throws.</p>
+    <div class="row">
+      <svg class="big"><use href="#D"/></svg>
+      <div class="sq"><svg><use href="#D"/></svg></div>
+      <div class="sizes"><svg width="32" height="32"><use href="#D"/></svg><svg width="20" height="20"><use href="#D"/></svg><svg width="16" height="16"><use href="#D"/></svg></div>
+    </div>
+    <div class="row" style="margin-top:18px"><div class="word"><svg><use href="#D"/></svg>Grapple</div></div>
+    <div class="tether"><img src="tether-mark.svg" alt="">tether's mark, for comparison</div>
+  </div>
+</div>
+</body>
+</html>

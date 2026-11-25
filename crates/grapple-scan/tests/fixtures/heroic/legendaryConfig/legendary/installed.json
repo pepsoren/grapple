@@ -1,0 +1,25 @@
+{
+  "Sugar": {
+    "app_name": "Sugar",
+    "can_run_offline": true,
+    "executable": "Binaries/Win64/Launcher.exe",
+    "install_path": "@ROOT@/games/rocketleague",
+    "install_size": 4368,
+    "is_dlc": false,
+    "launch_parameters": "",
+    "title": "Rocket League®"
+  },
+  "Gone": {
+    "app_name": "Gone",
+    "install_path": "@ROOT@/games/unplugged-drive",
+    "install_size": 99,
+    "is_dlc": false,
+    "title": "Gone Game"
+  },
+  "SugarDLC": {
+    "app_name": "SugarDLC",
+    "install_path": "@ROOT@/games/rocketleague",
+    "is_dlc": true,
+    "title": "Some DLC"
+  }
+}

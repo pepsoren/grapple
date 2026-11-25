@@ -1,0 +1,166 @@
+{
+ "1091500": {
+  "success": true,
+  "data": {
+   "type": "game",
+   "name": "Cyberpunk 2077",
+   "steam_appid": 1091500,
+   "required_age": "18",
+   "is_free": false,
+   "controller_support": "full",
+   "short_description": "Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification.",
+   "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/e9047d8ec47ae3d94bb8b464fb0fc9e9972b4ac7/header.jpg?t=1784714077",
+   "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/590e0988a2fb79f44d3e31e41fd4949eb76abc41/capsule_231x87.jpg?t=1784714077",
+   "developers": [
+    "CD PROJEKT RED"
+   ],
+   "publishers": [
+    "CD PROJEKT RED"
+   ],
+   "price_overview": {
+    "currency": "ZAR",
+    "initial": 79900,
+    "final": 23970,
+    "discount_percent": 70,
+    "initial_formatted": "R 799.00",
+    "final_formatted": "R 239.70"
+   },
+   "platforms": {
+    "windows": true,
+    "mac": true,
+    "linux": false
+   },
+   "metacritic": {
+    "score": 86,
+    "url": "https://www.metacritic.com/game/pc/cyberpunk-2077?ftag=MCD-06-10aaa1f"
+   },
+   "categories": [
+    {
+     "id": 2,
+     "description": "Single-player"
+    },
+    {
+     "id": 22,
+     "description": "Steam Achievements"
+    },
+    {
+     "id": 28,
+     "description": "Full controller support"
+    },
+    {
+     "id": 29,
+     "description": "Steam Trading Cards"
+    },
+    {
+     "id": 64,
+     "description": "Adjustable Text Size"
+    },
+    {
+     "id": 67,
+     "description": "Camera Comfort"
+    },
+    {
+     "id": 66,
+     "description": "Color Alternatives"
+    },
+    {
+     "id": 68,
+     "description": "Custom Volume Controls"
+    },
+    {
+     "id": 78,
+     "description": "Adjustable Difficulty"
+    },
+    {
+     "id": 74,
+     "description": "Playable without Timed Input"
+    },
+    {
+     "id": 55,
+     "description": "DualShock Controller Support"
+    },
+    {
+     "id": 57,
+     "description": "DualSense Controller Support"
+    },
+    {
+     "id": 58,
+     "description": "DualSense Controller Support"
+    },
+    {
+     "id": 79,
+     "description": "Save Anytime"
+    },
+    {
+     "id": 69,
+     "description": "Stereo Sound"
+    },
+    {
+     "id": 65,
+     "description": "Subtitle Options"
+    },
+    {
+     "id": 70,
+     "description": "Surround Sound"
+    },
+    {
+     "id": 23,
+     "description": "Steam Cloud"
+    },
+    {
+     "id": 61,
+     "description": "HDR available"
+    },
+    {
+     "id": 62,
+     "description": "Family Sharing"
+    }
+   ],
+   "genres": [
+    {
+     "id": "3",
+     "description": "RPG"
+    }
+   ],
+   "screenshots": [
+    {
+     "id": 0,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_2f649b68d579bf87011487d29bc4ccbfdd97d34f.600x338.jpg?t=1784714077",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_2f649b68d579bf87011487d29bc4ccbfdd97d34f.1920x1080.jpg?t=1784714077"
+    },
+    {
+     "id": 1,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_0e64170751e1ae20ff8fdb7001a8892fd48260e7.600x338.jpg?t=1784714077",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_0e64170751e1ae20ff8fdb7001a8892fd48260e7.1920x1080.jpg?t=1784714077"
+    },
+    {
+     "id": 2,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_af2804aa4bf35d4251043744412ce3b359a125ef.600x338.jpg?t=1784714077",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_af2804aa4bf35d4251043744412ce3b359a125ef.1920x1080.jpg?t=1784714077"
+    },
+    {
+     "id": 3,
+     "path_thumbnail": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_7924f64b6e5d586a80418c9896a1c92881a7905b.600x338.jpg?t=1784714077",
+     "path_full": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/ss_7924f64b6e5d586a80418c9896a1c92881a7905b.1920x1080.jpg?t=1784714077"
+    }
+   ],
+   "recommendations": {
+    "total": 897209
+   },
+   "release_date": {
+    "coming_soon": false,
+    "date": "9 Dec, 2020"
+   },
+   "background": "https://store.akamai.steamstatic.com/images/storepagebackground/app/1091500?t=1784714077",
+   "background_raw": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/644eb087007768417a847e52c38eeaf34b57fd12/page_bg_raw.jpg?t=1784714077",
+   "content_descriptors": {
+    "ids": [
+     1,
+     2,
+     5
+    ],
+    "notes": "Cyberpunk 2077 contains strong language, intense violence, blood and gore, as well as nudity and sexual material.\r\n"
+   }
+  }
+ }
+}

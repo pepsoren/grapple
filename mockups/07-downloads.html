@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Grapple mockup 07 · downloads</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#0c0c0e;--panel:#18181b;--raised:#1f1f23;--raised2:#232327;--sunken:#141417;--control:#2a2a30;--border:#2a2a30;--border2:#34343b;--text:#f4f4f5;--text2:#e4e4e7;--sec:#a1a1aa;--muted:#8e8e96;--accent:#4ade80;--accent-soft:#92ebb3;--on-accent:#111113;--warn:#fbbf24;--danger:#f87171;--glass:#18181bc4}
+*{box-sizing:border-box} body{margin:0;background:#050506;color:var(--text2);font:15px/1.45 Figtree,system-ui,sans-serif} img,svg{display:block}
+.top{display:flex;align-items:center;gap:8px;padding:16px 24px;border-bottom:1px solid #151518;flex-wrap:wrap} .top h1{font-size:16px;margin:0 14px 0 0;color:var(--text)}
+.tab{border:1px solid var(--border);background:var(--panel);color:var(--sec);padding:6px 12px;border-radius:10px;font:inherit;font-size:13px;cursor:pointer} .tab.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.note-top{margin-left:auto;font-size:12px;color:var(--muted);max-width:440px;text-align:right}
+.wrap{padding:24px} .stage{display:none} .stage.on{display:block} .cap0{max-width:1280px;margin:0 auto 12px;color:var(--sec);font-size:14px} .cap0 b{color:var(--text)}
+.win{width:1280px;height:800px;margin:0 auto;background:var(--canvas);border-radius:14px;overflow:hidden;position:relative;box-shadow:0 30px 80px #000a,0 0 0 1px #1c1c20}
+.scroll{position:absolute;inset:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#333 transparent}
+.bar{position:absolute;left:16px;right:16px;top:14px;height:54px;border-radius:16px;display:flex;align-items:center;gap:22px;padding:0 12px 0 16px;z-index:5;background:var(--glass);backdrop-filter:blur(22px);border:1px solid #ffffff10}
+.bar .brand{color:var(--accent)} .bar .nav{font-weight:600;color:var(--sec)} .bar .nav.on{color:var(--text)} .bar .nav.dim{opacity:.5}
+.search{margin-left:auto;height:36px;width:220px;border-radius:10px;background:#ffffff12;display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--muted);font-size:14px}
+.me{width:34px;height:34px;border-radius:50%;background:#f59e0b;color:#111;font-weight:700;display:flex;align-items:center;justify-content:center}
+/* top-bar download indicator */
+.dl{position:relative;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#ffffff12}
+.dl svg.ring{position:absolute;inset:3px} .dl .arrow{color:var(--text)} .dl .cnt{position:absolute;right:-4px;top:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--accent);color:var(--on-accent);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.btn{border:0;font:inherit;font-weight:600;border-radius:12px;cursor:pointer;height:40px;padding:0 18px;white-space:nowrap} .play{background:var(--accent);color:var(--on-accent)} .sec{background:var(--control);color:var(--text)} .ghost{background:#ffffff14;color:var(--text)} .icon{width:40px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.sm{height:32px;font-size:13px;padding:0 12px;border-radius:10px}
+.badge{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--control);color:var(--text2)} .badge.epic{background:#2a2a30;color:#e4e4e7}
+.sub{font-size:12px;color:var(--muted)} .smp{font-style:normal;font-size:10px;color:#71717a;border:1px dashed #52525b;border-radius:5px;padding:0 4px;margin-left:6px}
+.bar2{height:6px;border-radius:999px;background:var(--control);overflow:hidden} .bar2 i{display:block;height:100%;background:var(--accent);border-radius:999px}
+/* downloads page */
+.page{padding:92px 44px 40px} .ph{display:flex;align-items:baseline;gap:12px;margin-bottom:16px} .ph h2{margin:0;color:var(--text);font-size:26px} .ph .r{margin-left:auto;display:flex;gap:8px}
+.now{position:relative;border-radius:20px;overflow:hidden;height:250px;border:1px solid var(--border)} .now>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.now .sh{position:absolute;inset:0;background:linear-gradient(90deg,#0c0c0ef5 0%,#0c0c0ec0 45%,#0c0c0e30 100%)}
+.now .in{position:absolute;left:28px;right:28px;bottom:24px;display:grid;grid-template-columns:1fr auto;gap:14px 24px;align-items:end}
+.now .t{font-size:30px;font-weight:800;color:#fff} .now .k{font-size:13px;color:var(--sec);margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.stats{display:flex;gap:28px;color:var(--sec);font-size:13px} .stats b{display:block;color:var(--text);font-size:18px}
+.now .bar2{grid-column:1/3;height:8px} .ctl{display:flex;gap:8px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:34px} .spark i{width:5px;border-radius:2px;background:#4ade8066}
+.h3{font-size:13px;font-weight:700;color:var(--muted);margin:26px 0 10px;display:flex;align-items:center;gap:10px} .h3 .r{margin-left:auto;font-weight:500}
+.q{display:flex;flex-direction:column;gap:8px}
+.qr{display:grid;grid-template-columns:22px 150px 1fr 160px 120px auto;align-items:center;gap:16px;background:var(--panel);border-radius:14px;padding:8px 12px 8px 10px}
+.qr .grip{color:#52525b;font-size:16px;cursor:grab;text-align:center} .qr img{width:150px;height:70px;object-fit:cover;border-radius:9px}
+.qn b{color:var(--text);display:block} .qn span{font-size:12px;color:var(--muted)}
+.tg{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--sec)} .sw{width:36px;height:22px;border-radius:999px;background:var(--control);position:relative;flex:none} .sw::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--sec)} .sw.on{background:var(--accent)} .sw.on::after{left:17px;background:#fff}
+.done .qr{grid-template-columns:150px 1fr auto}
+/* popover */
+.pop{position:absolute;right:62px;top:76px;width:360px;background:#18181bf7;border:1px solid var(--border2);border-radius:18px;box-shadow:0 30px 70px #000c;padding:14px;z-index:6;display:flex;flex-direction:column;gap:12px}
+.pr{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:center} .pr img{width:48px;height:48px;object-fit:cover;border-radius:10px} .pr b{color:var(--text);font-size:14px} .pr .sub{display:flex;justify-content:space-between;margin:2px 0 6px}
+.pop .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:10px;font-size:13px}
+.home-bg{position:absolute;inset:0;background:url(assets/1144200-hero.jpg) center/cover} .home-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0c0c0ef2,#0c0c0e66 60%,#0c0c0e00)}
+/* install sheet */
+.scrim2{position:absolute;inset:0;background:#0c0c0eb3;backdrop-filter:blur(10px);z-index:7;display:flex;align-items:center;justify-content:center}
+.sheet{width:560px;background:var(--panel);border:1px solid var(--border2);border-radius:20px;overflow:hidden;box-shadow:0 30px 80px #000c}
+.sheet .art{height:150px;position:relative} .sheet .art img{width:100%;height:100%;object-fit:cover} .sheet .art::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#18181b,#18181b00 70%)}
+.sheet .b{padding:6px 22px 20px;display:flex;flex-direction:column;gap:14px} .sheet h3{margin:0;color:var(--text);font-size:22px}
+.drive{display:grid;grid-template-columns:20px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--raised);border:1px solid transparent;cursor:pointer} .drive.on{border-color:var(--accent)} .drive.no{opacity:.55;cursor:not-allowed}
+.radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border2)} .drive.on .radio{border:5px solid var(--accent)}
+.drive b{color:var(--text);display:block} .drive .sub{font-family:ui-monospace,monospace;font-size:11px}
+.space{font-size:13px;color:var(--sec);text-align:right} .space .warn{color:var(--warn);font-weight:600} .space .bar2{width:120px;margin-top:6px;height:5px}
+.row2{display:flex;justify-content:space-between;align-items:center;font-size:14px} .row2 .sub{font-size:13px}
+.how{font-size:12px;color:var(--muted)}
+.acts{display:flex;justify-content:flex-end;gap:8px}
+/* settings */
+.setp{max-width:760px;background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px} .setp h2{margin:0 0 6px;color:var(--text)}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--border)} .srow b{color:var(--text)}
+.pill{border:0;background:var(--raised2);color:var(--text2);font:inherit;font-size:13px;font-weight:600;height:34px;padding:0 12px;border-radius:999px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="g" viewBox="0 0 100 100">
+<defs><clipPath id="tile"><rect width="100" height="100" rx="33.33"/></clipPath></defs>
+<g clip-path="url(#tile)"><defs><mask id="mgm" maskUnits="userSpaceOnUse" x="-20" y="-20" width="140" height="140">
+  <rect x="-20" y="-20" width="140" height="140" fill="#fff"/>
+  <path d="M68.5 71.5 L26.07 113.93" stroke="#000" stroke-width="7.800000000000001"/>
+</mask></defs><g fill="currentColor" mask="url(#mgm)"><path d="M75.00 65.72 L71.24 18.00 L28.00 18.00 L21.00 67.00 L29.26 52.60 L41.75 49.91 L33.80 44.68 L41.65 31.00 L59.27 31.00 L62.00 65.72 Z"/><path d="M58.0 71.5 a10.5 10.5 0 1 0 21.0 0 a10.5 10.5 0 1 0 -21.0 0 Z M64.2 71.5 a4.3 4.3 0 1 1 8.6 0 a4.3 4.3 0 1 1 -8.6 0 Z" fill-rule="evenodd"/></g><path d="M67.86 72.14 L26.07 113.93" stroke="currentColor" stroke-width="4.2" fill="none"/></g></symbol>
+<symbol id="dlarrow" viewBox="0 0 24 24"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+</defs></svg>
+<div class="top"><h1>Grapple · mockup 07 · downloads</h1>
+<button class="tab on" data-s="a">A · Downloads</button><button class="tab" data-s="b">B · In the top bar</button><button class="tab" data-s="c">C · Install</button><button class="tab" data-s="d">D · Settings</button>
+<div class="note-top">Real: your drives and free space, Big Walk's 1.34 GB update, Uncrashed's queued update, your uninstalled games. Sample (dashed): speeds, progress, other sizes.</div></div>
+
+<div class="wrap">
+<!-- A -->
+<section class="stage on" id="a"><p class="cap0"><b>A · Downloads.</b> One queue for Steam and Epic. Drag to reorder. Steam games download through Steam, hidden; Epic games download in grapple itself.</p>
+<div class="win"><div class="scroll"><div class="page">
+  <div class="ph"><h2>Downloads</h2><div class="r"><button class="btn ghost sm">Pause all</button></div></div>
+  <div class="now"><img src="assets/dl/252490-library_hero.jpg"><div class="sh"></div>
+    <div class="in"><div><div class="k"><span class="badge">Steam</span>Downloading<i class="smp">sample</i></div><div class="t">Rust</div></div>
+      <div class="ctl"><button class="btn ghost icon" title="Pause"><svg width="18" height="18"><use href="#pause"/></svg></button><button class="btn ghost icon" title="Cancel"><svg width="18" height="18"><use href="#x"/></svg></button></div>
+      <div class="stats"><span><b>14.2 of 37.6 GB</b>downloaded</span><span><b>42.8 MB/s</b>speed</span><span><b>9 min</b>left</span><span><b>/data/SteamLibrary</b>drive</span></div>
+      <div class="spark" id="spark"></div>
+      <div class="bar2"><i style="width:38%"></i></div></div></div>
+
+  <div class="h3">Up next<span class="r">3 games · 72.4 GB</span></div>
+  <div class="q">
+    <div class="qr"><span class="grip">⋮⋮</span><img src="assets/dl/fallguys-wide.jpg"><div class="qn"><b>Fall Guys</b><span><span class="badge epic">Epic</span> downloads in grapple</span></div><span class="sub">4.1 GB<i class="smp">sample</i></span><span class="sub">/data/Games</span><button class="btn ghost sm">Start now</button></div>
+    <div class="qr"><span class="grip">⋮⋮</span><img src="assets/dl/892970-header.jpg"><div class="qn"><b>Valheim</b><span><span class="badge">Steam</span></span></div><span class="sub">1.6 GB<i class="smp">sample</i></span><span class="sub">/data/SteamLibrary</span><button class="btn ghost sm">Start now</button></div>
+    <div class="qr"><span class="grip">⋮⋮</span><img src="assets/dl/2399830-header.jpg"><div class="qn"><b>ARK: Survival Ascended</b><span><span class="badge">Steam</span></span></div><span class="sub">66.7 GB<i class="smp">sample</i></span><span class="sub">/data/SteamLibrary</span><button class="btn ghost sm">Start now</button></div>
+  </div>
+
+  <div class="h3">Updates<span class="r tg">Only while I'm not playing <span class="sw on"></span></span></div>
+  <div class="q">
+    <div class="qr"><span class="grip">⋮⋮</span><img src="assets/1478500-hero.jpg" style="object-position:center 30%"><div class="qn"><b>Big Walk</b><span><span class="badge">Steam</span> update</span></div><span class="sub">1.34 GB</span><span class="sub">~/.local/share/Steam</span><button class="btn ghost sm">Update now</button></div>
+    <div class="qr"><span class="grip">⋮⋮</span><img src="assets/1682970-hero.jpg"><div class="qn"><b>Uncrashed : FPV Drone Simulator</b><span><span class="badge">Steam</span> update</span></div><span class="sub">Checking size</span><span class="sub">/data/SteamLibrary</span><button class="btn ghost sm">Update now</button></div>
+  </div>
+
+  <div class="h3">Done</div>
+  <div class="q done">
+    <div class="qr"><img src="assets/dl/291550-header.jpg"><div class="qn"><b>Brawlhalla</b><span>Installed 12 min ago<i class="smp">sample</i></span></div><button class="btn play sm">▶ Play</button></div>
+  </div>
+</div></div>
+<header class="bar"><span class="brand"><svg width="26" height="26" viewBox="0 0 100 100"><use href="#g"/></svg></span><span class="nav">Home</span><span class="nav">Library</span><span class="nav">Collection</span><span class="nav">Store</span><span class="nav dim">Stats</span><label class="search">⌕ Search</label>
+<span class="dl" title="Downloads"><svg class="ring" width="32" height="32" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#ffffff22" stroke-width="3"/><circle cx="18" cy="18" r="15" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="58.4" transform="rotate(-90 18 18)"/></svg><svg class="arrow" width="16" height="16"><use href="#dlarrow"/></svg><span class="cnt">4</span></span><span class="me">J</span></header></div></section>
+
+<!-- B -->
+<section class="stage" id="b"><p class="cap0"><b>B · In the top bar.</b> While anything downloads, a ring next to your avatar fills up. Click it for a quick look; the full queue is one click further.</p>
+<div class="win"><div class="home-bg"></div>
+<div style="position:absolute;left:44px;bottom:60px;z-index:1"><img src="assets/1144200-logo.png" style="max-width:320px"><div style="display:flex;gap:26px;color:var(--sec);font-size:14px;margin:14px 0 18px"><span><b style="color:var(--text);font-size:18px">16h 16m</b><br>played</span><span><b style="color:var(--text);font-size:18px">Tuesday</b><br>last played</span></div><button class="btn play">▶ Play</button></div>
+<header class="bar"><span class="brand"><svg width="26" height="26" viewBox="0 0 100 100"><use href="#g"/></svg></span><span class="nav on">Home</span><span class="nav">Library</span><span class="nav">Collection</span><span class="nav">Store</span><span class="nav dim">Stats</span><label class="search">⌕ Search</label>
+<span class="dl" style="box-shadow:0 0 0 2px var(--accent)"><svg class="ring" width="32" height="32" viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" fill="none" stroke="#ffffff22" stroke-width="3"/><circle cx="18" cy="18" r="15" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="58.4" transform="rotate(-90 18 18)"/></svg><svg class="arrow" width="16" height="16"><use href="#dlarrow"/></svg><span class="cnt">4</span></span><span class="me">J</span></header>
+<div class="pop">
+  <div class="pr"><img src="assets/dl/252490-header.jpg" style="object-position:left"><div><b>Rust</b><div class="sub"><span>14.2 of 37.6 GB · 42.8 MB/s</span><span>9 min</span></div><div class="bar2"><i style="width:38%"></i></div></div></div>
+  <div class="pr"><img src="assets/dl/fallguys-tall.jpg"><div><b>Fall Guys</b><div class="sub"><span>Queued · 4.1 GB</span></div></div></div>
+  <div class="pr"><img src="assets/dl/892970-header.jpg" style="object-position:left"><div><b>Valheim</b><div class="sub"><span>Queued · 1.6 GB</span></div></div></div>
+  <div class="foot"><span class="sub">+1 more · 2 updates</span><button class="btn sec sm">Open downloads</button></div>
+</div></div></section>
+
+<!-- C -->
+<section class="stage" id="c"><p class="cap0"><b>C · Install.</b> From any uninstalled game (Collection, store, game page). Pick a drive; grapple warns when one is too full.</p>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:1280px;margin:0 auto">
+<div class="win" style="width:100%;height:640px"><div class="home-bg" style="background-image:url(assets/dl/252490-library_hero.jpg)"></div><div class="scrim2">
+  <div class="sheet"><div class="art"><img src="assets/dl/252490-library_hero.jpg"></div><div class="b">
+    <h3>Install Rust</h3>
+    <div class="drive no"><span class="radio"></span><div><b>Home drive</b><span class="sub">~/.local/share/Steam</span></div><div class="space"><span class="warn">2.4 GB free</span><div class="bar2"><i style="width:98%;background:var(--warn)"></i></div></div></div>
+    <div class="drive on"><span class="radio"></span><div><b>Data drive</b><span class="sub">/data/SteamLibrary</span></div><div class="space">553 GB free<div class="bar2"><i style="width:29%"></i></div></div></div>
+    <div class="row2"><span>Download size</span><span class="sub">37.6 GB<i class="smp">sample</i></span></div>
+    <div class="acts"><button class="btn sec">Cancel</button><button class="btn play">Install</button></div>
+  </div></div></div></div>
+<div class="win" style="width:100%;height:640px"><div class="home-bg" style="background-image:url(assets/dl/fallguys-wide.jpg)"></div><div class="scrim2">
+  <div class="sheet"><div class="art"><img src="assets/dl/fallguys-wide.jpg"></div><div class="b">
+    <h3>Install Fall Guys</h3>
+    <div class="drive no"><span class="radio"></span><div><b>Home drive</b><span class="sub">~/Games/Heroic</span></div><div class="space"><span class="warn">2.4 GB free</span><div class="bar2"><i style="width:98%;background:var(--warn)"></i></div></div></div>
+    <div class="drive on"><span class="radio"></span><div><b>Data drive</b><span class="sub">/data/Games</span></div><div class="space">553 GB free<div class="bar2"><i style="width:29%"></i></div></div></div>
+    <div class="row2"><span>Download size</span><span class="sub">4.1 GB<i class="smp">sample</i></span></div>
+    <div class="row2"><span>Runs with</span><button class="pill">GE-Proton (latest) ▾</button></div>
+    <div class="acts"><button class="btn sec">Cancel</button><button class="btn play">Install</button></div>
+  </div></div></div></div>
+</div></section>
+
+<!-- D -->
+<section class="stage" id="d"><p class="cap0"><b>D · Download settings</b> (avatar menu › Downloads).</p>
+<div class="win"><div class="scroll"><div class="page"><div class="setp"><h2>Downloads</h2>
+  <div class="srow"><b>Speed limit</b><button class="pill">No limit ▾</button></div>
+  <div class="srow"><b>Update games automatically</b><span class="sw on"></span></div>
+  <div class="srow"><b>Only update while I'm not playing</b><span class="sw on"></span></div>
+  <div class="srow"><b>Pause downloads while I'm playing</b><span class="sw on"></span></div>
+  <div class="srow"><b>Steam games go to</b><button class="pill">/data/SteamLibrary ▾</button></div>
+  <div class="srow"><b>Epic games go to</b><button class="pill">/data/Games ▾</button></div>
+  <div class="srow"><b>Tell me when a game is ready</b><span class="sw on"></span></div>
+</div></div></div>
+<header class="bar"><span class="brand"><svg width="26" height="26" viewBox="0 0 100 100"><use href="#g"/></svg></span><span class="nav">Home</span><span class="nav">Library</span><span class="nav">Collection</span><span class="nav">Store</span><span class="nav dim">Stats</span><label class="search">⌕ Search</label><span class="me">J</span></header></div></section>
+</div>
+<script>
+const sp=document.getElementById('spark');[30,34,41,38,44,40,46,42,39,43,45,41,44,47,42,40,43,46,44,42].forEach(v=>{const i=document.createElement('i');i.style.height=v*0.7+'px';sp.appendChild(i)});
+const show=s=>{document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===s));document.querySelectorAll('.stage').forEach(x=>x.classList.toggle('on',x.id===s))};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>show(t.dataset.s));
+</script></body></html>

@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Grapple mockup 09 · invites</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--canvas:#0c0c0e;--panel:#18181b;--raised:#1f1f23;--raised2:#232327;--sunken:#141417;--control:#2a2a30;--border:#2a2a30;--border2:#34343b;--text:#f4f4f5;--text2:#e4e4e7;--sec:#a1a1aa;--muted:#8e8e96;--accent:#4ade80;--accent-soft:#92ebb3;--on-accent:#111113;--warn:#fbbf24;--danger:#f87171;--glass:#18181bc4;--tv:#8b7cf6;--tv-soft:#b4aafa}
+*{box-sizing:border-box} body{margin:0;background:#050506;color:var(--text2);font:15px/1.45 Figtree,system-ui,sans-serif} img,svg{display:block}
+.top{display:flex;align-items:center;gap:8px;padding:16px 24px;border-bottom:1px solid #151518;flex-wrap:wrap} .top h1{font-size:16px;margin:0 14px 0 0;color:var(--text)}
+.tab{border:1px solid var(--border);background:var(--panel);color:var(--sec);padding:6px 12px;border-radius:10px;font:inherit;font-size:13px;cursor:pointer} .tab.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.note-top{margin-left:auto;font-size:12px;color:var(--muted);max-width:440px;text-align:right}
+.wrap{padding:24px} .stage{display:none} .stage.on{display:block} .cap0{max-width:1280px;margin:0 auto 12px;color:var(--sec);font-size:14px} .cap0 b{color:var(--text)}
+.win{width:1280px;height:800px;margin:0 auto;background:var(--canvas);border-radius:14px;overflow:hidden;position:relative;box-shadow:0 30px 80px #000a,0 0 0 1px #1c1c20}
+.scroll{position:absolute;inset:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#333 transparent}
+.bar{position:absolute;left:16px;right:16px;top:14px;height:54px;border-radius:16px;display:flex;align-items:center;gap:22px;padding:0 12px 0 16px;z-index:5;background:var(--glass);backdrop-filter:blur(22px);border:1px solid #ffffff10}
+.bar .brand{color:var(--accent)} .bar .nav{font-weight:600;color:var(--sec)} .bar .nav.on{color:var(--text)} .bar .nav.dim{opacity:.5}
+.search{margin-left:auto;height:36px;width:220px;border-radius:10px;background:#ffffff12;display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--muted);font-size:14px}
+.me{width:34px;height:34px;border-radius:50%;background:#f59e0b;color:#111;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.dl{position:relative;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#ffffff12;color:var(--text);margin-left:-8px}
+.dl .cnt{position:absolute;right:-4px;top:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--accent);color:var(--on-accent);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 5px}
+.btn{border:0;font:inherit;font-weight:600;border-radius:12px;cursor:pointer;height:40px;padding:0 18px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px} .play{background:var(--accent);color:var(--on-accent)} .sec{background:var(--control);color:var(--text)} .ghost{background:#ffffff14;color:var(--text)} .ghost.on{background:#ffffff26;box-shadow:0 0 0 1px #ffffff30 inset}
+.sm{height:32px;font-size:13px;padding:0 12px;border-radius:10px}
+.badge{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--control);color:var(--text2)}
+.sub{font-size:12px;color:var(--muted)} .smp{font-style:normal;font-size:10px;color:#71717a;border:1px dashed #52525b;border-radius:5px;padding:0 4px;margin-left:6px;font-weight:500;white-space:nowrap}
+.sw{width:36px;height:22px;border-radius:999px;background:var(--control);position:relative;flex:none;cursor:pointer} .sw::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--sec);transition:left .15s} .sw.on{background:var(--accent)} .sw.on::after{left:17px;background:#fff}
+.pill{border:0;background:var(--raised2);color:var(--text2);font:inherit;font-size:13px;font-weight:600;height:34px;padding:0 12px;border-radius:999px}
+.home-bg{position:absolute;inset:0;background:url(assets/sugar-hero-clean.jpg) center/cover} .home-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0c0c0ef2,#0c0c0e66 60%,#0c0c0e00),linear-gradient(0deg,#0c0c0eb0,#0c0c0e00 45%)}
+.hero{position:absolute;left:44px;bottom:60px;z-index:1}
+.hero h2{margin:0 0 10px;font-size:52px;line-height:1;font-weight:800;color:#fff;letter-spacing:-.5px}
+.hero .meta{display:flex;align-items:center;gap:10px;margin-bottom:20px;color:var(--sec);font-size:14px}
+.hero .acts{display:flex;gap:10px}
+/* avatars + checks */
+.av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#111;font-weight:700;font-size:15px;flex:none}
+.pop{position:absolute;background:#18181bf7;border:1px solid var(--border2);border-radius:18px;box-shadow:0 30px 70px #000c;padding:14px;z-index:6;display:flex;flex-direction:column;gap:12px}
+.pop .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:10px;font-size:13px}
+.inv{left:150px;bottom:112px;width:380px}
+.inv::after{content:"";position:absolute;left:58px;bottom:-7px;width:12px;height:12px;background:#18181b;border-right:1px solid var(--border2);border-bottom:1px solid var(--border2);transform:rotate(45deg)}
+.segs{display:flex;gap:8px} .segs span{height:30px;padding:0 12px;border-radius:999px;background:var(--raised2);color:var(--sec);font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;cursor:pointer} .segs span.on{background:#ffffff1f;color:var(--text);box-shadow:0 0 0 1px #ffffff30 inset}
+.find{height:38px;border-radius:10px;background:#ffffff0f;display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--muted);font-size:14px}
+.fl{display:flex;flex-direction:column;gap:2px}
+.fr{display:grid;grid-template-columns:36px 1fr 22px;gap:12px;align-items:center;height:48px;padding:0 8px;border-radius:12px;cursor:pointer} .fr:hover{background:#ffffff0a}
+.fr b{display:block;color:var(--text);font-size:14px;line-height:1.25} .fr .sub{line-height:1.25} .fr .sub.live{color:var(--accent-soft)}
+.chk{width:22px;height:22px;border-radius:50%;border:2px solid var(--border2);position:relative} .fr.on .chk{background:var(--accent);border-color:var(--accent)} .fr.on .chk::after{content:"";position:absolute;left:6px;top:2.5px;width:5px;height:10px;border:solid var(--on-accent);border-width:0 2.4px 2.4px 0;transform:rotate(45deg)}
+.fr.on{background:#ffffff0d}
+/* sender popover */
+.sp{right:62px;top:76px;width:360px}
+.sh{display:flex;align-items:baseline;gap:8px;padding:2px 4px 0} .sh b{color:var(--text);font-size:16px}
+.sr{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;height:46px;padding:0 6px}
+.sr .av{width:32px;height:32px;font-size:14px} .sr b{color:var(--text);font-size:14px}
+.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--control);color:var(--sec);white-space:nowrap} .chip.ok{background:#4ade8024;color:var(--accent-soft)} .chip.dim{background:#ffffff0c;color:var(--muted)}
+.foot2{display:flex;gap:8px;border-top:1px solid var(--border);padding-top:12px} .foot2 .btn{flex:1;justify-content:center}
+.toast{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);height:46px;border-radius:14px;background:var(--glass);backdrop-filter:blur(22px);border:1px solid #ffffff18;box-shadow:0 20px 50px #000a;display:flex;align-items:center;gap:12px;padding:0 20px 0 8px;color:var(--text);font-weight:600;z-index:8}
+.toast .av{width:30px;height:30px;font-size:13px} .toast .ok{width:18px;height:18px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center}
+/* tether (a different app) */
+.tw{--tb:#17181c;--tr:#0f1013;--ts:#131418;--tl:#25262c;background:var(--tb);font-family:Figtree,system-ui,sans-serif}
+.tw .strip{position:absolute;left:0;right:0;top:0;height:40px;background:var(--tr);border-bottom:1px solid var(--tl);display:flex;align-items:center;padding:0 14px;z-index:2}
+.tchip{display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 11px 0 6px;border-radius:999px;background:#8b7cf622;color:var(--tv-soft);font-size:12px;font-weight:700;letter-spacing:.2px} .tchip img{width:16px;height:16px}
+.tw .body{position:absolute;left:0;right:0;top:40px;bottom:0;display:flex}
+.rail{width:72px;background:var(--tr);display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0;flex:none;border-right:1px solid var(--tl)}
+.rail img{width:46px;height:46px} .rail .sep{width:28px;height:2px;background:var(--tl);border-radius:2px;margin:2px 0}
+.srv{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;font-size:15px}
+.dms{width:240px;background:var(--ts);border-right:1px solid var(--tl);padding:14px 10px;flex:none;display:flex;flex-direction:column;gap:4px}
+.dms .find{background:#ffffff0c;height:34px;font-size:13px;margin-bottom:10px}
+.dms .h{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);padding:4px 8px 6px}
+.dm{display:flex;align-items:center;gap:10px;height:44px;padding:0 8px;border-radius:10px;color:var(--sec);font-weight:600} .dm.on{background:#ffffff14;color:var(--text)} .dm .av{width:30px;height:30px;font-size:13px}
+.chat{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}
+.chead{height:52px;border-bottom:1px solid var(--tl);display:flex;align-items:center;gap:10px;padding:0 24px;font-weight:700;color:var(--text);font-size:16px;flex:none} .chead .av{width:28px;height:28px;font-size:13px}
+.msgs{flex:1;overflow:hidden;padding:18px 24px 0;display:flex;flex-direction:column;gap:14px}
+.msg{display:grid;grid-template-columns:40px 1fr;gap:12px} .msg .av{width:40px;height:40px}
+.mh{display:flex;align-items:center;gap:8px;line-height:1.2;margin-bottom:4px} .mh b{color:var(--text)} .mh .sub{font-size:11px}
+.via{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--sec);background:#ffffff10;border-radius:5px;padding:1px 6px 1px 4px}
+.mt{color:var(--text2)}
+.comp{margin:0 24px 16px;height:44px;border-radius:12px;background:#ffffff0c;border:1px solid var(--tl);display:flex;align-items:center;padding:0 14px;color:var(--muted);font-size:14px;flex:none}
+.gc{width:420px;border-radius:14px;background:#1d1e24;border:1px solid #2b2c34;overflow:hidden}
+.gc .ar{height:128px;position:relative} .gc .ar img{width:100%;height:100%;object-fit:cover} .gc .ar::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#1d1e24,#1d1e2400 65%)}
+.gc .bd{padding:0 16px 16px;position:relative;margin-top:-6px}
+.gc .nm{display:flex;justify-content:space-between;align-items:baseline;font-weight:800;font-size:18px;color:#fff} .gc .nm .ex{font-size:12px;font-weight:500;color:var(--muted)}
+.gc .ln{font-size:13px;color:var(--sec);display:flex;align-items:center;gap:8px}
+.gc .bt{display:flex;gap:8px;margin-top:12px}
+.tbtn{border:0;font:inherit;font-size:14px;font-weight:700;height:36px;padding:0 18px;border-radius:10px;cursor:pointer;white-space:nowrap} .tbtn.p{background:var(--tv);color:#fff} .tbtn.g{background:#ffffff14;color:var(--text)}
+.pips{display:inline-flex;gap:3px} .pips i{width:7px;height:7px;border-radius:50%;background:#ffffff26} .pips i.f{background:var(--tv-soft)}
+.vh{display:flex;align-items:center;margin:2px 0 0;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.vrow{display:flex;gap:12px}
+.vc .l{font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:600}
+.gc.s{width:200px;border-radius:12px} .gc.s .ar{height:56px} .gc.s .bd{padding:0 12px 12px} .gc.s .nm{font-size:14px} .gc.s .ln{font-size:12px} .gc.s .bt{margin-top:10px} .gc.s .tbtn{height:32px;font-size:13px;padding:0 10px;flex:1}
+.gc.dim{opacity:.5} .gc.dim .ar img{filter:grayscale(1)} .gc.dim .stt{height:32px;margin-top:10px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:#ffffff0a;color:var(--muted);font-size:13px;font-weight:600}
+/* launch card */
+.lbg{position:absolute;inset:-30px;background:url(assets/730-hero.jpg) center/cover;filter:blur(14px) brightness(.55)}
+.lc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:380px;background:var(--panel);border:1px solid var(--border2);border-radius:20px;padding:26px 26px 22px;box-shadow:0 30px 80px #000c;display:flex;flex-direction:column;gap:20px;align-items:stretch}
+.lc .lg{height:64px;display:flex;align-items:center;justify-content:center} .lc .lg img{max-height:64px;max-width:210px;object-fit:contain}
+.steps{display:flex;flex-direction:column;gap:14px}
+.st{display:flex;align-items:center;gap:12px;color:var(--text);font-weight:600;font-size:15px} .st.todo{color:var(--muted);font-weight:500}
+.st .ic{width:22px;height:22px;flex:none;display:flex;align-items:center;justify-content:center}
+.done .ic{background:var(--accent);border-radius:50%}
+.todo .ic i{width:18px;height:18px;border-radius:50%;border:2px solid var(--border2)}
+.spin{width:20px;height:20px;border-radius:50%;border:2.5px solid #4ade8030;border-top-color:var(--accent);animation:sp .8s linear infinite} @keyframes sp{to{transform:rotate(360deg)}}
+.lc .acts{display:flex;justify-content:flex-end}
+.lab{max-width:1280px;margin:0 auto 6px;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted)}
+.gchip{position:absolute;left:14px;top:12px;z-index:3;display:inline-flex;align-items:center;gap:7px;height:26px;padding:0 11px 0 6px;border-radius:999px;background:#ffffff14;color:var(--text);font-size:12px;font-weight:700} .gchip span{color:var(--accent);display:flex}
+/* E */
+.cols{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:0}
+.col{padding:44px 48px;display:flex;flex-direction:column;gap:16px} .col+.col{border-left:1px solid var(--border);background:#0f0f11}
+.ch{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px}
+.tp{background:#17181c;border:1px solid #25262c;border-radius:18px;padding:22px 22px 24px;display:flex;flex-direction:column;gap:18px;font-family:Figtree,system-ui,sans-serif}
+.mrow{display:flex;gap:8px;align-items:stretch;flex-wrap:wrap}
+.mchip{height:44px;border-radius:12px;background:#ffffff0c;border:1px solid #2b2c34;display:flex;align-items:center;gap:8px;padding:0 12px;color:var(--text);font-weight:600;font-size:13px}
+.mchip.f{flex-direction:column;align-items:flex-start;justify-content:center;gap:0;line-height:1.2;font-size:14px} .mchip.f span{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.cpy{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.stp{display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:center;background:var(--raised);border:1px solid var(--border);border-radius:16px;padding:16px 18px;position:relative}
+.stp .n{width:34px;height:34px;border-radius:50%;background:var(--control);color:var(--text);font-weight:800;display:flex;align-items:center;justify-content:center}
+.stp b{color:var(--text);font-size:16px;display:block;line-height:1.25}
+.stp .chs{display:flex;gap:6px;margin-top:8px;align-items:center;flex-wrap:wrap} .stp .chs .chip{background:#ffffff10}
+.link{width:2px;height:16px;background:var(--border2);margin:-16px 0 -16px 35px;position:relative;z-index:0}
+/* settings */
+.page{padding:92px 44px 40px}
+.setp{max-width:760px;background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px} .setp h2{margin:0 0 6px;color:var(--text)}
+.srow{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--border)} .srow b{color:var(--text)}
+.srow .r{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:13px}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="g" viewBox="0 0 100 100">
+<defs><clipPath id="tile"><rect width="100" height="100" rx="33.33"/></clipPath></defs>
+<g clip-path="url(#tile)"><defs><mask id="mgm" maskUnits="userSpaceOnUse" x="-20" y="-20" width="140" height="140">
+  <rect x="-20" y="-20" width="140" height="140" fill="#fff"/>
+  <path d="M68.5 71.5 L26.07 113.93" stroke="#000" stroke-width="7.800000000000001"/>
+</mask></defs><g fill="currentColor" mask="url(#mgm)"><path d="M75.00 65.72 L71.24 18.00 L28.00 18.00 L21.00 67.00 L29.26 52.60 L41.75 49.91 L33.80 44.68 L41.65 31.00 L59.27 31.00 L62.00 65.72 Z"/><path d="M58.0 71.5 a10.5 10.5 0 1 0 21.0 0 a10.5 10.5 0 1 0 -21.0 0 Z M64.2 71.5 a4.3 4.3 0 1 1 8.6 0 a4.3 4.3 0 1 1 -8.6 0 Z" fill-rule="evenodd"/></g><path d="M67.86 72.14 L26.07 113.93" stroke="currentColor" stroke-width="4.2" fill="none"/></g></symbol>
+<symbol id="pplus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M19 8v6M16 11h6"/></g></symbol>
+<symbol id="mic" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></g></symbol>
+<symbol id="chk" viewBox="0 0 24 24"><path d="M6 12.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></g></symbol>
+<symbol id="clip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="12" height="16" rx="2"/><path d="M9 5V3.5h6V5"/></g></symbol>
+<symbol id="srch" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g></symbol>
+</defs></svg>
+<div class="top"><h1>Grapple · mockup 09 · invites</h1>
+<button class="tab on" data-s="a">A · Invite from grapple</button><button class="tab" data-s="b">B · In tether</button><button class="tab" data-s="c">C · Joining (Steam)</button><button class="tab" data-s="d">D · Sender's view</button><button class="tab" data-s="e">E · Rocket League</button><button class="tab" data-s="f">F · Settings</button>
+<div class="note-top">Sample: friends, lobby, prices. Real: your games' art.</div></div>
+
+<div class="wrap">
+
+<!-- A -->
+<section class="stage on" id="a"><p class="cap0"><b>A · Invite from grapple (v1).</b> The Invite button sits beside Play on every game's page and works for any game. Pick a friend or several, choose a direct message or your voice channel, then Send.</p>
+<div class="win"><div class="home-bg"></div>
+<div class="hero"><h2>Rocket League</h2><div class="meta"><span class="badge">Epic</span>Free to play</div>
+  <div class="acts"><button class="btn play">▶ Play</button><button class="btn ghost on"><svg width="18" height="18"><use href="#pplus"/></svg>Invite</button></div></div>
+<header class="bar"><span class="brand"><svg width="26" height="26" viewBox="0 0 100 100"><use href="#g"/></svg></span><span class="nav on">Home</span><span class="nav">Library</span><span class="nav">Collection</span><span class="nav">Store</span><span class="nav dim">Stats</span><label class="search"><svg width="15" height="15"><use href="#srch"/></svg>Search</label><span class="me">J</span></header>
+<div class="pop inv" id="invpop">
+  <div class="segs"><span class="on">Direct message</span><span>Voice · Lounge</span></div>
+  <div class="find"><svg width="15" height="15"><use href="#srch"/></svg>Find a friend<i class="smp" style="margin-left:auto">sample</i></div>
+  <div class="fl">
+    <div class="fr on"><span class="av" style="background:#a78bfa">L</span><div><b>Lerato</b><span class="sub live">In Rocket League</span></div><span class="chk"></span></div>
+    <div class="fr on"><span class="av" style="background:#38bdf8">S</span><div><b>Sipho</b><span class="sub">Online</span></div><span class="chk"></span></div>
+    <div class="fr"><span class="av" style="background:#fb7185">T</span><div><b>Thabo</b><span class="sub">Online</span></div><span class="chk"></span></div>
+    <div class="fr"><span class="av" style="background:#f472b6">M</span><div><b>Mia</b><span class="sub">In Counter-Strike 2</span></div><span class="chk"></span></div>
+    <div class="fr"><span class="av" style="background:#fb923c">D</span><div><b>Dev</b><span class="sub">Idle</span></div><span class="chk"></span></div>
+  </div>
+  <div class="foot"><span class="sub" id="selcnt">2 selected</span><button class="btn play sm">Send</button></div>
+</div></div></section>
+
+<!-- B -->
+<section class="stage" id="b"><p class="cap0"><b>B · In tether (what the friend sees).</b> The invite arrives as a normal message from Josh, marked "via grapple", drawn by tether as a game card. One button decides: Play, Install, or Get, depending on what the friend has. Three variations underneath.</p>
+<div class="win tw">
+<div class="strip"><span class="tchip"><img src="assets/tether-mark.svg" alt="">tether</span></div>
+<div class="body">
+  <div class="rail"><img src="assets/tether-badge-squircle-white.svg" alt=""><span class="sep"></span><span class="srv" style="background:#60a5fa">K</span><span class="srv" style="background:#2dd4bf">S</span><span class="srv" style="background:#fbbf24">N</span></div>
+  <div class="dms"><div class="find"><svg width="14" height="14"><use href="#srch"/></svg>Find or start a chat</div>
+    <div class="h">Direct messages<i class="smp">sample</i></div>
+    <div class="dm on"><span class="av" style="background:#f59e0b">J</span>Josh</div>
+    <div class="dm"><span class="av" style="background:#a78bfa">L</span>Lerato</div>
+    <div class="dm"><span class="av" style="background:#38bdf8">S</span>Sipho</div>
+    <div class="dm"><span class="av" style="background:#f472b6">M</span>Mia</div>
+  </div>
+  <div class="chat"><div class="chead"><span class="av" style="background:#f59e0b">J</span>Josh</div>
+    <div class="msgs">
+      <div class="msg"><span class="av" style="background:#f59e0b">J</span><div><div class="mh"><b>Josh</b><span class="sub">9:41 PM</span></div><div class="mt">on?</div></div></div>
+      <div class="msg"><span class="av" style="background:#f59e0b">J</span><div><div class="mh"><b>Josh</b><span class="via"><svg width="12" height="12" viewBox="0 0 100 100"><use href="#g"/></svg>via grapple</span><span class="sub">9:41 PM</span></div>
+        <div class="gc"><div class="ar"><img src="assets/sugar-hero-clean.jpg" alt=""></div><div class="bd">
+          <div class="nm">Rocket League<span class="ex">14 min</span></div><div class="ln">Josh invites you</div>
+          <div class="bt"><button class="tbtn p">Play</button><button class="tbtn g">Join voice</button></div></div></div>
+        <div class="vh" style="margin-top:16px">Other states<i class="smp">variations</i></div>
+        <div class="vrow" style="margin-top:8px">
+          <div class="vc"><div class="l">Not installed</div><div class="gc s"><div class="ar"><img src="assets/sugar-hero-clean.jpg" alt=""></div><div class="bd"><div class="nm">Rocket League</div><div class="ln">Josh invites you</div><div class="bt"><button class="tbtn p">Install · 21 GB</button></div></div></div></div>
+          <div class="vc"><div class="l">Don't own it</div><div class="gc s"><div class="ar"><img src="assets/sugar-hero-clean.jpg" alt=""></div><div class="bd"><div class="nm">Rocket League</div><div class="ln">Josh invites you</div><div class="bt"><button class="tbtn p">Get it · R 0.00</button></div></div></div></div>
+          <div class="vc"><div class="l">Expired</div><div class="gc s dim"><div class="ar"><img src="assets/sugar-hero-clean.jpg" alt=""></div><div class="bd"><div class="nm">Rocket League</div><div class="ln">Josh invited you</div><div class="stt">Expired</div></div></div></div>
+        </div></div></div>
+    </div>
+    <div class="comp">Message Josh</div>
+  </div>
+</div></div></section>
+
+<!-- C -->
+<section class="stage" id="c"><p class="cap0"><b>C · Joining a Steam lobby (v2).</b> When the game has a Steam lobby or server, the card says Join instead of Play. One click on the friend's machine: grapple fetches the game if needed, hands Steam the lobby, and starts it.</p>
+<div style="display:grid;grid-template-columns:700px 560px;gap:20px;width:1280px;margin:0 auto">
+<div><div class="lab">Friend, in tether</div>
+<div class="win tw" style="width:700px;height:560px;margin:0">
+<div class="strip"><span class="tchip"><img src="assets/tether-mark.svg" alt="">tether</span></div>
+<div class="body">
+  <div class="rail"><img src="assets/tether-badge-squircle-white.svg" alt=""><span class="sep"></span><span class="srv" style="background:#60a5fa">K</span><span class="srv" style="background:#2dd4bf">S</span><span class="srv" style="background:#fbbf24">N</span></div>
+  <div class="chat"><div class="chead"><span class="av" style="background:#f59e0b">J</span>Josh<i class="smp">sample</i></div>
+    <div class="msgs">
+      <div class="msg"><span class="av" style="background:#f59e0b">J</span><div><div class="mh"><b>Josh</b><span class="sub">9:52 PM</span></div><div class="mt">on?</div></div></div>
+      <div class="msg"><span class="av" style="background:#f59e0b">J</span><div><div class="mh"><b>Josh</b><span class="via"><svg width="12" height="12" viewBox="0 0 100 100"><use href="#g"/></svg>via grapple</span><span class="sub">9:52 PM</span></div>
+        <div class="gc"><div class="ar" style="height:116px"><img src="assets/730-hero.jpg" alt=""></div><div class="bd">
+          <div class="nm">Counter-Strike 2<span class="ex">14 min</span></div><div class="ln">Josh's lobby · 3 of 5<span class="pips"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></span></div>
+          <div class="bt"><button class="tbtn p">Join</button><button class="tbtn g">Join voice</button></div></div></div>
+      </div></div>
+    </div>
+    <div class="comp">Message Josh</div>
+  </div>
+</div></div></div>
+<div><div class="lab">Friend, in grapple, after Join</div>
+<div class="win" style="width:560px;height:560px;margin:0"><div class="lbg"></div>
+  <span class="gchip"><span><svg width="16" height="16" viewBox="0 0 100 100"><use href="#g"/></svg></span>grapple</span>
+  <div class="lc"><div class="lg"><img src="assets/730-logo.png" alt=""></div>
+    <div class="steps">
+      <div class="st done"><span class="ic"><svg width="14" height="14" style="color:var(--on-accent)"><use href="#chk"/></svg></span>Fetching game from Steam</div>
+      <div class="st"><span class="ic"><i class="spin"></i></span>Joining Josh's lobby</div>
+      <div class="st todo"><span class="ic"><i></i></span>Starting</div>
+    </div>
+    <div class="acts"><button class="btn ghost sm">Cancel</button></div></div>
+</div></div>
+</div></section>
+
+<!-- D -->
+<section class="stage" id="d"><p class="cap0"><b>D · Sender's view (v1).</b> An Invites icon in the top bar shows who has seen, joined, declined or not answered. "Joined" only means grapple launched the game for them; it can't confirm they landed in the same match.</p>
+<div class="win"><div class="home-bg"></div>
+<div class="hero"><h2>Rocket League</h2><div class="meta"><span class="badge">Epic</span>Free to play</div>
+  <div class="acts"><button class="btn play">▶ Play</button><button class="btn ghost"><svg width="18" height="18"><use href="#pplus"/></svg>Invite</button></div></div>
+<header class="bar"><span class="brand"><svg width="26" height="26" viewBox="0 0 100 100"><use href="#g"/></svg></span><span class="nav on">Home</span><span class="nav">Library</span><span class="nav">Collection</span><span class="nav">Store</span><span class="nav dim">Stats</span><label class="search"><svg width="15" height="15"><use href="#srch"/></svg>Search</label>
+<span class="dl" style="box-shadow:0 0 0 2px var(--accent)" title="Invites"><svg width="20" height="20"><use href="#pplus"/></svg><span class="cnt">4</span></span><span class="me">J</span></header>
+<div class="pop sp">
+  <div class="sh"><b>Invites</b><span class="sub">Rocket League</span></div>
+  <div class="fl">
+    <div class="sr"><span class="av" style="background:#a78bfa">L</span><b>Lerato<i class="smp">sample</i></b><span class="chip ok">Joined</span></div>
+    <div class="sr"><span class="av" style="background:#38bdf8">S</span><b>Sipho</b><span class="chip">Seen</span></div>
+    <div class="sr"><span class="av" style="background:#f472b6">M</span><b>Mia</b><span class="chip dim">Declined</span></div>
+    <div class="sr"><span class="av" style="background:#fb923c">D</span><b>Dev</b><span class="chip dim">No reply · 9 min</span></div>
+  </div>
+  <div class="foot2"><button class="btn ghost sm">Invite again</button><button class="btn ghost sm">Cancel invite</button></div>
+</div>
+<div class="toast"><span class="av" style="background:#a78bfa;color:#111">L</span>Lerato joined<span class="ok"><svg width="12" height="12" style="color:var(--on-accent)"><use href="#chk"/></svg></span></div>
+</div></section>
+
+<!-- E -->
+<section class="stage" id="e"><p class="cap0"><b>E · Rocket League (v3).</b> No outside program can put a friend in a Rocket League party. The honest version: both launch, both join the same voice channel, then party up in game, or share a private match name and password that grapple copies when they press Play.</p>
+<div class="win"><div class="cols">
+  <div class="col"><div class="ch">What you get</div>
+    <div class="tp">
+      <div class="gc" style="width:460px;max-width:100%"><div class="ar"><img src="assets/sugar-hero-clean.jpg" alt=""></div><div class="bd">
+        <div class="nm">Rocket League<span class="ex">14 min</span></div><div class="ln">Josh invites you</div>
+        <div class="bt"><button class="tbtn p">Play</button><button class="tbtn g">Join voice</button></div></div></div>
+      <div class="mrow">
+        <span class="mchip"><svg width="15" height="15"><use href="#lock"/></svg>Private match</span>
+        <span class="mchip f"><span>Name</span>josh-4417</span>
+        <span class="mchip f"><span>Password</span>kestrel</span>
+        <i class="smp" style="align-self:center">sample</i>
+      </div>
+      <div class="cpy"><svg width="14" height="14"><use href="#clip"/></svg>Copied on Play</div>
+    </div>
+  </div>
+  <div class="col"><div class="ch">In the game<span class="badge">Epic</span></div>
+    <div class="stp"><span class="n">1</span><div><b>Both launch</b></div></div>
+    <div class="link"></div>
+    <div class="stp"><span class="n">2</span><div><b>Voice</b></div></div>
+    <div class="link"></div>
+    <div class="stp"><span class="n">3</span><div><b>Party up in game</b><div class="chs"><span class="chip">Friends</span><span class="sub">›</span><span class="chip">Invite</span></div></div></div>
+  </div>
+</div></div></section>
+
+<!-- F -->
+<section class="stage" id="f"><p class="cap0"><b>F · Invite settings.</b> Under Settings. The rules are also enforced by tether, so a muted friend or a switched-off setting never reaches you.</p>
+<div class="win"><div class="scroll"><div class="page"><div class="setp"><h2>Invites</h2>
+  <div class="srow"><b>Who can invite me</b><button class="pill">Friends ▾</button></div>
+  <div class="srow"><b>Invite sound</b><span class="sw on"></span></div>
+  <div class="srow"><b>Show invites while playing</b><span class="sw"></span></div>
+  <div class="srow"><b>Join Steam lobbies automatically</b><span class="sw"></span></div>
+  <div class="srow"><b>Never from</b><span class="r">None<button class="btn ghost sm">Choose</button></span></div>
+</div></div></div>
+<header class="bar"><span class="brand"><svg width="26" height="26" viewBox="0 0 100 100"><use href="#g"/></svg></span><span class="nav">Home</span><span class="nav">Library</span><span class="nav">Collection</span><span class="nav">Store</span><span class="nav dim">Stats</span><label class="search"><svg width="15" height="15"><use href="#srch"/></svg>Search</label><span class="me">J</span></header></div></section>
+
+</div>
+<script>
+const show=s=>{document.querySelectorAll('.top .tab').forEach(t=>t.classList.toggle('on',t.dataset.s===s));document.querySelectorAll('.stage').forEach(x=>x.classList.toggle('on',x.id===s))};
+document.querySelectorAll('.top .tab').forEach(t=>t.onclick=()=>show(t.dataset.s));
+document.querySelectorAll('.sw').forEach(s=>s.onclick=()=>s.classList.toggle('on'));
+const cnt=()=>{const n=document.querySelectorAll('#invpop .fr.on').length;document.getElementById('selcnt').textContent=n+' selected'};
+document.querySelectorAll('#invpop .fr').forEach(r=>r.onclick=()=>{r.classList.toggle('on');cnt()});
+document.querySelectorAll('#invpop .segs span').forEach(s=>s.onclick=()=>{s.parentNode.querySelectorAll('span').forEach(x=>x.classList.toggle('on',x===s))});
+</script></body></html>

@@ -1,0 +1,37 @@
+[package]
+name = "grapple-tether"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+grapple-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tokio = { workspace = true, features = ["net", "io-util"] }
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "json", "form"] }
+tokio-tungstenite = { version = "0.30", default-features = false, features = ["connect", "rustls-tls-native-roots"] }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+# Secret Service (GNOME Keyring / KWallet) over D-Bus via zbus (pure Rust, no libdbus); never the
+# kernel keyutils store, which forgets everything at logout.
+keyring = { version = "3.6", default-features = false, features = ["async-secret-service", "tokio", "crypto-rust"] }
+sha2 = "0.10"
+base64 = "0.22"
+getrandom = "0.3"
+url = "2"
+# The one crypto provider (reqwest already uses it); installed explicitly so another provider pulled
+# in elsewhere in the app can never make rustls panic over which to use.
+rustls = { version = "0.23", default-features = false, features = ["aws_lc_rs"] }
+
+# Windows keeps the secrets in its Credential Manager (keyring's `windows-native` store); without it keyring would
+# fall back to a store that forgets everything when grapple exits.
+[target.'cfg(windows)'.dependencies]
+keyring = { version = "3.6", default-features = false, features = ["windows-native"] }
+
+[dev-dependencies]
+axum = { version = "0.8", features = ["ws"] }
+reqwest = { version = "0.13", default-features = false, features = ["rustls", "json", "form"] }
+tokio = { workspace = true, features = ["net", "io-util", "test-util"] }

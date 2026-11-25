@@ -1,0 +1,445 @@
+/* Top bar, floating friends, settings menu, sign-in. */
+.bar {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 14px;
+  height: 54px;
+  border-radius: var(--radius-panel);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 0 10px 0 22px;
+  z-index: 6;
+  transition: background 0.25s, border-color 0.25s;
+}
+.bar .brand {
+  display: flex;
+  color: var(--accent);
+  margin-left: -4px;
+  margin-right: -6px;
+}
+.bar.clear {
+  background: transparent;
+  border-color: transparent;
+  backdrop-filter: none;
+}
+.bar .nav {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.bar .nav:hover {
+  color: var(--text);
+}
+.bar .nav.on {
+  color: var(--text-strong);
+}
+.bar .nav.dim {
+  opacity: 0.5;
+  cursor: default;
+}
+.search {
+  margin-left: auto;
+  height: 36px;
+  width: 260px;
+  border-radius: var(--radius-control);
+  background: var(--bar-control);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: text;
+  border: 0;
+}
+.search .kbd {
+  margin-left: auto;
+}
+.fpill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 6px;
+  border-radius: var(--radius-pill);
+  background: var(--bar-control);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.fpill .av {
+  width: 24px;
+  height: 24px;
+  font-size: 10px;
+}
+.fpill .avs .av + .av {
+  margin-left: -7px;
+}
+.me {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.me .av {
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+}
+.me .av .dot {
+  border-color: var(--panel);
+}
+
+.join {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18px;
+  z-index: 5;
+  border-radius: var(--radius-pill);
+  padding: 8px 8px 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.3s, transform 0.3s;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.join b {
+  color: var(--text-strong);
+}
+.join.hide {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  pointer-events: none;
+}
+
+.menu {
+  position: absolute;
+  top: 76px;
+  right: 16px;
+  z-index: 20;
+  width: 300px;
+  border-radius: var(--radius-pop);
+  padding: 8px;
+  background: var(--dl-pop-fill);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--dl-pop-shadow);
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.menu .who {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 10px 12px;
+}
+.menu .who b {
+  display: block;
+  color: var(--text-strong);
+}
+.menu .who span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.menu .who span.ok {
+  color: var(--accent-soft);
+}
+.menu .it {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: none;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.menu .it:hover,
+.menu .it:focus-visible {
+  background: var(--surface-hover);
+}
+.menu .it svg {
+  color: var(--text-muted);
+  flex: none;
+}
+.menu .it .k,
+.menu .it .tog {
+  margin-left: auto;
+}
+.menu .it.q,
+.menu .it.q svg {
+  color: var(--danger-text);
+}
+.menu hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 6px 4px;
+}
+kbd {
+  font: 600 12px ui-monospace, monospace;
+  background: var(--surface-raised-2);
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-badge);
+  padding: 2px 7px;
+  color: var(--text);
+  margin-left: 4px;
+}
+
+.modal {
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--launch-scrim);
+  backdrop-filter: blur(var(--blur-launch));
+}
+.signin {
+  width: 360px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  padding: 26px 22px;
+  text-align: center;
+}
+.signin .mark {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+}
+/* tether's real mark (see TetherIcon): a mask, so it follows the text colour. */
+.tmark {
+  display: inline-block;
+  flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: url('../assets/tether/tether-mark-mono.svg') center / contain no-repeat;
+  mask: url('../assets/tether/tether-mark-mono.svg') center / contain no-repeat;
+}
+.tmark.accent {
+  color: var(--accent-soft);
+}
+.signin .t {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.signin .sub {
+  margin: 6px 0 18px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.signin .play {
+  width: 100%;
+  justify-content: center;
+  height: 44px;
+  font-size: 15px;
+  padding: 0;
+}
+.signin .skip {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.signin .skip:hover {
+  color: var(--text);
+}
+
+/* Add any game */
+.addgame {
+  position: relative;
+  width: 460px;
+  max-width: calc(100% - 48px);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+  padding: 24px 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.addgame .x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.addgame .t {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.addgame .sub {
+  margin: -6px 0 2px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.addgame .fld {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.addgame .fld small {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.addgame input,
+.addgame select {
+  height: 36px;
+  min-width: 0;
+  padding: 0 11px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+  background: var(--surface-control);
+  color: var(--text-strong);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+}
+.addgame input::placeholder {
+  color: var(--text-placeholder);
+}
+.addgame input:focus,
+.addgame select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.addgame .pick {
+  display: flex;
+  gap: 8px;
+}
+.addgame .pick input {
+  flex: 1;
+}
+.addgame .err,
+.signin .err {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--danger-text);
+}
+.addgame .acts {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 4px;
+}
+.addgame .acts .skip {
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.addgame .acts .skip:hover {
+  color: var(--text);
+}
+.addgame .acts .play:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.signin .where {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.signin .where input {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+  background: var(--surface-control);
+  color: var(--text-strong);
+  font: inherit;
+  font-size: 13px;
+  text-align: center;
+}
+.signin .where input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.signin .where .skip {
+  margin: 0 0 0 4px;
+  font-size: 12.5px;
+  text-decoration: underline;
+}
+.addgame .pick .btn {
+  flex: none;
+  white-space: nowrap;
+}
+.addgame .t,
+.addgame .sub {
+  padding-right: 36px;
+}
+
+/* a game's right-click menu */
+.gmenu-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+.gmenu {
+  position: fixed;
+  min-width: 210px;
+  padding: 6px;
+  border-radius: var(--radius-card);
+  background: var(--palette-fill);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  flex-direction: column;
+}
+.gmenu button {
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.gmenu button:hover,
+.gmenu button:focus-visible {
+  background: var(--surface-hover);
+  color: var(--text-strong);
+  outline: none;
+}
+.gmenu button.danger {
+  color: var(--danger-text);
+}
+.gmenu hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 4px 6px;
+}
+/* On the Settings page the avatar is ringed (mockups/08-settings.html). */
+.me.on .av {
+  box-shadow: 0 0 0 2px var(--canvas), 0 0 0 4px var(--accent);
+}

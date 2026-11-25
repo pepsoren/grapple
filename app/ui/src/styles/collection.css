@@ -1,0 +1,399 @@
+/* Collection: joined sidebar + preview (no gap between them). */
+.coll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  padding: 82px 16px 16px;
+  gap: 0;
+}
+.cside {
+  flex: 0 0 300px;
+  background: var(--panel);
+  border-radius: var(--radius-panel) 0 0 var(--radius-panel);
+  border-right: 1px solid var(--surface-raised-2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.csearch {
+  margin: 12px 12px 8px;
+  height: 36px;
+  border-radius: var(--radius-control);
+  background: var(--surface-raised);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  color: var(--text-muted);
+  flex: 0 0 auto;
+}
+.csearch input {
+  all: unset;
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-strong);
+  user-select: text;
+}
+.csearch input::placeholder {
+  color: var(--text-placeholder);
+}
+.cfil {
+  display: flex;
+  gap: 6px;
+  padding: 0 12px 8px;
+  flex-wrap: wrap;
+}
+.cfil button {
+  border: 0;
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+}
+.cfil button.on {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.clist {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 8px 12px;
+}
+.grp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 8px 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.grp .ch {
+  transition: transform var(--t-fast);
+  display: inline-block;
+}
+.grp.shut .ch {
+  transform: rotate(-90deg);
+}
+.grp .ct {
+  font-weight: 500;
+  color: var(--count-text);
+}
+.crow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  padding: 0 8px;
+  border-radius: var(--radius-row);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text);
+  position: relative;
+  white-space: nowrap;
+  contain: layout paint;
+}
+.crow img,
+.crow .ph {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-icon);
+  flex: 0 0 auto;
+  background: var(--cover-bg);
+  object-fit: cover;
+}
+.crow .nm {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.crow.off {
+  color: var(--text-faint);
+}
+.crow.off img {
+  opacity: 0.5;
+  filter: grayscale(0.7);
+}
+.crow:hover {
+  background: var(--row-hover);
+}
+.crow.on {
+  background: var(--row-active);
+  color: var(--text-strong);
+}
+.crow.on::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  bottom: 7px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--accent);
+}
+.crow .tag {
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 4px;
+  color: var(--text-muted);
+}
+.crow .hr {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 0 0 auto;
+  padding-left: 8px;
+}
+.crow .hr.st {
+  color: var(--accent-soft);
+  font-weight: 600;
+}
+.crow .hr.fr {
+  display: flex;
+}
+.crow .hr.fr .av {
+  width: 18px;
+  height: 18px;
+  font-size: 9px;
+}
+.crow .hr.fr .av + .av {
+  margin-left: -5px;
+}
+.crow.home {
+  margin: 0 8px 2px;
+  font-weight: 600;
+  flex: 0 0 auto;
+}
+.crow.home svg {
+  margin: 0 1px;
+}
+.cmain {
+  flex: 1;
+  background: var(--panel);
+  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
+  overflow-y: auto;
+  position: relative;
+  min-width: 0;
+}
+.sec {
+  padding: 22px 28px 6px;
+}
+.sec h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-strong);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.sec h3 span {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+.sec .big {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.sec .big b {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+.sec .stats4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+/* A scrolling row clips what sticks out of it, so it gets room for a hovered cover's lift and ring (and most of its
+   shadow) on every side; the negative margin keeps the row exactly where the mockup has it. */
+.tline {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 10px 12px 6px;
+  margin: -10px -12px 0;
+  scrollbar-width: none;
+}
+.tgrp .lbl {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+.tgrp .cvs {
+  display: flex;
+  gap: 10px;
+}
+.mini {
+  width: 108px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+.mini .c {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-mini);
+  overflow: hidden;
+  background: var(--cover-bg);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.mini .c img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mini:hover .c {
+  transform: translateY(-3px);
+  box-shadow: var(--mini-hover-shadow);
+}
+.mini .t {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: var(--radius-row);
+  padding: 0 6px;
+  margin: 0 -6px;
+}
+.mp:hover {
+  background: var(--row-hover);
+}
+.mp img {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-icon);
+  background: var(--cover-bg);
+}
+.mp .nm {
+  width: 200px;
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mp .bar2 {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-raised);
+}
+.mp .bar2 i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+.mp .h {
+  width: 60px;
+  text-align: right;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* game page */
+.gp-hero {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+.gp-hero .bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.gp-hero .bg.blur {
+  inset: -40px;
+  filter: var(--cover-blur);
+}
+.gp-hero .cover {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  height: 250px;
+  border-radius: var(--radius-tile);
+  box-shadow: var(--cover-shadow);
+}
+.gp-hero .fade {
+  position: absolute;
+  inset: 0;
+  background: var(--page-hero-fade);
+}
+.gp-hero .name {
+  position: absolute;
+  left: 28px;
+  bottom: 18px;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-on-media);
+  max-width: 600px;
+  line-height: 1.1;
+  text-shadow: var(--page-hero-text-shadow);
+}
+.gp-bar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 6px 28px 18px;
+  border-bottom: 1px solid var(--surface-raised-2);
+}
+.gp-bar .k {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.gp-bar .k b {
+  color: var(--text-strong);
+  font-size: 16px;
+}
+.gp-bar .chip {
+  margin-left: auto;
+}
+.gp-bar .ghost {
+  width: 40px;
+  height: 40px;
+}
+.gp-banner {
+  padding: 10px 14px;
+  border-radius: var(--radius-card);
+  background: var(--accent-wash);
+  color: var(--accent-soft);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.gp-friends {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+.gp-friends b {
+  color: var(--text-strong);
+}
+.gp-friends .pill-btn {
+  margin-left: auto;
+}
+.gp-text {
+  font-size: 14px;
+  line-height: 1.6;
+}

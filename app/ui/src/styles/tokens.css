@@ -1,0 +1,401 @@
+/*
+ * Design tokens. EVERY colour, radius, blur, shadow and font value of Grapple lives here; components only
+ * reference these custom properties, so never hard-code a colour anywhere else (`pnpm check:tokens` fails
+ * on a hex / rgb() / hsl() colour in any other file under src/).
+ *
+ * Layered like tether's apps/web/src/styles/tokens.css, and swapped independently on <html>:
+ *   data-theme="dark"         surfaces, lines, text and status colours (values copied from tether's dark
+ *                             theme; dark is the default and, for now, the only base)
+ *   data-accent="violet|..."  the 14 tether accent swatches, each with its soft / hover-text colours and
+ *                             the text colour that sits on it. Grapple's own default is green (its brand
+ *                             colour, the :root block below); violet is tether's default and stays pickable
+ *   data-look="midnight|dim"  preset themes: only surfaces, lines and text change (more later, same names
+ *                             as tether)
+ *   Grapple layer             the values the mockups (mockups/04-collection.html) hard-code: glass fills,
+ *                             hero shades, shadows, blur radii, shape. Derived from the layers above with
+ *                             color-mix(), so a theme or accent change carries through.
+ *
+ * Both attributes are set before the first paint by src/lib/theme.ts (from localStorage, then the saved
+ * settings). Josh can override ANY token in $XDG_CONFIG_HOME/grapple/theme.css: the Rust side returns that
+ * file (get_theme_override) and the UI appends it as a <style> after this file at start-up.
+ */
+:root {
+  /* Accent (theme token) */
+  --accent: #4ade80;
+  --accent-soft: #92ebb3;
+  --accent-hover-text: #c5f4d6;
+  --on-accent: #111113;
+  --accent-fg: var(--accent);
+  --accent-hover: color-mix(in srgb, var(--accent) 80%, var(--text-on-media));
+
+  /* Swatches: the accent picker shows these, whatever the theme. */
+  --swatch-violet: #8b7cf6;
+  --swatch-indigo: #6366f1;
+  --swatch-blue: #5b8def;
+  --swatch-sky: #38bdf8;
+  --swatch-teal: #2dd4bf;
+  --swatch-green: #4ade80;
+  --swatch-lime: #a3e635;
+  --swatch-yellow: #facc15;
+  --swatch-amber: #f59e0b;
+  --swatch-orange: #fb923c;
+  --swatch-rose: #fb7185;
+  --swatch-pink: #f472b6;
+  --swatch-fuchsia: #e879f9;
+  --swatch-grey: #a1a1aa;
+  --swatch-edge: rgb(0 0 0 / 0.2);
+
+  /* Shape and rhythm */
+  --radius-window: 14px;
+  --radius-compact: 18px;
+  --radius-panel: 16px;
+  --radius-card: 14px;
+  --radius-control: 10px;
+  --radius-tile: 12px;
+  --radius-button: 12px;
+  --radius-row: 8px;
+  --radius-mini: 10px;
+  --radius-badge: 6px;
+  --radius-icon: 5px;
+  --radius-palette: 22px;
+  --radius-prow: 14px;
+  --radius-pill: 999px;
+  --radius-feature: 20px;
+  --radius-pop: 18px;
+  --font-size: 15px;
+  --font: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --focus-ring: 0 0 0 2px var(--canvas), 0 0 0 4px var(--accent-fg);
+
+  /* Blur radii */
+  --blur-chip: 8px;
+  --blur-ghost: 10px;
+  --blur-scrim: 14px;
+  --blur-launch: 16px;
+  --blur-glass: 22px;
+  --blur-drawer: 26px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --t-fast: 0.2s;
+  --t-med: 0.35s;
+  --t-hero: 0.45s;
+
+  /* Scrollbars: a see-through wash of the theme's own text colour. No track. */
+  --scroll-thumb: color-mix(in srgb, var(--text-strong) 14%, transparent);
+  --scroll-thumb-hover: color-mix(in srgb, var(--text-strong) 28%, transparent);
+}
+
+/* ------------------------------------------------------------------------------------------
+ * The dark theme (the default): copied from tether.
+ * ---------------------------------------------------------------------------------------- */
+:root,
+[data-theme='dark'] {
+  /* Surfaces */
+  --canvas: #0c0c0e;
+  --panel: #18181b;
+  --surface-raised: #1f1f23;
+  --surface-raised-2: #232327;
+  --surface-sunken: #141417;
+  --surface-media: #0d0d0f;
+  --surface-control: #2a2a30;
+  --surface-hover: #26262b;
+  --surface-well: #111113;
+  --placeholder: #2e2e34;
+  --scrim: rgb(0 0 0 / 0.55);
+
+  /* Lines */
+  --border: #2a2a30;
+  --border-strong: #34343b;
+  --border-subtle: #232327;
+  --border-card: #2e2e34;
+
+  /* Text */
+  --text-strong: #f4f4f5;
+  --text: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #8e8e96;
+  --text-faint: #71717a;
+  --text-placeholder: #8b8b94;
+  --text-icon: #d4d4d8;
+  --text-on-media: #ffffff;
+
+  /* Status */
+  --status-online: #4ade80;
+  --status-idle: #fbbf24;
+  --status-dnd: #ef4444;
+  --status-invisible: #a1a1aa;
+  --live: #dc2626;
+  --on-live: #ffffff;
+
+  /* Feedback */
+  --danger: #ef4444;
+  --danger-text: #fca5a5;
+  --danger-surface: #3b1d1f;
+  --danger-solid: #dc2626;
+  --on-danger: #ffffff;
+  --success: #4ade80;
+  --warning: #fbbf24;
+
+  /* Avatar palette (users without an uploaded avatar) */
+  --avatar-0: #f59e0b;
+  --avatar-1: #4ade80;
+  --avatar-2: #f472b6;
+  --avatar-3: #c084fc;
+  --avatar-4: #38bdf8;
+  --avatar-5: #fb923c;
+  --avatar-6: #2dd4bf;
+  --avatar-7: #facc15;
+  --avatar-offline: #2e2e34;
+  --on-avatar: #111113;
+
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Accents (dark theme): colour, soft + hover text colours, and the text that sits on the colour.
+ * ---------------------------------------------------------------------------------------- */
+:root[data-accent='violet'] {
+  --accent: #8b7cf6;
+  --accent-soft: #b4aafa;
+  --accent-hover-text: #d4cdfc;
+  --on-accent: #111113;
+}
+:root[data-accent='indigo'] {
+  --accent: #6366f1;
+  --accent-soft: #a1a3f7;
+  --accent-hover-text: #cdcefb;
+  --on-accent: #000000;
+}
+:root[data-accent='blue'] {
+  --accent: #5b8def;
+  --accent-soft: #9dbcf7;
+  --accent-hover-text: #c4d7fa;
+  --on-accent: #111113;
+}
+:root[data-accent='sky'] {
+  --accent: #38bdf8;
+  --accent-soft: #88d7fb;
+  --accent-hover-text: #bfeafd;
+  --on-accent: #111113;
+}
+:root[data-accent='teal'] {
+  --accent: #2dd4bf;
+  --accent-soft: #7eeadb;
+  --accent-hover-text: #b2f3ea;
+  --on-accent: #111113;
+}
+:root[data-accent='green'] {
+  --accent: #4ade80;
+  --accent-soft: #92ebb3;
+  --accent-hover-text: #c5f4d6;
+  --on-accent: #111113;
+}
+:root[data-accent='lime'] {
+  --accent: #a3e635;
+  --accent-soft: #c8f086;
+  --accent-hover-text: #e2f7be;
+  --on-accent: #111113;
+}
+:root[data-accent='yellow'] {
+  --accent: #facc15;
+  --accent-soft: #fce073;
+  --accent-hover-text: #fdefb4;
+  --on-accent: #111113;
+}
+:root[data-accent='amber'] {
+  --accent: #f59e0b;
+  --accent-soft: #f9c56d;
+  --accent-hover-text: #fce0b1;
+  --on-accent: #111113;
+}
+:root[data-accent='orange'] {
+  --accent: #fb923c;
+  --accent-soft: #fdbe8a;
+  --accent-hover-text: #fedcc1;
+  --on-accent: #111113;
+}
+:root[data-accent='rose'] {
+  --accent: #fb7185;
+  --accent-soft: #fdaab6;
+  --accent-hover-text: #fecdd5;
+  --on-accent: #111113;
+}
+:root[data-accent='pink'] {
+  --accent: #f472b6;
+  --accent-soft: #f8aad3;
+  --accent-hover-text: #fbd2e8;
+  --on-accent: #111113;
+}
+:root[data-accent='fuchsia'] {
+  --accent: #e879f9;
+  --accent-soft: #f1affb;
+  --accent-hover-text: #f8d4fd;
+  --on-accent: #111113;
+}
+:root[data-accent='grey'] {
+  --accent: #a1a1aa;
+  --accent-soft: #c7c7cc;
+  --accent-hover-text: #e1e1e4;
+  --on-accent: #111113;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Preset looks (copied from tether's midnight and dim): only surfaces, lines and text change.
+ * ---------------------------------------------------------------------------------------- */
+:root[data-look='midnight'],
+[data-look='midnight'] {
+  --canvas: #000000;
+  --panel: #0b0b0c;
+  --surface-sunken: #060607;
+  --surface-raised: #161618;
+  --surface-raised-2: #19191b;
+  --surface-hover: #121213;
+  --surface-control: #222224;
+  --surface-well: #000000;
+  --placeholder: #262629;
+  --avatar-offline: #262629;
+  --border: #1e1e21;
+  --border-strong: #262629;
+  --border-subtle: #19191b;
+  --border-card: #212124;
+  --text-strong: #f4f4fc;
+  --text: #e7e7ee;
+  --text-secondary: #a7a7ae;
+  --text-muted: #94949b;
+  --text-faint: #74747a;
+  --text-placeholder: #94949b;
+  --text-icon: #d3d3db;
+}
+
+:root[data-look='dim'],
+[data-look='dim'] {
+  --canvas: #1b1d22;
+  --panel: #272a31;
+  --surface-sunken: #22252b;
+  --surface-raised: #33373f;
+  --surface-raised-2: #363a42;
+  --surface-hover: #2e3239;
+  --surface-control: #40444c;
+  --surface-well: #181a1f;
+  --placeholder: #454952;
+  --avatar-offline: #454952;
+  --border: #3b3f48;
+  --border-strong: #444851;
+  --border-subtle: #363a42;
+  --border-card: #3e424b;
+  --text-strong: #f2f5fc;
+  --text: #e4e8ef;
+  --text-secondary: #a5a8ae;
+  --text-muted: #a0a3a9;
+  --text-faint: #808389;
+  --text-placeholder: #a0a3a9;
+  --text-icon: #d1d4db;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Grapple layer: everything mockups/04-collection.html hard-codes, named once. Built from the
+ * surfaces above, so looks and accents carry through. Declared on :root AND the theme/look
+ * selectors so color-mix() re-evaluates when a look changes the surfaces underneath.
+ * ---------------------------------------------------------------------------------------- */
+:root,
+[data-theme],
+[data-look] {
+  /* Window */
+  --window-bg: var(--canvas);
+  --window-line: color-mix(in srgb, var(--text-strong) 6%, transparent);
+  --page-bg: transparent;
+
+  /* Glass (top bar, hero side card, floating friends bar) */
+  --glass-fill: color-mix(in srgb, var(--panel) 72%, transparent);
+  --glass-line: color-mix(in srgb, var(--text-on-media) 6%, transparent);
+  --ghost-fill: color-mix(in srgb, var(--text-on-media) 9%, transparent);
+  --chip-fill: color-mix(in srgb, var(--text-on-media) 8%, transparent);
+  --bar-control: color-mix(in srgb, var(--text-on-media) 7%, transparent);
+  --chart-empty: color-mix(in srgb, var(--text-on-media) 9%, transparent);
+  --badge-fill: color-mix(in srgb, var(--surface-media) 67%, transparent);
+  --on-badge: var(--text-on-media);
+
+  /* Store colours (the dot in the "how it launches" chip) */
+  --store-steam: #9dbcf7;
+  --store-epic: var(--text);
+  --store-manual: var(--swatch-yellow);
+  --store-steam-edge: var(--store-steam);
+
+  /* Hero (Home) */
+  --hero-shade:
+    linear-gradient(90deg, color-mix(in srgb, var(--canvas) 95%, transparent) 0%, color-mix(in srgb, var(--canvas) 62%, transparent) 36%, transparent 68%),
+    linear-gradient(0deg, var(--canvas) 0%, color-mix(in srgb, var(--canvas) 88%, transparent) 18%, transparent 52%),
+    linear-gradient(180deg, color-mix(in srgb, var(--canvas) 73%, transparent) 0%, transparent 22%);
+  --logo-shadow: drop-shadow(0 4px 20px rgb(0 0 0 / 0.53));
+  --logo-text: var(--text-on-media);
+
+  /* Tiles, cards, minis */
+  --tile-ring: 0 0 0 3px var(--canvas), 0 0 0 5px var(--text-strong), 0 18px 40px rgb(0 0 0 / 0.67);
+  --card-hover-shadow: 0 0 0 2px var(--accent), 0 16px 34px rgb(0 0 0 / 0.73);
+  --mini-hover-shadow: 0 0 0 2px var(--accent), 0 12px 26px rgb(0 0 0 / 0.67);
+  --card-play-fade: linear-gradient(0deg, rgb(0 0 0 / 0.8), transparent);
+  --cover-bg: var(--surface-raised);
+
+  /* Drawer, palette, launch */
+  --drawer-fill: color-mix(in srgb, var(--surface-sunken) 93%, transparent);
+  --drawer-line: color-mix(in srgb, var(--text-on-media) 6%, transparent);
+  --drawer-fade: linear-gradient(0deg, var(--surface-sunken) 0%, transparent 70%);
+  --palette-scrim: color-mix(in srgb, var(--canvas) 53%, transparent);
+  --palette-fill: color-mix(in srgb, var(--panel) 95%, transparent);
+  --palette-shadow: 0 30px 90px rgb(0 0 0 / 0.8);
+  --palette-name: var(--text-faint);
+  --launch-scrim: color-mix(in srgb, var(--canvas) 67%, transparent);
+  --launch-fade: linear-gradient(0deg, var(--panel) 0%, transparent 60%);
+  --page-hero-fade: linear-gradient(0deg, var(--panel) 0%, transparent 60%);
+  --page-hero-text-shadow: 0 2px 20px rgb(0 0 0 / 0.67);
+  --cover-shadow: 0 20px 50px rgb(0 0 0 / 0.67);
+  --cover-blur: blur(40px) brightness(0.7);
+
+  /* Collection */
+  --count-text: var(--text-faint);
+  --accent-wash: color-mix(in srgb, var(--accent) 12%, transparent);
+  --row-hover: var(--surface-raised);
+  --row-active: var(--surface-raised-2);
+
+  /* Toggle */
+  --toggle-knob: var(--text-secondary);
+  --toggle-knob-on: var(--text-on-media);
+
+  /* SVG masks (the brand mark): luminance, not colour. */
+  --mask-show: #ffffff;
+  --mask-hide: #000000;
+
+  /* Downloads (mockups/07-downloads.html). Green is only ever progress: bars, the ring, the speed sparkline. */
+  --dl-progress: var(--success);
+  --dl-track: var(--surface-control);
+  --dl-ring-track: color-mix(in srgb, var(--text-on-media) 13%, transparent);
+  --dl-spark: color-mix(in srgb, var(--success) 40%, transparent);
+  --dl-now-shade: linear-gradient(90deg, color-mix(in srgb, var(--canvas) 96%, transparent) 0%, color-mix(in srgb, var(--canvas) 75%, transparent) 45%, color-mix(in srgb, var(--canvas) 19%, transparent) 100%);
+  --dl-grip: var(--text-faint);
+  --dl-warn: var(--warning);
+  --dl-pop-fill: color-mix(in srgb, var(--panel) 97%, transparent);
+  --dl-pop-shadow: 0 30px 70px rgb(0 0 0 / 0.8);
+  --dl-sheet-scrim: color-mix(in srgb, var(--canvas) 70%, transparent);
+  --dl-sheet-fade: linear-gradient(0deg, var(--panel), transparent 70%);
+  --dl-sheet-shadow: 0 30px 80px rgb(0 0 0 / 0.8);
+
+  /* Game invites (mockups/09-invites.html). */
+  --inv-pop-fill: var(--dl-pop-fill);
+  --inv-pop-shadow: var(--dl-pop-shadow);
+  --inv-row-hover: color-mix(in srgb, var(--text-on-media) 4%, transparent);
+  --inv-row-on: color-mix(in srgb, var(--text-on-media) 5%, transparent);
+  --inv-find-fill: color-mix(in srgb, var(--text-on-media) 6%, transparent);
+  --inv-chip-fill: var(--surface-control);
+  --inv-chip-dim: color-mix(in srgb, var(--text-on-media) 5%, transparent);
+  --inv-chip-ok: color-mix(in srgb, var(--accent) 14%, transparent);
+  --inv-live: var(--accent-soft);
+  --inv-ghost-on: color-mix(in srgb, var(--text-on-media) 15%, transparent);
+  --inv-ghost-on-line: color-mix(in srgb, var(--text-on-media) 19%, transparent);
+  --inv-scrim: var(--dl-sheet-scrim);
+  --inv-card-shadow: var(--dl-sheet-shadow);
+
+  /* Window shadow (only drawn when the compositor leaves room for it) */
+  --shadow-window: 0 30px 80px rgb(0 0 0 / 0.67);
+  --shadow-pop: 0 12px 32px rgb(0 0 0 / 0.45);
+  --shadow-toast: 0 10px 30px rgb(0 0 0 / 0.5);
+}

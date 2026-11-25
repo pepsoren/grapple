@@ -1,0 +1,30 @@
+[workspace]
+resolver = "2"
+members = ["crates/*", "app/src-tauri"]
+default-members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+
+[workspace.dependencies]
+grapple-core = { path = "crates/grapple-core" }
+grapple-scan = { path = "crates/grapple-scan" }
+grapple-launch = { path = "crates/grapple-launch" }
+grapple-tether = { path = "crates/grapple-tether" }
+grapple-store = { path = "crates/grapple-store" }
+grapple-download = { path = "crates/grapple-download" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+anyhow = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "process", "fs", "time", "sync"] }
+tracing = "0.1"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true

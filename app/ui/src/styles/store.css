@@ -1,0 +1,113 @@
+/* Store, shared pieces: prices, the "Like" stack, cover cards, Home's picks. Tokens only (mockups/06-store.html).
+   Green (--success) is only ever a price advantage; --accent is for buttons and selection. */
+.st-now { font-weight: 700; color: var(--text-strong); }
+.st-was { color: var(--text-muted); text-decoration: line-through; font-size: 12px; margin-right: 6px; }
+.st-disc {
+  display: inline-block;
+  background: var(--success);
+  color: var(--canvas);
+  font-weight: 800;
+  font-size: 12px;
+  padding: 1px 6px;
+  border-radius: var(--radius-badge);
+  margin-right: 6px;
+}
+.st-na { color: var(--text-muted); font-weight: 600; }
+.st-soon { color: var(--warning); font-weight: 600; font-size: 13px; }
+.st-cheap { display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 700; color: var(--success); }
+.st-same { display: inline-block; margin-top: 4px; font-size: 12px; color: var(--text-secondary); }
+.st-pr { white-space: nowrap; }
+
+.st-like { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 12px; color: var(--text-secondary); min-width: 0; }
+.st-stack { display: flex; flex: none; }
+.st-stack > img,
+.st-stack > .st-fav {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-icon);
+  box-shadow: 0 0 0 2px var(--canvas);
+  object-fit: cover;
+  background: var(--cover-bg);
+}
+.st-stack > * + * { margin-left: -6px; }
+.st-stack > .st-fav {
+  border-radius: 50%;
+  color: var(--on-avatar);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.st-wl {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--badge-fill);
+  color: var(--swatch-rose);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cover card */
+.st-card { flex: 0 0 164px; width: 164px; cursor: pointer; border-radius: var(--radius-tile); }
+.st-cv {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-tile);
+  overflow: hidden;
+  background: var(--cover-bg);
+  transition: transform var(--t-fast) ease;
+}
+.st-cv > img,
+.st-wide > img,
+.st-deal > img,
+.st-mini > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.st-card:hover .st-cv { transform: translateY(-3px); box-shadow: var(--card-hover-shadow); }
+.st-card .st-t { font-size: 14px; font-weight: 600; color: var(--text); margin-top: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-card .st-pr { font-size: 13px; margin-top: 2px; }
+.st-rel { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* Home: "Games we think you'd like" */
+.st-homepicks { padding: 34px 44px 0; }
+.st-rh { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.st-rh h3 { margin: 0; font-size: 18px; color: var(--text-strong); }
+.st-btn {
+  border: 0;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: var(--radius-button);
+  background: var(--surface-control);
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.st-btn:hover { background: var(--surface-hover); }
+.st-rh .st-btn { margin-left: auto; }
+.st-hp-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+.st-hp {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform var(--t-fast) ease;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 210px;
+}
+.st-hp:hover { transform: translateY(-3px); box-shadow: var(--mini-hover-shadow); }
+.st-hp > .st-himg { height: 120px; background: var(--cover-bg); }
+.st-hp > .st-himg > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.st-hpi { padding: 10px 12px 12px; min-width: 0; }
+.st-hpi b { color: var(--text-strong); display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-hpi .st-pr { margin-top: 6px; font-size: 13px; }
+
+/* The avatar menu's Store section */

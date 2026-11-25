@@ -1,0 +1,10 @@
+{
+  "app_name": "94bc5ec13f8f438c97fdbef3e9019e27",
+  "app_title": "LEGO Content Pack",
+  "metadata": {
+    "title": "LEGO Content Pack",
+    "categories": [{"path": "hidden"}],
+    "mainGameItemList": [{"id": "x"}],
+    "keyImages": [{"type": "OfferImageTall", "url": "https://cdn.example.test/item/dlc"}]
+  }
+}

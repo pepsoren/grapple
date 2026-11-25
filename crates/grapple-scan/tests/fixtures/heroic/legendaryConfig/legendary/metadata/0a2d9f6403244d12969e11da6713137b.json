@@ -1,0 +1,11 @@
+{
+  "app_name": "0a2d9f6403244d12969e11da6713137b",
+  "app_title": "Fall Guys",
+  "metadata": {
+    "title": "Fall Guys",
+    "categories": [{"path": "games"}, {"path": "applications"}],
+    "keyImages": [
+      {"type": "DieselGameBoxTall", "url": "https://cdn.example.test/item/FG_Tall-ddd"}
+    ]
+  }
+}

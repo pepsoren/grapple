@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Launcher mockup 02</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0c0c0e; --panel:#18181b; --raised:#1f1f23; --raised2:#232327; --sunken:#141417; --control:#2a2a30;
+  --border:#2a2a30; --border2:#34343b;
+  --text:#f4f4f5; --text2:#e4e4e7; --sec:#a1a1aa; --muted:#8e8e96;
+  --online:#4ade80; --idle:#fbbf24;
+  --accent:#8b7cf6; --accent-soft:#b4aafa; --on-accent:#111113;
+  --glass:#18181bb8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#050506;color:var(--text2);font:15px/1.45 Figtree,system-ui,sans-serif}
+.top{display:flex;align-items:center;gap:8px;padding:18px 24px;position:sticky;top:0;background:#050506;z-index:9;border-bottom:1px solid #151518}
+.top h1{font-size:16px;margin:0 16px 0 0;color:var(--text)}
+.tab{border:1px solid var(--border);background:var(--panel);color:var(--sec);padding:7px 14px;border-radius:10px;font:inherit;font-size:14px;cursor:pointer}
+.tab.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.note{margin-left:auto;font-size:12px;color:var(--muted);max-width:420px;text-align:right}
+.stage{padding:28px 24px 60px;display:none}
+.stage.on{display:block}
+.cap{max-width:1280px;margin:0 auto 14px;color:var(--sec);font-size:14px}
+.cap b{color:var(--text)}
+.win{width:1280px;height:800px;margin:0 auto;background:var(--canvas);border-radius:14px;overflow:hidden;position:relative;box-shadow:0 30px 80px #000a,0 0 0 1px #1c1c20}
+svg{display:block}
+.btn{border:0;font:inherit;font-weight:600;border-radius:10px;cursor:pointer}
+.play{background:var(--accent);color:var(--on-accent);height:48px;padding:0 26px 0 20px;display:inline-flex;align-items:center;gap:10px;font-size:16px;border-radius:12px}
+.ghost{background:#ffffff16;color:var(--text);height:48px;width:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;backdrop-filter:blur(10px)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:#ffffff14;color:var(--text2);backdrop-filter:blur(8px)}
+.chip i{width:6px;height:6px;border-radius:50%;background:currentColor;display:block}
+.sub{font-size:12px;color:var(--muted)}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:6px;background:var(--control);color:var(--text2);font-size:11px;font-weight:700}
+.av{width:28px;height:28px;border-radius:50%;color:#111113;font-weight:700;font-size:12px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--canvas)}
+.glass{background:var(--glass);backdrop-filter:blur(20px) saturate(1.3);border:1px solid #ffffff10}
+.fade{transition:opacity .35s ease}
+.logo-text{font-weight:800;font-size:54px;line-height:.95;color:#fff;letter-spacing:-.5px;text-transform:uppercase}
+.sample{position:absolute;right:16px;bottom:10px;font-size:11px;color:#6b6b7399;z-index:5}
+.hint{position:absolute;left:50%;transform:translateX(-50%);bottom:-34px;font-size:12px;color:var(--muted)}
+
+/* ---------- A: shelf ---------- */
+#a .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+#a .shade{position:absolute;inset:0;background:linear-gradient(90deg,#0c0c0ef0 0%,#0c0c0e99 38%,#0c0c0e00 70%),linear-gradient(0deg,#0c0c0e 0%,#0c0c0e00 50%),linear-gradient(180deg,#0c0c0ecc 0%,#0c0c0e00 38%)}
+#a .bar{position:absolute;left:44px;right:44px;top:22px;display:flex;align-items:center;gap:26px;z-index:2}
+#a .bar .nav{font-weight:600;font-size:15px;color:var(--sec)}
+#a .bar .nav.on{color:var(--text)}
+#a .shelf{position:absolute;left:44px;top:84px;display:flex;align-items:flex-start;gap:12px;z-index:2}
+#a .tile{width:92px;aspect-ratio:2/3;border-radius:12px;overflow:hidden;cursor:pointer;transition:all .25s ease;opacity:.75;flex:0 0 auto}
+#a .tile img{width:100%;height:100%;object-fit:cover;display:block}
+#a .tile.on{width:132px;opacity:1;box-shadow:0 0 0 3px var(--canvas),0 0 0 5px var(--text),0 18px 40px #000a}
+#a .info{position:absolute;left:44px;bottom:48px;width:520px;z-index:2}
+
+/* ---------- B: wall ---------- */
+#b .win{background:var(--canvas)}
+#b .grid{position:absolute;inset:0;padding:84px 20px 20px;display:grid;grid-template-columns:repeat(6,1fr);align-content:start;gap:12px;overflow:hidden}
+#b .card{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:2/3;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+#b .card img{width:100%;height:100%;object-fit:cover;display:block}
+#b .card .ov{position:absolute;inset:auto 0 0 0;padding:40px 12px 12px;background:linear-gradient(0deg,#000d,#0000);opacity:0;transition:opacity .2s;display:flex;align-items:flex-end;gap:8px}
+#b .card.on{transform:scale(1.03);box-shadow:0 0 0 3px var(--accent),0 20px 50px #000c;z-index:2}
+#b .card.on .ov{opacity:1}
+#b .card .pb{margin-left:auto;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+#b .card .src{position:absolute;left:8px;top:8px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:6px;background:#000a;color:#fff}
+#b .topbar{position:absolute;left:20px;right:20px;top:16px;height:52px;border-radius:16px;display:flex;align-items:center;gap:10px;padding:0 10px 0 18px;z-index:3}
+
+/* ---------- C: list ---------- */
+#c .win{display:flex}
+#c .left{flex:0 0 480px;padding:36px 0 24px 44px;display:flex;flex-direction:column}
+#c .row{display:flex;align-items:baseline;gap:12px;padding:7px 18px 7px 16px;margin-left:-16px;border-radius:12px;cursor:pointer;position:relative}
+#c .row .nm{font-size:26px;font-weight:700;color:#5d5d66;transition:color .2s;white-space:nowrap}
+#c .row .hr{margin-left:auto;font-size:13px;color:#4c4c55;font-variant-numeric:tabular-nums;transition:color .2s}
+#c .row.on .nm{color:var(--text)}
+#c .row.on .hr{color:var(--sec)}
+#c .row.on::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:4px;border-radius:0 4px 4px 0;background:var(--accent)}
+#c .right{flex:1;margin:12px 12px 12px 0;border-radius:18px;overflow:hidden;position:relative;background:var(--panel)}
+#c .right .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+#c .right .shade{position:absolute;inset:0;background:linear-gradient(0deg,#0c0c0e 0%,#0c0c0ee6 34%,#0c0c0e00 70%)}
+#c .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#c .stat{border-radius:12px;padding:10px 12px}
+#c .stat b{display:block;font-size:20px;color:var(--text)}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Launcher · mockup 02 · layouts</h1>
+  <button class="tab on" data-s="a">A · Shelf</button>
+  <button class="tab" data-s="b">B · Wall</button>
+  <button class="tab" data-s="c">C · List</button>
+  <div class="note">Same tether look, three layouts of its own. Arrow keys or click to move. Friends + non-Steam hours are sample data.</div>
+</div>
+
+<!-- A -->
+<section class="stage on" id="a">
+<p class="cap"><b>A · Shelf.</b> Console-style. The whole window becomes the selected game's art; a single row of covers along the top, the game's logo, playtime and Play bottom-left. Friends shrink to an avatar stack. Works the same with a DualSense.</p>
+<div class="win">
+  <div class="bg fade" id="a-bg"></div><div class="shade"></div>
+  <div class="bar">
+    <span class="nav on">Games</span><span class="nav">Stats</span><span class="nav">Add</span>
+    <span style="margin-left:auto;display:flex;align-items:center;gap:10px" class="chip glass" title="from tether">
+      <span style="display:flex"><span class="av" style="background:#4ade80;width:22px;height:22px;font-size:10px">R</span><span class="av" style="background:#60a5fa;width:22px;height:22px;font-size:10px;margin-left:-6px">K</span><span class="av" style="background:#f472b6;width:22px;height:22px;font-size:10px;margin-left:-6px">M</span></span>
+      3 friends playing
+    </span>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text2)" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <span class="av" style="background:#f59e0b;width:32px;height:32px">J</span>
+  </div>
+  <div class="shelf" id="a-shelf"></div>
+  <div class="info" id="a-info"></div>
+  <span class="sample">sample: friends, non-Steam hours</span>
+</div>
+</section>
+
+<!-- B -->
+<section class="stage" id="b">
+<p class="cap"><b>B · Wall.</b> No chrome at all, just your covers edge to edge. A floating glass bar holds search and filters. The selected cover lifts and shows playtime + a round Play. tether friends live in one pill at the bottom.</p>
+<div class="win">
+  <div class="topbar glass">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <span style="color:var(--muted);width:220px">Search 8 games</span>
+    <button class="tab on" style="padding:4px 12px">All</button><button class="tab" style="padding:4px 12px">Steam</button><button class="tab" style="padding:4px 12px">Epic</button><button class="tab" style="padding:4px 12px">Other</button>
+    <span style="margin-left:auto" class="sub">Recently played</span>
+    <span class="av" style="background:#f59e0b;width:32px;height:32px;margin-left:12px">J</span>
+  </div>
+  <div class="grid" id="b-grid"></div>
+  <div class="glass" style="position:absolute;left:50%;transform:translateX(-50%);bottom:18px;z-index:4;border-radius:999px;padding:8px 8px 8px 10px;display:flex;align-items:center;gap:10px">
+    <span style="display:flex"><span class="av" style="background:#4ade80">R</span><span class="av" style="background:#60a5fa;margin-left:-8px">K</span></span>
+    <span style="font-size:14px"><b style="color:var(--text)">rowan</b> and <b style="color:var(--text)">kai</b> are in Counter-Strike 2</span>
+    <button class="btn" style="background:var(--accent);color:var(--on-accent);height:32px;padding:0 14px;border-radius:999px;font-size:13px">Join</button>
+  </div>
+  <span class="sample">sample: friends, non-Steam hours</span>
+</div>
+</section>
+
+<!-- C -->
+<section class="stage" id="c">
+<p class="cap"><b>C · List.</b> Type-first and fast. Big game names on the left (start typing to filter, Enter plays), the selected game's art and stats on the right. Closest to the Super+G quick launch, so one app could do both.</p>
+<div class="win">
+  <div class="left">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;color:var(--muted)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      Type to filter
+      <span style="margin-left:auto;margin-right:24px;display:flex;gap:6px"><span class="kbd">↑</span><span class="kbd">↓</span><span class="kbd">↵</span></span>
+    </div>
+    <div id="c-list"></div>
+    <div style="margin-top:auto;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--sec)">
+      <span style="display:flex"><span class="av" style="background:#4ade80">R</span><span class="av" style="background:#60a5fa;margin-left:-8px">K</span><span class="av" style="background:#f472b6;margin-left:-8px">M</span></span>
+      3 friends playing now
+      <span class="av" style="background:#f59e0b;margin-left:auto;margin-right:24px;width:32px;height:32px">J</span>
+    </div>
+  </div>
+  <div class="right">
+    <div class="bg fade" id="c-bg"></div><div class="shade"></div>
+    <div id="c-info" style="position:absolute;left:36px;right:36px;bottom:32px"></div>
+  </div>
+  <span class="sample">sample: friends, sessions, non-Steam hours</span>
+</div>
+</section>
+
+<script>
+const G=[
+ {id:'1144200',n:"Ready or Not",s:'Steam',h:'16h 16m',l:'Tuesday',w:'1h 05m',ses:14,fr:'rowan has 40h'},
+ {id:'730',n:"Counter-Strike 2",s:'Steam',h:'262h',l:'Sunday',w:'3h 40m',ses:410,fr:'rowan and kai are playing now'},
+ {id:'2627570',n:"Goofy Gorillas",s:'Steam',h:'4h 10m',l:'Oct 5',w:'—',ses:6,fr:''},
+ {id:'sugar',n:"Rocket League",s:'Epic',h:'41h 20m',l:'Oct 2',w:'—',ses:52,fr:'kai has 300h',logo:false},
+ {id:'275850',n:"No Man's Sky",s:'Steam',h:'34h 37m',l:'Sep 22',w:'—',ses:23,fr:''},
+ {id:'1682970',n:"Uncrashed",s:'Steam',h:'6h 02m',l:'Sep 21',w:'—',ses:9,fr:''},
+ {id:'4656000',n:"BOMBANANA!",s:'Steam',h:'2h 23m',l:'Sep 12',w:'—',ses:3,fr:'mira has 5h'},
+ {id:'1478500',n:"Big Walk",s:'Steam',h:'2h 51m',l:'Aug 28',w:'—',ses:4,fr:''},
+];
+let sel=0;
+const A=p=>`assets/${p}`;
+const route=g=>g.s==='Epic'?'Epic · direct, no launcher':'Steam · hidden in background';
+const logo=(g,max)=>g.logo===false?`<div class="logo-text">${g.n}</div>`:`<img src="${A(g.id+'-logo.png')}" style="max-width:${max}px;max-height:130px;display:block;filter:drop-shadow(0 4px 20px #0008)">`;
+const playBtns=`<div style="display:flex;gap:10px"><button class="btn play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Play</button><button class="btn ghost"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button></div>`;
+const stat=(v,k)=>`<span><b style="color:var(--text);font-size:18px">${v}</b><br>${k}</span>`;
+
+function renderA(){
+  document.getElementById('a-bg').style.backgroundImage=`url(${A(G[sel].id+'-hero.jpg')})`;
+  document.getElementById('a-shelf').innerHTML=G.map((g,i)=>`<div class="tile ${i===sel?'on':''}" data-i="${i}"><img src="${A(g.id+'-cover.jpg')}"></div>`).join('')+
+   `<div style="align-self:center;margin-left:6px;width:60px;height:60px;border-radius:50%;border:2px dashed var(--border2);display:flex;align-items:center;justify-content:center;color:var(--muted)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></div>`;
+  const g=G[sel];
+  document.getElementById('a-info').innerHTML=`<div class="chip" style="margin-bottom:16px"><i style="color:${g.s==='Epic'?'#e4e4e7':'#9dbcf7'}"></i>${route(g)}</div>
+   <div style="margin-bottom:20px">${logo(g,380)}</div>
+   <div style="display:flex;gap:26px;color:var(--sec);font-size:14px;margin-bottom:22px">${stat(g.h,'played')}${stat(g.l,'last played')}${stat(g.w,'this week')}</div>
+   ${playBtns}
+   ${g.fr?`<div class="sub" style="margin-top:16px;font-size:13px;color:var(--sec)">tether · ${g.fr}</div>`:''}`;
+}
+function renderB(){
+  document.getElementById('b-grid').innerHTML=G.map((g,i)=>`<div class="card ${i===sel?'on':''}" data-i="${i}"><img src="${A(g.id+'-cover.jpg')}">${g.s==='Epic'?'<span class="src">EPIC</span>':''}
+   <div class="ov"><div><div style="font-weight:700;color:#fff">${g.n}</div><div style="font-size:12px;color:#d4d4d8">${g.h} · ${g.l}</div></div><span class="pb"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span></div></div>`).join('')+
+   `<div class="card" style="border:2px dashed var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Add any game</div>`;
+}
+function renderC(){
+  document.getElementById('c-list').innerHTML=G.map((g,i)=>`<div class="row ${i===sel?'on':''}" data-i="${i}"><span class="nm">${g.n}</span><span class="hr">${g.h}</span></div>`).join('');
+  const g=G[sel];
+  document.getElementById('c-bg').style.backgroundImage=`url(${A(g.id+'-hero.jpg')})`;
+  const bars=Array.from({length:14},(_,i)=>{const v=((g.ses*7+i*13)%9)>5?((g.ses+i*5)%7)+2:0;return `<div style="flex:1;border-radius:4px;height:${v?v*7:4}px;background:${v?'var(--accent)':'#ffffff18'}"></div>`}).join('');
+  document.getElementById('c-info').innerHTML=`<div class="chip" style="margin-bottom:14px"><i style="color:${g.s==='Epic'?'#e4e4e7':'#9dbcf7'}"></i>${route(g)}</div>
+   <div style="margin-bottom:22px">${logo(g,340)}</div>
+   <div style="display:flex;gap:24px;align-items:flex-end">
+     <div style="flex:1"><div class="stats">
+       <div class="stat glass"><span class="sub">Played</span><b>${g.h}</b></div>
+       <div class="stat glass"><span class="sub">Last</span><b>${g.l}</b></div>
+       <div class="stat glass"><span class="sub">Sessions</span><b>${g.ses}</b></div>
+       <div class="stat glass"><span class="sub">This week</span><b>${g.w}</b></div></div>
+       <div style="display:flex;align-items:flex-end;gap:4px;height:56px;margin-top:14px">${bars}</div>
+       <div class="sub" style="margin-top:6px">last 14 days${g.fr?' · tether · '+g.fr:''}</div></div>
+     <div>${playBtns}</div>
+   </div>`;
+}
+const R={a:renderA,b:renderB,c:renderC};
+let cur='a';
+function render(){R[cur]()}
+function show(s){cur=s;location.hash=s;
+  document.querySelectorAll('.tab[data-s]').forEach(x=>x.classList.toggle('on',x.dataset.s===s));
+  document.querySelectorAll('.stage').forEach(x=>x.classList.toggle('on',x.id===s));render();}
+document.querySelectorAll('.tab[data-s]').forEach(t=>t.onclick=()=>{
+  cur=t.dataset.s;location.hash=cur;
+  document.querySelectorAll('.tab[data-s]').forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.stage').forEach(s=>s.classList.toggle('on',s.id===cur));render();
+});
+document.addEventListener('click',e=>{const d=e.target.closest('[data-i]');if(d){sel=+d.dataset.i;render()}});
+document.addEventListener('keydown',e=>{
+  const cols=cur==='b'?6:1;
+  const k={ArrowRight:1,ArrowLeft:-1,ArrowDown:cur==='a'?0:cols,ArrowUp:cur==='a'?0:-cols}[e.key];
+  if(k){e.preventDefault();sel=(sel+k+G.length)%G.length;render()}
+});
+G.forEach(g=>{new Image().src=A(g.id+'-hero.jpg')});
+show(R[location.hash.slice(1)]?location.hash.slice(1):'a');
+</script>
+</body>
+</html>

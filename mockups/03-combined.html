@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Grapple mockup 03</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0c0c0e; --panel:#18181b; --raised:#1f1f23; --raised2:#232327; --sunken:#141417; --control:#2a2a30;
+  --border:#2a2a30; --border2:#34343b;
+  --text:#f4f4f5; --text2:#e4e4e7; --sec:#a1a1aa; --muted:#8e8e96;
+  --online:#4ade80; --idle:#fbbf24;
+  --accent:#8b7cf6; --accent-soft:#b4aafa; --on-accent:#111113;
+  --glass:#18181bb8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#050506;color:var(--text2);font:15px/1.45 Figtree,system-ui,sans-serif}
+svg{display:block}
+.top{display:flex;align-items:center;gap:10px;padding:16px 24px;border-bottom:1px solid #151518;flex-wrap:wrap}
+.top h1{font-size:16px;margin:0 12px 0 0;color:var(--text)}
+.tab{border:1px solid var(--border);background:var(--panel);color:var(--sec);padding:6px 12px;border-radius:10px;font:inherit;font-size:13px;cursor:pointer}
+.tab.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.try{font-size:12px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;margin-left:auto}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:6px;background:var(--control);color:var(--text2);font-size:11px;font-weight:700}
+.wrap{padding:24px 24px 60px}
+.win{width:1280px;height:800px;margin:0 auto;background:var(--canvas);border-radius:14px;overflow:hidden;position:relative;box-shadow:0 30px 80px #000a,0 0 0 1px #1c1c20;transition:width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1),border-radius .45s}
+.btn{border:0;font:inherit;font-weight:600;border-radius:10px;cursor:pointer}
+.play{background:var(--accent);color:var(--on-accent);height:48px;padding:0 26px 0 20px;display:inline-flex;align-items:center;gap:10px;font-size:16px;border-radius:12px}
+.play:hover{filter:brightness(1.08)}
+.ghost{background:#ffffff16;color:var(--text);height:48px;width:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;backdrop-filter:blur(10px)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:#ffffff14;color:var(--text2);backdrop-filter:blur(8px)}
+.chip i{width:6px;height:6px;border-radius:50%;background:currentColor;display:block}
+.sub{font-size:12px;color:var(--muted)}
+.h2{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 10px}
+.av{width:28px;height:28px;border-radius:50%;color:#111113;font-weight:700;font-size:12px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px var(--canvas);flex:0 0 auto;position:relative}
+.glass{background:var(--glass);backdrop-filter:blur(22px) saturate(1.3);border:1px solid #ffffff10}
+.logo-text{font-weight:800;font-size:56px;line-height:.95;color:#fff;letter-spacing:-.5px;text-transform:uppercase}
+
+/* app scroller */
+.app{position:absolute;inset:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#333 transparent}
+.hero{position:relative;height:600px}
+.bgl{position:absolute;inset:0;background-size:cover;background-position:center;transition:opacity .45s ease}
+.shade{position:absolute;inset:0;background:linear-gradient(90deg,#0c0c0ef2 0%,#0c0c0e9e 36%,#0c0c0e00 68%),linear-gradient(0deg,#0c0c0e 0%,#0c0c0ee0 18%,#0c0c0e00 52%),linear-gradient(180deg,#0c0c0ebb 0%,#0c0c0e00 22%)}
+.info{position:absolute;left:44px;bottom:190px;width:560px}
+.side{position:absolute;right:44px;bottom:190px;width:300px;border-radius:16px;padding:14px 16px}
+.shelf{position:relative;margin-top:-160px;padding:0 44px;z-index:2}
+.shelf .row{display:flex;gap:12px;align-items:flex-end;height:184px}
+.tile{width:100px;aspect-ratio:2/3;border-radius:12px;overflow:hidden;cursor:pointer;transition:all .25s ease;opacity:.72;flex:0 0 auto;position:relative}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile.on{width:122px;opacity:1;box-shadow:0 0 0 3px var(--canvas),0 0 0 5px var(--text),0 18px 40px #000a}
+.tile .src,.card .src{position:absolute;left:6px;top:6px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:6px;background:#000a;color:#fff}
+.tile .live{position:absolute;right:6px;bottom:6px;display:flex}
+.lib{padding:30px 44px 120px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px 14px}
+.card{cursor:pointer}
+.card .cv{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:2/3;transition:transform .2s ease,box-shadow .2s ease;background:var(--raised)}
+.card .cv img{width:100%;height:100%;object-fit:cover;display:block}
+.card .ov{position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(0deg,#000c,#0000);opacity:0;transition:opacity .2s;display:flex;align-items:flex-end;justify-content:flex-end;padding:10px}
+.card .pb{width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:flex;align-items:center;justify-content:center}
+.card:hover .cv,.card.on .cv{transform:translateY(-4px);box-shadow:0 0 0 2px var(--accent),0 16px 34px #000b}
+.card:hover .ov{opacity:1}
+.card .t{font-size:13px;font-weight:600;color:var(--text2);margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* top bar */
+.bar{position:absolute;left:16px;right:16px;top:14px;height:54px;border-radius:16px;display:flex;align-items:center;gap:22px;padding:0 10px 0 22px;z-index:6;transition:background .25s,border-color .25s}
+.bar.clear{background:transparent;border-color:transparent;backdrop-filter:none}
+.bar .nav{font-weight:600;font-size:15px;color:var(--sec);cursor:pointer}
+.bar .nav.on{color:var(--text)}
+.search{margin-left:auto;height:36px;width:260px;border-radius:10px;background:#ffffff12;display:flex;align-items:center;gap:8px;padding:0 10px;color:var(--muted);font-size:14px;cursor:text}
+.fpill{display:flex;align-items:center;gap:8px;height:36px;padding:0 12px 0 6px;border-radius:999px;background:#ffffff12;font-size:13px;font-weight:600;color:var(--text2);cursor:pointer}
+
+/* floating friends */
+.join{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;z-index:5;border-radius:999px;padding:8px 8px 8px 10px;display:flex;align-items:center;gap:10px;transition:opacity .3s,transform .3s}
+.join.hide{opacity:0;transform:translate(-50%,20px);pointer-events:none}
+
+/* drawer */
+.drawer{position:absolute;top:0;right:0;bottom:0;width:390px;z-index:8;border-radius:0;border-left:1px solid #ffffff10;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);overflow-y:auto;background:#141417ee;backdrop-filter:blur(26px)}
+.drawer.open{transform:none}
+.stat{background:var(--raised);border-radius:12px;padding:10px 12px}
+.stat b{display:block;font-size:20px;color:var(--text)}
+.tog{width:34px;height:20px;border-radius:999px;background:var(--control);position:relative;cursor:pointer;flex:0 0 auto}
+.tog::after{content:"";position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--sec);transition:all .2s}
+.tog.on{background:var(--accent)}.tog.on::after{left:17px;background:#fff}
+
+/* palette */
+.scrim{position:absolute;inset:0;z-index:9;background:#0c0c0e88;backdrop-filter:blur(14px);display:none}
+.scrim.open{display:block}
+.pal{position:absolute;left:50%;top:110px;transform:translateX(-50%);width:720px;border-radius:22px;background:#18181bf2;border:1px solid var(--border2);box-shadow:0 30px 90px #000c;overflow:hidden}
+.pal input{all:unset;flex:1;font-size:22px;color:var(--text);caret-color:var(--accent)}
+.prow{display:flex;align-items:center;gap:16px;padding:9px 14px;border-radius:14px;cursor:pointer;position:relative}
+.prow .nm{font-size:26px;font-weight:700;color:#5d5d66;white-space:nowrap}
+.prow.on{background:var(--raised2)}
+.prow.on .nm{color:var(--text)}
+.prow.on::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--accent)}
+.prow img{width:40px;height:54px;border-radius:7px;object-fit:cover;opacity:.55}
+.prow.on img{opacity:1}
+.prow .meta{margin-left:auto;text-align:right;font-size:12px;color:var(--muted)}
+.prow u{text-decoration-color:var(--accent);text-underline-offset:4px;text-decoration-thickness:2px}
+
+/* launching + playing */
+.launch{position:absolute;inset:0;z-index:12;display:none;align-items:center;justify-content:center;background:#0c0c0eaa;backdrop-filter:blur(16px)}
+.launch.open{display:flex}
+.lcard{width:380px;border-radius:18px;overflow:hidden;background:var(--panel);border:1px solid var(--border)}
+.step{display:flex;gap:8px;font-size:13px;color:var(--muted);transition:color .2s}
+.step.done{color:var(--text2)}.step.done .ic{color:var(--online)}
+.step.now{color:var(--text)}.step.now .ic{color:var(--accent-soft)}
+.playing{position:absolute;inset:0;z-index:13;display:none;align-items:center;gap:14px;padding:14px;background:var(--panel)}
+.win.small{width:380px;height:92px;border-radius:18px}
+.win.small .playing{display:flex}
+
+/* super+g desktop mode */
+.desk{position:absolute;inset:0;background:url(assets/275850-hero.jpg) center/cover;display:none}
+.win.desktop .desk{display:block}
+.win.desktop .app,.win.desktop .bar,.win.desktop .join{display:none}
+
+.below{display:grid;grid-template-columns:repeat(3,300px);gap:22px;justify-content:center;margin-top:44px;align-items:start}
+.friend{height:50px;padding:0 8px;border-radius:10px;display:flex;align-items:center;gap:10px}
+.friend .n{font-size:14px;font-weight:600;color:var(--text)}
+.friend .a{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--sec);white-space:nowrap}
+.friend .a strong{color:var(--text2);font-weight:600}
+.dot{position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:50%;background:var(--online);border:2px solid var(--panel)}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Grapple · mockup 03 · everything combined</h1>
+  <button class="tab on" id="m-app">In the app</button>
+  <button class="tab" id="m-desk">Super+G on the desktop</button>
+  <div class="try">
+    <span><span class="kbd">←</span> <span class="kbd">→</span> shelf</span>
+    <span>type any letter: quick launch</span>
+    <span><span class="kbd">Tab</span> or ⋯ details</span>
+    <span><span class="kbd">↵</span> or Play: launch</span>
+    <span>scroll: library</span>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="win" id="win">
+  <div class="desk"></div>
+
+  <div class="app" id="app">
+    <section class="hero">
+      <div class="bgl" id="bg1"></div><div class="bgl" id="bg2" style="opacity:0"></div><div class="shade"></div>
+      <div class="info" id="info"></div>
+      <div class="side glass" id="side"></div>
+    </section>
+    <section class="shelf">
+      <div class="h2" style="color:var(--sec)">Jump back in</div>
+      <div class="row" id="shelf"></div>
+    </section>
+    <section class="lib" id="lib">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div style="font-size:20px;font-weight:700;color:var(--text);margin-right:10px">Library</div>
+        <button class="tab on" data-f="All">All 8</button>
+        <button class="tab" data-f="Steam">Steam 7</button>
+        <button class="tab" data-f="Epic">Epic 1</button>
+        <button class="tab" data-f="Other">Other 0</button>
+        <span class="sub" style="margin-left:auto">Sort: recently played</span>
+      </div>
+      <div class="grid" id="grid"></div>
+      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+        <div class="stat"><span class="sub">Played this week</span><b>4h 45m</b></div>
+        <div class="stat"><span class="sub">Played in October</span><b>19h 10m</b></div>
+        <div class="stat"><span class="sub">Most played</span><b>Counter-Strike 2</b></div>
+        <div class="stat"><span class="sub">All time, all stores</span><b>370h</b></div>
+      </div>
+    </section>
+  </div>
+
+  <header class="bar glass clear" id="bar">
+    <span class="nav on" id="nav-home">Home</span><span class="nav" id="nav-lib">Library</span><span class="nav">Stats</span>
+    <div class="search" id="openpal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Type to find a game<span class="kbd" style="margin-left:auto">/</span></div>
+    <div class="fpill" title="from tether"><span style="display:flex"><span class="av" style="background:#4ade80;width:24px;height:24px;font-size:10px">R</span><span class="av" style="background:#60a5fa;width:24px;height:24px;font-size:10px;margin-left:-7px">K</span><span class="av" style="background:#f472b6;width:24px;height:24px;font-size:10px;margin-left:-7px">M</span></span>3 playing</div>
+    <span class="av" style="background:#f59e0b;width:34px;height:34px">J<span class="dot" style="border-color:#1c1c20"></span></span>
+  </header>
+
+  <div class="join glass" id="join">
+    <span style="display:flex"><span class="av" style="background:#4ade80">R</span><span class="av" style="background:#60a5fa;margin-left:-8px">K</span></span>
+    <span style="font-size:14px"><b style="color:var(--text)">rowan</b> and <b style="color:var(--text)">kai</b> are in Counter-Strike 2 · 38m</span>
+    <button class="btn" style="background:var(--accent);color:var(--on-accent);height:32px;padding:0 14px;border-radius:999px;font-size:13px">Join</button>
+  </div>
+
+  <aside class="drawer" id="drawer"></aside>
+
+  <div class="scrim" id="scrim">
+    <div class="pal">
+      <div style="display:flex;align-items:center;gap:12px;padding:18px 22px;border-bottom:1px solid var(--border)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+        <input id="q" placeholder="Find a game" autocomplete="off">
+        <span class="sub" id="qn"></span>
+      </div>
+      <div id="plist" style="padding:8px;max-height:420px;overflow:auto"></div>
+      <div style="display:flex;gap:16px;padding:10px 22px;background:var(--sunken);font-size:12px;color:var(--muted)">
+        <span><span class="kbd">↵</span> Play</span><span><span class="kbd">Tab</span> Details</span><span><span class="kbd">Esc</span> Close</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="launch" id="launch"></div>
+
+  <div class="playing" id="playing"></div>
+</div>
+
+<div class="below">
+  <div>
+    <div class="h2">What friends see in tether</div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:10px">
+      <div class="friend"><span class="av" style="background:#f59e0b;width:32px;height:32px;box-shadow:none">J<span class="dot"></span></span><span><span class="n">josh</span><span class="a"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 6h9a5.5 5.5 0 0 1 5.4 6.6l-.9 4.4a2.6 2.6 0 0 1-4.5 1.2L14.6 16H9.4l-1.9 2.2A2.6 2.6 0 0 1 3 17l-.9-4.4A5.5 5.5 0 0 1 7.5 6z"/></svg>Playing <strong id="tg-name">Ready or Not</strong></span></span></div>
+      <div style="margin:8px 4px 4px;padding:12px;border-radius:14px;background:var(--raised);display:flex;gap:12px;align-items:center">
+        <img id="tg-img" src="assets/1144200-cover.jpg" style="width:48px;height:64px;border-radius:8px;object-fit:cover">
+        <div><div class="sub" style="font-weight:600">PLAYING</div><div style="font-weight:600;color:var(--text)" id="tg-name2">Ready or Not</div><div class="sub" id="tg-time">for 1h 12m</div></div>
+      </div>
+    </div>
+    <div class="sub" style="margin-top:10px">tether's existing game activity; updates when you press Play in the window above.</div>
+  </div>
+  <div>
+    <div class="h2">First run: sign in</div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:26px 22px;text-align:center">
+      <div style="width:76px;height:76px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center"><img src="assets/tether-badge-squircle-white.svg" width="48" height="48" alt="tether" style="display:block"></div>
+      <div style="font-size:18px;font-weight:700;color:var(--text)">Sign in with tether</div>
+      <div class="sub" style="margin:6px 0 18px">Playtime and now-playing follow your tether account. Your Steam link in tether brings your whole Steam library and history.</div>
+      <button class="btn play" style="width:100%;justify-content:center;height:44px;font-size:15px">Continue in browser</button>
+      <div style="margin-top:14px;font-size:13px;color:var(--sec)">Skip for now</div>
+    </div>
+  </div>
+  <div>
+    <div class="h2">Sample vs real</div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px;font-size:13px;color:var(--sec);display:flex;flex-direction:column;gap:8px">
+      <div><b style="color:var(--text2)">Real:</b> your 8 games, art, Steam playtime and last-played dates.</div>
+      <div><b style="color:var(--text2)">Sample:</b> friends, Rocket League hours, sessions, charts, week/month totals.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const G=[
+ {id:'1144200',n:"Ready or Not",s:'Steam',h:'16h 16m',l:'Tuesday',w:'1h 05m',ses:14,long:'3h 02m',fr:'rowan has 40h in this'},
+ {id:'730',n:"Counter-Strike 2",s:'Steam',h:'262h',l:'Sunday',w:'3h 40m',ses:410,long:'6h 15m',fr:'rowan and kai are playing now',live:true},
+ {id:'2627570',n:"Goofy Gorillas",s:'Steam',h:'4h 10m',l:'Oct 5',w:'—',ses:6,long:'1h 20m',fr:''},
+ {id:'sugar',n:"Rocket League",s:'Epic',h:'41h 20m',l:'Oct 2',w:'—',ses:52,long:'2h 40m',fr:'kai has 300h in this',logo:false},
+ {id:'275850',n:"No Man's Sky",s:'Steam',h:'34h 37m',l:'Sep 22',w:'—',ses:23,long:'4h 12m',fr:''},
+ {id:'1682970',n:"Uncrashed",s:'Steam',h:'6h 02m',l:'Sep 21',w:'—',ses:9,long:'1h 30m',fr:''},
+ {id:'4656000',n:"BOMBANANA!",s:'Steam',h:'2h 23m',l:'Sep 12',w:'—',ses:3,long:'1h 10m',fr:'mira has 5h in this'},
+ {id:'1478500',n:"Big Walk",s:'Steam',h:'2h 51m',l:'Aug 28',w:'—',ses:4,long:'1h 05m',fr:''},
+];
+const $=id=>document.getElementById(id), A=p=>`assets/${p}`;
+const hero=g=>A(g.id+(g.logo===false?'-hero-clean.jpg':'-hero.jpg'));
+G.forEach(g=>{new Image().src=hero(g)});
+let sel=0, filter='All', front=1, psel=0, pres=[];
+const route=g=>g.s==='Epic'?'Epic · direct, no Epic launcher':'Steam · hidden in background, no Steam window';
+const dotc=g=>g.s==='Epic'?'#e4e4e7':'#9dbcf7';
+const playIcon=s=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>`;
+const logo=(g,max)=>g.logo===false?`<div class="logo-text">${g.n}</div>`:`<img src="${A(g.id+'-logo.png')}" style="max-width:${max}px;max-height:130px;display:block;filter:drop-shadow(0 4px 20px #0008)">`;
+const bars=(g,h=56)=>Array.from({length:14},(_,i)=>{const v=((g.ses*7+i*13)%9)>5?((g.ses+i*5)%7)+2:0;return `<div style="flex:1;border-radius:4px;height:${v?v*h/9:4}px;background:${v?'var(--accent)':'#ffffff18'}"></div>`}).join('');
+const stat=(v,k)=>`<span><b style="color:var(--text);font-size:18px">${v}</b><br>${k}</span>`;
+
+function renderHero(){
+  const g=G[sel], nb=front===1?$('bg2'):$('bg1'), ob=front===1?$('bg1'):$('bg2');
+  nb.style.backgroundImage=`url(${hero(g)})`; nb.style.opacity=1; ob.style.opacity=0; front=front===1?2:1;
+  $('info').innerHTML=`<div class="chip" style="margin-bottom:16px"><i style="color:${dotc(g)}"></i>${route(g)}</div>
+   <div style="margin-bottom:20px">${logo(g,380)}</div>
+   <div style="display:flex;gap:26px;color:var(--sec);font-size:14px;margin-bottom:22px">${stat(g.h,'played')}${stat(g.l,'last played')}${stat(g.w,'this week')}</div>
+   <div style="display:flex;gap:10px;align-items:center"><button class="btn play" onclick="launch()">${playIcon(18)}Play</button><button class="btn ghost" onclick="toggleDrawer()"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+   ${g.fr?`<span style="margin-left:10px;font-size:13px;color:var(--sec);display:flex;align-items:center;gap:6px"><img src="assets/tether-mark.svg" width="16" height="16" alt="tether" style="display:block;flex:none">${g.fr}</span>`:''}</div>`;
+  $('side').innerHTML=`<div style="display:flex;font-size:13px;font-weight:600;color:var(--text2);margin-bottom:10px">Last 14 days<span style="margin-left:auto;color:var(--muted);font-weight:500">${g.ses} sessions</span></div>
+   <div style="display:flex;align-items:flex-end;gap:4px;height:56px">${bars(g)}</div>
+   <div style="display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:var(--muted)"><span>Longest <b style="color:var(--text2)">${g.long}</b></span><span>Avg <b style="color:var(--text2)">1h 10m</b></span></div>`;
+}
+function renderShelf(){
+  $('shelf').innerHTML=G.map((g,i)=>`<div class="tile ${i===sel?'on':''}" data-i="${i}"><img src="${A(g.id+'-cover.jpg')}">${g.s==='Epic'?'<span class="src">EPIC</span>':''}${g.live?'<span class="live"><span class="av" style="background:#4ade80;width:20px;height:20px;font-size:9px">R</span><span class="av" style="background:#60a5fa;width:20px;height:20px;font-size:9px;margin-left:-6px">K</span></span>':''}</div>`).join('')+
+   `<div style="align-self:center;margin-left:8px;width:56px;height:56px;border-radius:50%;border:2px dashed var(--border2);display:flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer" title="Add any game"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></div>`;
+}
+function renderGrid(){
+  const list=G.map((g,i)=>[g,i]).filter(([g])=>filter==='All'||g.s===filter);
+  $('grid').innerHTML=list.map(([g,i])=>`<div class="card ${i===sel?'on':''}" data-i="${i}"><div class="cv"><img src="${A(g.id+'-cover.jpg')}">${g.s==='Epic'?'<span class="src">EPIC</span>':''}<div class="ov"><span class="pb" onclick="event.stopPropagation();sel=${i};launch()">${playIcon(16)}</span></div></div><div class="t">${g.n}</div><div class="sub">${g.h} · ${g.l}</div></div>`).join('')+
+   `<div class="card"><div class="cv" style="background:none;border:2px dashed var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px;text-align:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Add any game<span style="font-size:11px">.exe, AppImage,<br>emulator</span></div></div>`;
+}
+function renderDrawer(){
+  const g=G[sel];
+  $('drawer').innerHTML=`<div style="position:relative;height:190px"><img src="${hero(g)}" style="width:100%;height:100%;object-fit:cover"><div style="position:absolute;inset:0;background:linear-gradient(0deg,#141417 0%,#14141700 70%)"></div>
+    <button class="btn ghost" style="position:absolute;right:12px;top:12px;width:36px;height:36px" onclick="toggleDrawer()">✕</button>
+    <div style="position:absolute;left:20px;bottom:10px;font-size:22px;font-weight:700;color:var(--text)">${g.n}</div></div>
+   <div style="padding:10px 20px 24px;display:flex;flex-direction:column;gap:16px">
+    <button class="btn play" style="width:100%;justify-content:center" onclick="launch()">${playIcon(18)}Play</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="stat"><span class="sub">Total</span><b>${g.h}</b></div><div class="stat"><span class="sub">Last played</span><b>${g.l}</b></div>
+      <div class="stat"><span class="sub">Sessions</span><b>${g.ses}</b></div><div class="stat"><span class="sub">Longest</span><b>${g.long}</b></div></div>
+    <div><div class="h2" style="display:flex">Last 14 days</div><div style="display:flex;align-items:flex-end;gap:5px;height:64px">${bars(g,64)}</div></div>
+    <div style="background:var(--sunken);border-radius:12px;padding:14px;font-size:13px">
+      <div style="font-weight:600;color:var(--text);margin-bottom:6px">How it launches</div>
+      <div style="color:var(--sec);margin-bottom:12px">${g.s==='Epic'?'Gets your Epic token itself and starts the game through Proton. No Epic or Heroic process at all.':'Steam starts hidden in the background (the game needs it for DRM and online), then the game runs straight away. You never see Steam.'}</div>
+      <div style="display:flex;flex-direction:column;gap:10px;color:var(--text2)">
+        <div style="display:flex;align-items:center;justify-content:space-between">GameMode<span class="tog on" onclick="this.classList.toggle('on')"></span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between">MangoHud overlay<span class="tog" onclick="this.classList.toggle('on')"></span></div>
+        ${g.s==='Steam'?'<div style="display:flex;align-items:center;justify-content:space-between">Close Steam when I quit<span class="tog on" onclick="this.classList.toggle(\'on\')"></span></div>':'<div style="display:flex;align-items:center;justify-content:space-between">Proton<span class="sub" style="color:var(--text2)">GE-Proton (latest)</span></div>'}
+        <div style="display:flex;align-items:center;justify-content:space-between">Show in tether<span class="tog on" onclick="this.classList.toggle('on')"></span></div>
+      </div></div>
+    ${g.fr?`<div style="font-size:13px;color:var(--sec)">tether · ${g.fr}</div>`:''}
+   </div>`;
+}
+function render(){renderHero();renderShelf();renderGrid();if($('drawer').classList.contains('open'))renderDrawer()}
+function toggleDrawer(open){const d=$('drawer');const o=open??!d.classList.contains('open');if(o)renderDrawer();d.classList.toggle('open',o)}
+
+/* palette */
+function fuzzy(n,q){if(!q)return {ok:true,html:n};let j=0,out='';const lq=q.toLowerCase();for(const c of n){if(j<lq.length&&c.toLowerCase()===lq[j]){out+=`<u>${c}</u>`;j++}else out+=c}return {ok:j===lq.length,html:out}}
+function renderPal(){
+  const q=$('q').value.trim();
+  pres=G.map((g,i)=>({g,i,f:fuzzy(g.n,q)})).filter(r=>r.f.ok);
+  psel=Math.min(psel,Math.max(0,pres.length-1));
+  $('qn').textContent=`${pres.length} game${pres.length===1?'':'s'}`;
+  $('plist').innerHTML=pres.map((r,k)=>`<div class="prow ${k===psel?'on':''}" data-k="${k}"><img src="${A(r.g.id+'-cover.jpg')}"><span class="nm">${r.f.html}</span><span class="meta">${r.g.s} · ${r.g.h}<br>${r.g.l}</span>${k===psel?'<span class="kbd">↵</span>':''}</div>`).join('')||'<div class="sub" style="padding:16px">No game matches</div>';
+}
+function openPal(ch=''){ $('scrim').classList.add('open'); $('q').value=ch; psel=0; renderPal(); setTimeout(()=>$('q').focus(),0) }
+function closePal(){ $('scrim').classList.remove('open'); $('q').blur() }
+$('q').addEventListener('input',()=>{psel=0;renderPal()});
+$('openpal').onclick=()=>openPal();
+
+/* launch */
+let timer=null, t0=0;
+function launch(){
+  closePal(); toggleDrawer(false);
+  const g=G[sel], L=$('launch');
+  const steps=g.s==='Epic'?['Epic sign-in token','Proton ready','Starting game']:['Steam running, hidden','Game files ready','Starting game'];
+  L.innerHTML=`<div class="lcard"><div style="height:150px;background:url(${hero(g)}) center/cover;position:relative"><div style="position:absolute;inset:0;background:linear-gradient(0deg,#18181b 0%,#18181b00 60%)"></div></div>
+   <div style="padding:4px 20px 20px"><div style="font-size:20px;font-weight:700;color:var(--text)">${g.n}</div><div class="sub" style="margin-bottom:14px">${route(g)}</div>
+   <div style="display:flex;flex-direction:column;gap:9px">${steps.map((s,i)=>`<div class="step" id="st${i}"><span class="ic">●</span>${s}</div>`).join('')}</div>
+   <div style="height:4px;border-radius:4px;background:var(--control);margin-top:16px;overflow:hidden"><div id="pbar" style="width:0;height:100%;background:var(--accent);transition:width .4s"></div></div></div></div>`;
+  L.classList.add('open');
+  steps.forEach((_,i)=>{
+    setTimeout(()=>{ if(i>0){$('st'+(i-1)).className='step done';$('st'+(i-1)).querySelector('.ic').textContent='✓'} $('st'+i).className='step now'; $('pbar').style.width=((i+1)/steps.length*100)+'%' }, 350*i+150);
+  });
+  setTimeout(()=>{ L.classList.remove('open'); startPlaying(g) }, 350*steps.length+400);
+}
+function fmt(s){const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return `${h}:${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}`}
+function startPlaying(g){
+  $('playing').innerHTML=`<img src="${A(g.id+'-cover.jpg')}" style="width:46px;height:64px;border-radius:8px;object-fit:cover">
+   <div style="flex:1;min-width:0"><div style="font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${g.n}</div>
+   <div id="clock" style="font-size:22px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;line-height:1.2">0:00:00</div>
+   <div class="sub" style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:var(--online)"></span>Shown in tether</div></div>
+   <button class="btn" style="background:var(--control);color:var(--text);height:34px;padding:0 14px;font-size:13px" onclick="stopPlaying()">Stop</button>`;
+  $('win').classList.add('small');
+  $('tg-name').textContent=$('tg-name2').textContent=g.n; $('tg-img').src=A(g.id+'-cover.jpg'); $('tg-time').textContent='just started';
+  t0=Date.now(); clearInterval(timer);
+  timer=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$('clock').textContent=fmt(s);$('tg-time').textContent=s<60?'just started':`for ${Math.floor(s/60)}m`},1000);
+}
+function stopPlaying(){ clearInterval(timer); $('win').classList.remove('small') }
+
+/* bar + friends react to scroll */
+$('app').addEventListener('scroll',()=>{
+  const y=$('app').scrollTop;
+  $('bar').classList.toggle('clear',y<40);
+  $('join').classList.toggle('hide',y>300);
+  $('nav-home').classList.toggle('on',y<380); $('nav-lib').classList.toggle('on',y>=380);
+});
+$('nav-home').onclick=()=>$('app').scrollTo({top:0,behavior:'smooth'});
+$('nav-lib').onclick=()=>$('app').scrollTo({top:$('lib').offsetTop-70,behavior:'smooth'});
+
+/* filters */
+document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{filter=b.dataset.f;document.querySelectorAll('[data-f]').forEach(x=>x.classList.toggle('on',x===b));renderGrid()});
+
+/* clicks */
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-i]'); if(t){sel=+t.dataset.i;render();if(t.classList.contains('card'))$('app').scrollTo({top:0,behavior:'smooth'})}
+  const p=e.target.closest('[data-k]'); if(p){sel=pres[+p.dataset.k].i;render();launch()}
+  if(e.target===$('scrim')){closePal(); if(desktop) setMode(false)}
+});
+
+/* keys */
+document.addEventListener('keydown',e=>{
+  if($('win').classList.contains('small')){ if(e.key==='Escape')stopPlaying(); return }
+  if($('scrim').classList.contains('open')){
+    if(e.key==='Escape'){closePal(); if(desktop) setMode(false); return}
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();psel=(psel+(e.key==='ArrowDown'?1:-1)+pres.length)%Math.max(1,pres.length);renderPal();return}
+    if(e.key==='Enter'&&pres[psel]){e.preventDefault();sel=pres[psel].i;render();launch();if(desktop)setTimeout(()=>setMode(false),50);return}
+    if(e.key==='Tab'&&pres[psel]){e.preventDefault();sel=pres[psel].i;render();closePal();toggleDrawer(true);return}
+    return;
+  }
+  if(e.key==='Escape'){toggleDrawer(false);return}
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();sel=(sel+(e.key==='ArrowRight'?1:-1)+G.length)%G.length;render();return}
+  if(e.key==='Enter'){launch();return}
+  if(e.key==='Tab'){e.preventDefault();toggleDrawer();return}
+  if(e.key==='/'){e.preventDefault();openPal();return}
+  if(e.key.length===1&&/[a-z0-9!']/i.test(e.key)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();openPal(e.key)}
+});
+
+/* desktop (Super+G) mode */
+let desktop=false;
+function setMode(d){desktop=d;$('win').classList.toggle('desktop',d);$('m-desk').classList.toggle('on',d);$('m-app').classList.toggle('on',!d);if(d){stopPlaying();openPal()}else closePal()}
+$('m-desk').onclick=()=>setMode(true); $('m-app').onclick=()=>setMode(false);
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,969 @@
+{
+ "response": {
+  "store_items": [
+   {
+    "item_type": 0,
+    "id": 1091500,
+    "success": 1,
+    "visible": true,
+    "name": "Cyberpunk 2077",
+    "store_url_path": "app/1091500/Cyberpunk_2077",
+    "store_url_slug": "Cyberpunk_2077",
+    "appid": 1091500,
+    "type": 0,
+    "content_descriptorids": [
+     1,
+     2,
+     5
+    ],
+    "tagids": [
+     4115,
+     1695,
+     6650,
+     122,
+     4182,
+     1742,
+     1663,
+     3942,
+     4295,
+     3839,
+     4166,
+     3834,
+     19,
+     4667,
+     1756,
+     4231,
+     4747,
+     21,
+     9204,
+     44868
+    ],
+    "reviews": {
+     "summary_filtered": {
+      "review_count": 890759,
+      "percent_positive": 87,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     },
+     "summary_unfiltered": {
+      "review_count": 897157,
+      "percent_positive": 87,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     },
+     "summary_language_specific": {
+      "review_count": 393898,
+      "percent_positive": 89,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     }
+    },
+    "basic_info": {
+     "short_description": "Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City \u2014 a dangerous megalopolis obsessed with power, glamor, and ceaseless body modification.",
+     "publishers": [
+      {
+       "name": "CD PROJEKT RED",
+       "creator_clan_account_id": 32989758
+      }
+     ],
+     "developers": [
+      {
+       "name": "CD PROJEKT RED",
+       "creator_clan_account_id": 32989758
+      }
+     ]
+    },
+    "tags": [
+     {
+      "tagid": 4115,
+      "weight": 873
+     },
+     {
+      "tagid": 1695,
+      "weight": 825
+     },
+     {
+      "tagid": 6650,
+      "weight": 730
+     },
+     {
+      "tagid": 122,
+      "weight": 668
+     },
+     {
+      "tagid": 4182,
+      "weight": 668
+     },
+     {
+      "tagid": 1742,
+      "weight": 631
+     },
+     {
+      "tagid": 1663,
+      "weight": 596
+     },
+     {
+      "tagid": 3942,
+      "weight": 595
+     },
+     {
+      "tagid": 4295,
+      "weight": 584
+     },
+     {
+      "tagid": 3839,
+      "weight": 548
+     },
+     {
+      "tagid": 4166,
+      "weight": 505
+     },
+     {
+      "tagid": 3834,
+      "weight": 485
+     },
+     {
+      "tagid": 19,
+      "weight": 422
+     },
+     {
+      "tagid": 4667,
+      "weight": 369
+     },
+     {
+      "tagid": 1756,
+      "weight": 328
+     },
+     {
+      "tagid": 4231,
+      "weight": 320
+     },
+     {
+      "tagid": 4747,
+      "weight": 297
+     },
+     {
+      "tagid": 21,
+      "weight": 297
+     },
+     {
+      "tagid": 9204,
+      "weight": 166
+     },
+     {
+      "tagid": 44868,
+      "weight": 83
+     }
+    ],
+    "release": {
+     "steam_release_date": 1607558400,
+     "original_release_date": 0
+    },
+    "platforms": {
+     "windows": true,
+     "mac": true,
+     "vr_support": {},
+     "steam_deck_compat_category": 3,
+     "steam_os_compat_category": 2,
+     "steam_frame_compat_category": 2,
+     "steam_machine_compat_category": 3
+    },
+    "best_purchase_option": {
+     "packageid": 367653,
+     "purchase_option_name": "Cyberpunk 2077",
+     "final_price_in_cents": "23970",
+     "original_price_in_cents": "79900",
+     "formatted_final_price": "R 239.70",
+     "formatted_original_price": "R 799.00",
+     "discount_pct": 70,
+     "user_can_purchase_as_gift": true,
+     "hide_discount_pct_for_compliance": false,
+     "included_game_count": 1,
+     "must_purchase_as_set": false,
+     "package_group": "default",
+     "price_cannot_be_displayed_as_discount": false
+    },
+    "screenshots": {
+     "all_ages_screenshots": [
+      {
+       "filename": "steam/apps/1091500/ss_2f649b68d579bf87011487d29bc4ccbfdd97d34f.jpg?t=1784714077",
+       "ordinal": 1
+      },
+      {
+       "filename": "steam/apps/1091500/ss_0e64170751e1ae20ff8fdb7001a8892fd48260e7.jpg?t=1784714077",
+       "ordinal": 2
+      },
+      {
+       "filename": "steam/apps/1091500/ss_af2804aa4bf35d4251043744412ce3b359a125ef.jpg?t=1784714077",
+       "ordinal": 3
+      }
+     ],
+     "mature_content_screenshots": [
+      {
+       "filename": "steam/apps/1091500/ss_7924f64b6e5d586a80418c9896a1c92881a7905b.jpg?t=1784714077",
+       "ordinal": 4
+      },
+      {
+       "filename": "steam/apps/1091500/ss_4eb068b1cf52c91b57157b84bed18a186ed7714b.jpg?t=1784714077",
+       "ordinal": 5
+      }
+     ]
+    }
+   },
+   {
+    "item_type": 0,
+    "id": 4771580,
+    "success": 1,
+    "visible": true,
+    "name": "Five Nights with Maids",
+    "store_url_path": "app/4771580/Five_Nights_with_Maids",
+    "store_url_slug": "Five_Nights_with_Maids",
+    "appid": 4771580,
+    "type": 0,
+    "tagids": [
+     12095,
+     9130,
+     599,
+     4085,
+     1667,
+     3978,
+     1662,
+     3871,
+     4562,
+     4195,
+     8945,
+     4182,
+     4166,
+     4342,
+     492,
+     1698
+    ],
+    "reviews": {
+     "summary_filtered": {
+      "review_count": 72,
+      "percent_positive": 77,
+      "review_score": 6,
+      "review_score_label": "Mostly Positive"
+     }
+    },
+    "basic_info": {
+     "short_description": "In this survival horror game, play as a night guard watching over a mansion and its maids for five nights. Use lights, shutters, and cameras to spot suspicious activity. Each night grows more intense as the atmosphere shifts and the maids begin to behave strangely. Can you survive till the end?",
+     "publishers": [
+      {
+       "name": "Saikey Studios",
+       "creator_clan_account_id": 44021791
+      }
+     ],
+     "developers": [
+      {
+       "name": "Now"
+      }
+     ]
+    },
+    "tags": [
+     {
+      "tagid": 12095,
+      "weight": 1195
+     },
+     {
+      "tagid": 9130,
+      "weight": 1080
+     },
+     {
+      "tagid": 599,
+      "weight": 922
+     },
+     {
+      "tagid": 4085,
+      "weight": 893
+     },
+     {
+      "tagid": 1667,
+      "weight": 878
+     },
+     {
+      "tagid": 3978,
+      "weight": 806
+     },
+     {
+      "tagid": 1662,
+      "weight": 619
+     },
+     {
+      "tagid": 3871,
+      "weight": 561
+     },
+     {
+      "tagid": 4562,
+      "weight": 475
+     },
+     {
+      "tagid": 4195,
+      "weight": 461
+     },
+     {
+      "tagid": 8945,
+      "weight": 417
+     },
+     {
+      "tagid": 4182,
+      "weight": 417
+     },
+     {
+      "tagid": 4166,
+      "weight": 360
+     },
+     {
+      "tagid": 4342,
+      "weight": 331
+     },
+     {
+      "tagid": 492,
+      "weight": 317
+     },
+     {
+      "tagid": 1698,
+      "weight": 259
+     }
+    ],
+    "release": {
+     "steam_release_date": 1792204102
+    },
+    "platforms": {
+     "windows": true,
+     "vr_support": {},
+     "steam_deck_compat_category": 0,
+     "steam_os_compat_category": 0,
+     "steam_frame_compat_category": 0,
+     "steam_machine_compat_category": 0
+    },
+    "best_purchase_option": {
+     "packageid": 1659145,
+     "purchase_option_name": "Five Nights with Maids",
+     "final_price_in_cents": "5999",
+     "original_price_in_cents": "7499",
+     "formatted_final_price": "R 59.99",
+     "formatted_original_price": "R 74.99",
+     "discount_pct": 20,
+     "user_can_purchase_as_gift": true,
+     "hide_discount_pct_for_compliance": false,
+     "included_game_count": 1,
+     "must_purchase_as_set": false,
+     "package_group": "default",
+     "price_cannot_be_displayed_as_discount": false
+    },
+    "screenshots": {
+     "all_ages_screenshots": [
+      {
+       "filename": "steam/apps/4771580/1db075d7fda20c6821a1f785ed76247cea386040/ss_1db075d7fda20c6821a1f785ed76247cea386040.jpg?t=1792204505",
+       "ordinal": 1
+      },
+      {
+       "filename": "steam/apps/4771580/36c2ba98eed19fbf0c8b290c444a67c7cffe3207/ss_36c2ba98eed19fbf0c8b290c444a67c7cffe3207.jpg?t=1792204505",
+       "ordinal": 2
+      },
+      {
+       "filename": "steam/apps/4771580/a88316c5822b5f1894820945187cce5dcaf45463/ss_a88316c5822b5f1894820945187cce5dcaf45463.jpg?t=1792204505",
+       "ordinal": 3
+      }
+     ]
+    }
+   },
+   {
+    "item_type": 0,
+    "id": 1621690,
+    "success": 1,
+    "visible": true,
+    "name": "Core Keeper",
+    "store_url_path": "app/1621690/Core_Keeper",
+    "store_url_slug": "Core_Keeper",
+    "appid": 1621690,
+    "type": 0,
+    "tagids": [
+     1695,
+     1662,
+     3834,
+     3964,
+     3859,
+     3810,
+     1702,
+     1685,
+     1643,
+     7332,
+     19,
+     3843,
+     21,
+     5125,
+     1100689,
+     3993,
+     4166,
+     4182,
+     492,
+     3871
+    ],
+    "reviews": {
+     "summary_filtered": {
+      "review_count": 50684,
+      "percent_positive": 92,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     },
+     "summary_language_specific": {
+      "review_count": 23832,
+      "percent_positive": 94,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     }
+    },
+    "basic_info": {
+     "short_description": "Explore a vast cavern of creatures, relics and resources in a mining sandbox adventure for 1-8 players. Mine, build, fight, craft and farm to unravel the mystery of the ancient Core.",
+     "publishers": [
+      {
+       "name": "Fireshine Games",
+       "creator_clan_account_id": 36975412
+      },
+      {
+       "name": "bilibili"
+      }
+     ],
+     "developers": [
+      {
+       "name": "Pugstorm"
+      }
+     ],
+     "franchises": [
+      {
+       "name": "bilibili"
+      }
+     ]
+    },
+    "tags": [
+     {
+      "tagid": 1695,
+      "weight": 587
+     },
+     {
+      "tagid": 1662,
+      "weight": 581
+     },
+     {
+      "tagid": 3834,
+      "weight": 551
+     },
+     {
+      "tagid": 3964,
+      "weight": 548
+     },
+     {
+      "tagid": 3859,
+      "weight": 545
+     },
+     {
+      "tagid": 3810,
+      "weight": 535
+     },
+     {
+      "tagid": 1702,
+      "weight": 530
+     },
+     {
+      "tagid": 1685,
+      "weight": 516
+     },
+     {
+      "tagid": 1643,
+      "weight": 516
+     },
+     {
+      "tagid": 7332,
+      "weight": 510
+     },
+     {
+      "tagid": 19,
+      "weight": 493
+     },
+     {
+      "tagid": 3843,
+      "weight": 487
+     },
+     {
+      "tagid": 21,
+      "weight": 479
+     },
+     {
+      "tagid": 5125,
+      "weight": 479
+     },
+     {
+      "tagid": 1100689,
+      "weight": 477
+     },
+     {
+      "tagid": 3993,
+      "weight": 465
+     },
+     {
+      "tagid": 4166,
+      "weight": 465
+     },
+     {
+      "tagid": 4182,
+      "weight": 456
+     },
+     {
+      "tagid": 492,
+      "weight": 455
+     },
+     {
+      "tagid": 3871,
+      "weight": 314
+     }
+    ],
+    "release": {
+     "steam_release_date": 1724749928,
+     "original_steam_release_date": 1646729198
+    },
+    "platforms": {
+     "windows": true,
+     "steamos_linux": true,
+     "vr_support": {},
+     "steam_deck_compat_category": 3,
+     "steam_os_compat_category": 2,
+     "steam_frame_compat_category": 0,
+     "steam_machine_compat_category": 3
+    },
+    "best_purchase_option": {
+     "packageid": 575770,
+     "purchase_option_name": "Core Keeper",
+     "final_price_in_cents": "11100",
+     "original_price_in_cents": "18500",
+     "formatted_final_price": "R 111.00",
+     "formatted_original_price": "R 185.00",
+     "discount_pct": 40,
+     "user_can_purchase_as_gift": true,
+     "hide_discount_pct_for_compliance": false,
+     "included_game_count": 1,
+     "must_purchase_as_set": false,
+     "package_group": "default",
+     "price_cannot_be_displayed_as_discount": false
+    },
+    "screenshots": {
+     "all_ages_screenshots": [
+      {
+       "filename": "steam/apps/1621690/632a42b91e005b2d2daf99fee946732c95a9737c/ss_632a42b91e005b2d2daf99fee946732c95a9737c.jpg?t=1791454740",
+       "ordinal": 1
+      },
+      {
+       "filename": "steam/apps/1621690/bca1feb5ec1bf64543f80c74effdcaed4216033c/ss_bca1feb5ec1bf64543f80c74effdcaed4216033c.jpg?t=1791454740",
+       "ordinal": 2
+      },
+      {
+       "filename": "steam/apps/1621690/804585b7772d3ae5c7d56fc80401469d5bf6fd27/ss_804585b7772d3ae5c7d56fc80401469d5bf6fd27.jpg?t=1791454740",
+       "ordinal": 3
+      }
+     ]
+    }
+   },
+   {
+    "item_type": 0,
+    "id": 2358720,
+    "success": 1,
+    "visible": true,
+    "name": "Black Myth: Wukong",
+    "store_url_path": "app/2358720/Black_Myth_Wukong",
+    "store_url_slug": "Black_Myth_Wukong",
+    "appid": 2358720,
+    "type": 0,
+    "content_descriptorids": [
+     2,
+     5
+    ],
+    "tagids": [
+     16094,
+     4231,
+     19,
+     29482,
+     122,
+     3993,
+     1742,
+     4182,
+     4106,
+     4604,
+     4166,
+     21,
+     4191,
+     1684,
+     1646,
+     4026,
+     1697,
+     1621,
+     4667,
+     1695
+    ],
+    "reviews": {
+     "summary_filtered": {
+      "review_count": 882625,
+      "percent_positive": 96,
+      "review_score": 9,
+      "review_score_label": "Overwhelmingly Positive"
+     },
+     "summary_language_specific": {
+      "review_count": 71449,
+      "percent_positive": 93,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     }
+    },
+    "basic_info": {
+     "short_description": "Black Myth: Wukong is an action RPG rooted in Chinese mythology. You shall set out as the Destined One to venture into the challenges and marvels ahead, to uncover the obscured truth beneath the veil of a glorious legend from the past.",
+     "publishers": [
+      {
+       "name": "Game Science"
+      }
+     ],
+     "developers": [
+      {
+       "name": "Game Science"
+      }
+     ]
+    },
+    "tags": [
+     {
+      "tagid": 16094,
+      "weight": 1158
+     },
+     {
+      "tagid": 4231,
+      "weight": 952
+     },
+     {
+      "tagid": 19,
+      "weight": 884
+     },
+     {
+      "tagid": 29482,
+      "weight": 841
+     },
+     {
+      "tagid": 122,
+      "weight": 781
+     },
+     {
+      "tagid": 3993,
+      "weight": 671
+     },
+     {
+      "tagid": 1742,
+      "weight": 655
+     },
+     {
+      "tagid": 4182,
+      "weight": 640
+     },
+     {
+      "tagid": 4106,
+      "weight": 543
+     },
+     {
+      "tagid": 4604,
+      "weight": 512
+     },
+     {
+      "tagid": 4166,
+      "weight": 447
+     },
+     {
+      "tagid": 21,
+      "weight": 443
+     },
+     {
+      "tagid": 4191,
+      "weight": 379
+     },
+     {
+      "tagid": 1684,
+      "weight": 349
+     },
+     {
+      "tagid": 1646,
+      "weight": 316
+     },
+     {
+      "tagid": 4026,
+      "weight": 120
+     },
+     {
+      "tagid": 1697,
+      "weight": 113
+     },
+     {
+      "tagid": 1621,
+      "weight": 93
+     },
+     {
+      "tagid": 4667,
+      "weight": 64
+     },
+     {
+      "tagid": 1695,
+      "weight": 29
+     }
+    ],
+    "release": {
+     "steam_release_date": 1724119114
+    },
+    "platforms": {
+     "windows": true,
+     "vr_support": {},
+     "steam_deck_compat_category": 1,
+     "steam_os_compat_category": 2,
+     "steam_frame_compat_category": 0,
+     "steam_machine_compat_category": 3
+    },
+    "best_purchase_option": {
+     "packageid": 847489,
+     "purchase_option_name": "Black Myth: Wukong",
+     "final_price_in_cents": "84900",
+     "formatted_final_price": "R 849.00",
+     "user_can_purchase_as_gift": true,
+     "hide_discount_pct_for_compliance": false,
+     "included_game_count": 1,
+     "must_purchase_as_set": false,
+     "package_group": "default",
+     "price_cannot_be_displayed_as_discount": false
+    },
+    "screenshots": {
+     "all_ages_screenshots": [
+      {
+       "filename": "steam/apps/2358720/ss_86c4b7462bba219a0d0b89931a35812b9f188976.jpg?t=1760601605",
+       "ordinal": 1
+      },
+      {
+       "filename": "steam/apps/2358720/ss_d9391ab31a4d15dddf7ba4949bfa44f5d9170580.jpg?t=1760601605",
+       "ordinal": 2
+      },
+      {
+       "filename": "steam/apps/2358720/ss_524a39da392ee83dde091033562bc719d46b5838.jpg?t=1760601605",
+       "ordinal": 3
+      }
+     ]
+    }
+   },
+   {
+    "item_type": 0,
+    "id": 999999999,
+    "success": 15,
+    "visible": false,
+    "name": "",
+    "store_url_path": "app/0/",
+    "store_url_slug": "",
+    "appid": 0
+   },
+   {
+    "item_type": 0,
+    "id": 1245620,
+    "success": 1,
+    "visible": true,
+    "name": "ELDEN RING",
+    "store_url_path": "app/1245620/ELDEN_RING",
+    "store_url_slug": "ELDEN_RING",
+    "appid": 1245620,
+    "type": 0,
+    "content_descriptorids": [
+     2,
+     5
+    ],
+    "tagids": [
+     29482,
+     1695,
+     4604,
+     122,
+     4026,
+     4231,
+     3859,
+     1697,
+     1684,
+     4182,
+     3843,
+     19,
+     1685,
+     4166,
+     1756,
+     1775,
+     4667,
+     4191,
+     4747,
+     5350
+    ],
+    "reviews": {
+     "summary_filtered": {
+      "review_count": 833930,
+      "percent_positive": 93,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     },
+     "summary_language_specific": {
+      "review_count": 436654,
+      "percent_positive": 94,
+      "review_score": 8,
+      "review_score_label": "Very Positive"
+     }
+    },
+    "basic_info": {
+     "short_description": "THE CRITICALLY ACCLAIMED FANTASY ACTION RPG.\r\nRise, Tarnished, and be guided by grace to brandish the power of the Elden Ring and become an Elden Lord in the Lands Between.",
+     "publishers": [
+      {
+       "name": "FromSoftware, Inc.",
+       "creator_clan_account_id": 45188208
+      },
+      {
+       "name": "Bandai Namco Entertainment",
+       "creator_clan_account_id": 33042543
+      }
+     ],
+     "developers": [
+      {
+       "name": "FromSoftware, Inc.",
+       "creator_clan_account_id": 45188208
+      }
+     ]
+    },
+    "tags": [
+     {
+      "tagid": 29482,
+      "weight": 1080
+     },
+     {
+      "tagid": 1695,
+      "weight": 790
+     },
+     {
+      "tagid": 4604,
+      "weight": 753
+     },
+     {
+      "tagid": 122,
+      "weight": 720
+     },
+     {
+      "tagid": 4026,
+      "weight": 706
+     },
+     {
+      "tagid": 4231,
+      "weight": 548
+     },
+     {
+      "tagid": 3859,
+      "weight": 523
+     },
+     {
+      "tagid": 1697,
+      "weight": 510
+     },
+     {
+      "tagid": 1684,
+      "weight": 489
+     },
+     {
+      "tagid": 4182,
+      "weight": 475
+     },
+     {
+      "tagid": 3843,
+      "weight": 456
+     },
+     {
+      "tagid": 19,
+      "weight": 429
+     },
+     {
+      "tagid": 1685,
+      "weight": 368
+     },
+     {
+      "tagid": 4166,
+      "weight": 363
+     },
+     {
+      "tagid": 1756,
+      "weight": 353
+     },
+     {
+      "tagid": 1775,
+      "weight": 348
+     },
+     {
+      "tagid": 4667,
+      "weight": 342
+     },
+     {
+      "tagid": 4191,
+      "weight": 308
+     },
+     {
+      "tagid": 4747,
+      "weight": 227
+     },
+     {
+      "tagid": 5350,
+      "weight": 204
+     }
+    ],
+    "release": {
+     "steam_release_date": 1645744078
+    },
+    "platforms": {
+     "windows": true,
+     "vr_support": {},
+     "steam_deck_compat_category": 3,
+     "steam_os_compat_category": 2,
+     "steam_frame_compat_category": 0,
+     "steam_machine_compat_category": 3
+    },
+    "best_purchase_option": {
+     "packageid": 440408,
+     "purchase_option_name": "ELDEN RING",
+     "final_price_in_cents": "84900",
+     "formatted_final_price": "R 849.00",
+     "user_can_purchase_as_gift": true,
+     "hide_discount_pct_for_compliance": false,
+     "included_game_count": 1,
+     "must_purchase_as_set": false,
+     "package_group": "default",
+     "price_cannot_be_displayed_as_discount": false
+    },
+    "screenshots": {
+     "all_ages_screenshots": [
+      {
+       "filename": "steam/apps/1245620/ss_943bf6fe62352757d9070c1d33e50b92fe8539f1.jpg?t=1790290043",
+       "ordinal": 1
+      },
+      {
+       "filename": "steam/apps/1245620/ss_ef61b771ee6b269b1f0cb484233e07a0bfb5f81b.jpg?t=1790290043",
+       "ordinal": 5
+      },
+      {
+       "filename": "steam/apps/1245620/ss_510a02cf3045e841e180f2b77fb87545e0c8b59d.jpg?t=1790290043",
+       "ordinal": 7
+      }
+     ],
+     "mature_content_screenshots": [
+      {
+       "filename": "steam/apps/1245620/ss_dcdac9e4b26ac0ee5248bfd2967d764fd00cdb42.jpg?t=1790290043",
+       "ordinal": 2
+      },
+      {
+       "filename": "steam/apps/1245620/ss_3c41384a24d86dddd58a8f61db77f9dc0bfda8b5.jpg?t=1790290043",
+       "ordinal": 3
+      },
+      {
+       "filename": "steam/apps/1245620/ss_e0316c76f8197405c1312d072b84331dd735d60b.jpg?t=1790290043",
+       "ordinal": 4
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

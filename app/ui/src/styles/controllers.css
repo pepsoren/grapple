@@ -1,0 +1,190 @@
+/* Controllers: the pad's focus ring, button prompt chips, and Settings › Controllers (mockups/08-settings.html,
+ * "controllers" rules). Tokens only. */
+
+/* The focus ring while a pad moves the focus (src/lib/padnav.ts). */
+html[data-input='pad'] .pad-focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  scroll-margin: 96px 24px 24px;
+}
+html:not([data-input='pad']) .pad-focus:focus {
+  outline: none;
+}
+
+/* Button prompts: a round chip for face buttons, a pill for words (LB, Options). */
+.pglyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  min-width: 22px;
+  background: var(--surface-control);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+.pglyph.face {
+  width: 22px;
+  border-radius: var(--radius-pill);
+}
+.pglyph.word {
+  padding: 0 7px;
+  border-radius: var(--radius-badge);
+}
+
+/* Connected pads */
+.pad-dev .l {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pad-dev .l > svg {
+  color: var(--text-muted);
+  flex: none;
+}
+.pad-dev .l .nm {
+  min-width: 0;
+}
+.set-row.pad-dev .l span.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pad-dev.empty .l b {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.pad-dev.empty .l > svg {
+  opacity: 0.5;
+}
+.pad-batt {
+  display: inline-block;
+  width: 26px;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-control);
+  overflow: hidden;
+}
+.pad-batt > i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+.pad-batt.low > i {
+  background: var(--warning);
+}
+
+/* The Test card */
+.set-card.pad-test {
+  padding: 14px 18px 18px;
+}
+.set-card.pad-test > * + * {
+  border-top: 0;
+}
+.pad-test-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.pad-test-head b {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+.pad-trig {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 14px;
+}
+.pad-trig > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pad-trig .m {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--text-secondary);
+  width: 26px;
+}
+.pad-trig .m.v {
+  width: 38px;
+  text-align: right;
+}
+.pad-trig .bar {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--surface-control);
+  overflow: hidden;
+}
+.pad-trig .bar > i {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+.pad-pads {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+.pad-pads .ring {
+  fill: var(--surface-sunken);
+  stroke: var(--border-strong);
+  stroke-width: 2;
+}
+.pad-pads .mid {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+.pad-pads .dot {
+  fill: var(--text-secondary);
+}
+.pad-pads .dot.on {
+  fill: var(--accent);
+}
+.pad-pads .key {
+  fill: var(--surface-raised-2);
+  stroke: var(--border-strong);
+  stroke-width: 1.5;
+}
+.pad-pads .key.on {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+.pad-pads .lbl {
+  fill: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+.pad-pads .on + .lbl {
+  fill: var(--on-accent);
+}
+.pad-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.pad-chips span {
+  padding: 3px 8px;
+  border-radius: var(--radius-badge);
+  background: var(--surface-raised-2);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}
+.pad-chips span.on {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.search .pglyph {
+  margin-left: auto;
+}

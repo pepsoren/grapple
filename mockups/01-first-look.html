@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Launcher mockup 01</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canvas:#0c0c0e; --panel:#18181b; --raised:#1f1f23; --raised2:#232327; --sunken:#141417; --control:#2a2a30;
+  --border:#2a2a30; --border2:#34343b;
+  --text:#f4f4f5; --text2:#e4e4e7; --sec:#a1a1aa; --muted:#8e8e96;
+  --online:#4ade80; --idle:#fbbf24;
+  --accent:#8b7cf6; --accent-soft:#b4aafa; --on-accent:#111113;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#050506;color:var(--text2);font:15px/1.45 Figtree,system-ui,sans-serif}
+.top{display:flex;align-items:center;gap:8px;padding:18px 24px;position:sticky;top:0;background:#050506;z-index:9;border-bottom:1px solid #151518}
+.top h1{font-size:16px;margin:0 16px 0 0;color:var(--text)}
+.tab{border:1px solid var(--border);background:var(--panel);color:var(--sec);padding:7px 14px;border-radius:10px;font:inherit;font-size:14px;cursor:pointer}
+.tab.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.note{margin-left:auto;font-size:12px;color:var(--muted);max-width:420px;text-align:right}
+.stage{padding:28px 24px 60px;display:none}
+.stage.on{display:block}
+.cap{max-width:1280px;margin:0 auto 14px;color:var(--sec);font-size:14px}
+.cap b{color:var(--text)}
+.win{width:1280px;height:800px;margin:0 auto;background:var(--canvas);border-radius:14px;overflow:hidden;display:flex;gap:8px;padding:8px 8px 8px 0;position:relative;box-shadow:0 30px 80px #000a,0 0 0 1px #1c1c20}
+.panel{background:var(--panel);border-radius:16px;overflow:hidden;position:relative}
+/* rail */
+.rail{flex:0 0 68px;display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 0}
+.rail .r{width:46px;height:46px;border-radius:15px;background:var(--raised);color:var(--sec);display:flex;align-items:center;justify-content:center;position:relative}
+.rail .r.on{background:var(--accent);color:var(--on-accent)}
+.rail .r.on::before{content:"";position:absolute;left:-11px;width:4px;height:36px;border-radius:0 4px 4px 0;background:var(--accent)}
+.rail .sep{width:28px;height:2px;background:var(--raised2)}
+.rail .me{margin-top:auto;width:40px;height:40px;border-radius:50%;background:#f59e0b;color:#111;font-weight:700;display:flex;align-items:center;justify-content:center;position:relative}
+.dot{position:absolute;right:-2px;bottom:-2px;width:12px;height:12px;border-radius:50%;background:var(--online);border:3px solid var(--canvas)}
+.av{flex:0 0 32px;width:32px;height:32px;border-radius:50%;color:#111113;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;position:relative}
+.av .dot{border-color:var(--panel)}
+svg{display:block}
+.btn{border:0;font:inherit;font-weight:600;border-radius:10px;cursor:pointer}
+.play{background:var(--accent);color:var(--on-accent);height:48px;padding:0 26px 0 20px;display:inline-flex;align-items:center;gap:10px;font-size:16px;border-radius:12px}
+.ghost{background:#ffffff14;color:var(--text);height:48px;width:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;backdrop-filter:blur(10px)}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;background:#ffffff12;color:var(--text2)}
+.chip.steam{color:#9dbcf7}.chip.epic{color:#e4e4e7}
+.chip i{width:6px;height:6px;border-radius:50%;background:currentColor;display:block}
+.h2{font-size:13px;font-weight:600;color:var(--muted);margin:0 0 10px}
+.cover{border-radius:10px;overflow:hidden;background:var(--raised);aspect-ratio:2/3;position:relative}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover .src{position:absolute;left:6px;top:6px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:6px;background:#000a;color:#fff;backdrop-filter:blur(6px)}
+.title{font-size:13px;font-weight:600;color:var(--text2);margin-top:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub{font-size:12px;color:var(--muted)}
+.friend{height:50px;padding:0 8px;border-radius:10px;display:flex;align-items:center;gap:10px}
+.friend .n{font-size:14px;font-weight:600;color:var(--text)}
+.friend .a{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--sec);white-space:nowrap}
+.friend .a strong{color:var(--text2);font-weight:600}
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 6px;border-radius:6px;background:var(--control);color:var(--text2);font-size:11px;font-weight:700}
+.sample{position:absolute;left:84px;bottom:12px;font-size:11px;color:#6b6b73}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Launcher · mockup 01</h1>
+  <button class="tab on" data-s="a">A · Home</button>
+  <button class="tab" data-s="b">B · Library + stats</button>
+  <button class="tab" data-s="c">C · Quick launch (Super+G)</button>
+  <button class="tab" data-s="d">D · Launch, playing, tether</button>
+  <div class="note">Real: your 8 games, art, Steam playtimes and last-played. Sample: Rocket League hours, friends, session charts.</div>
+</div>
+
+<!-- ======================= A: HOME ======================= -->
+<section class="stage on" id="a">
+<p class="cap"><b>A · Home.</b> Opens on the game you were last playing, one big Play. Recent row underneath, tether friends on the right in the same style as tether's “Now” panel. Built to feel like a sibling of tether.</p>
+<div class="win">
+  <nav class="rail">
+    <div class="r on" title="Home"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 10v10a1 1 0 0 0 1 1h5v-6h6v6h5a1 1 0 0 0 1-1V10z"/></svg></div>
+    <div class="sep"></div>
+    <div class="r" title="Library"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zm6 0h4v16h-4zm6.3.6 3.8-1 3.9 15.4-3.8 1z" transform="scale(.92) translate(1 1)"/></svg></div>
+    <div class="r" title="Stats"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 20V10h4v10zm6 0V4h4v16zm6 0v-7h4v7z"/></svg></div>
+    <div class="r" title="Add game"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="me">J<span class="dot"></span></div>
+  </nav>
+
+  <main class="panel" style="flex:1;display:flex;flex-direction:column">
+    <div style="position:relative;height:440px;flex:0 0 auto">
+      <img src="assets/1144200-hero.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,#18181bf2 0%,#18181bb0 34%,#18181b00 70%),linear-gradient(0deg,#18181b 0%,#18181b00 45%)"></div>
+      <div style="position:absolute;left:40px;bottom:44px;width:460px">
+        <div class="chip steam" style="margin-bottom:16px"><i></i>Steam · runs in the background, no Steam window</div>
+        <img src="assets/1144200-logo.png" style="max-width:340px;max-height:120px;display:block;margin-bottom:18px">
+        <div style="display:flex;gap:22px;color:var(--sec);font-size:14px;margin-bottom:22px">
+          <span><b style="color:var(--text);font-size:18px">16h 16m</b><br>played</span>
+          <span><b style="color:var(--text);font-size:18px">Tuesday</b><br>last played</span>
+          <span><b style="color:var(--text);font-size:18px">1h 05m</b><br>this week</span>
+        </div>
+        <div style="display:flex;gap:10px">
+          <button class="btn play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Play</button>
+          <button class="btn ghost"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div style="padding:6px 40px 0">
+      <div class="h2">Jump back in</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:14px">
+        <div><div class="cover"><img src="assets/730-cover.jpg"></div><div class="title">Counter-Strike 2</div><div class="sub">262h · Sunday</div></div>
+        <div><div class="cover"><img src="assets/2627570-cover.jpg"></div><div class="title">Goofy Gorillas</div><div class="sub">4h · Oct 5</div></div>
+        <div><div class="cover"><img src="assets/sugar-cover.jpg"><span class="src">EPIC</span></div><div class="title">Rocket League</div><div class="sub">41h · Oct 2</div></div>
+        <div><div class="cover"><img src="assets/275850-cover.jpg"></div><div class="title">No Man's Sky</div><div class="sub">34h · Sep 22</div></div>
+        <div><div class="cover"><img src="assets/1682970-cover.jpg"></div><div class="title">Uncrashed</div><div class="sub">6h · Sep 21</div></div>
+        <div><div class="cover"><img src="assets/4656000-cover.jpg"></div><div class="title">BOMBANANA!</div><div class="sub">2h · Sep 12</div></div>
+        <div><div class="cover"><img src="assets/1478500-cover.jpg"></div><div class="title">Big Walk</div><div class="sub">2h · Aug 28</div></div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="panel" style="flex:0 0 280px;padding:18px 10px">
+    <div style="padding:0 8px 12px;font-size:18px;font-weight:700;color:var(--text)">Friends</div>
+    <div style="margin:0 2px 14px;padding:12px;border-radius:14px;border:1px solid var(--border);background:var(--raised);display:flex;gap:10px;align-items:center">
+      <img src="assets/730-cover.jpg" style="width:34px;height:46px;border-radius:6px;object-fit:cover">
+      <span style="flex:1;min-width:0"><span style="display:block;font-weight:600;color:var(--text)">rowan and kai</span><span style="display:block;font-size:12px;color:var(--sec)">in Counter-Strike 2 · 38m</span></span>
+      <button class="btn" style="background:var(--control);color:var(--text);height:30px;padding:0 10px;font-size:13px">Join</button>
+    </div>
+    <div style="padding:4px 8px 6px;font-size:12px;font-weight:600;color:var(--muted)">Playing · 3</div>
+    <div class="friend"><span class="av" style="background:#4ade80">R<span class="dot"></span></span><span><span class="n">rowan</span><span class="a">Playing <strong>Counter-Strike 2</strong></span></span></div>
+    <div class="friend"><span class="av" style="background:#60a5fa">K<span class="dot"></span></span><span><span class="n">kai</span><span class="a">Playing <strong>Counter-Strike 2</strong></span></span></div>
+    <div class="friend"><span class="av" style="background:#f472b6">M<span class="dot" style="background:var(--idle)"></span></span><span><span class="n">mira</span><span class="a">Playing <strong>Minecraft</strong></span></span></div>
+    <div style="padding:14px 8px 6px;font-size:12px;font-weight:600;color:var(--muted)">Online · 1</div>
+    <div class="friend" style="height:42px"><span class="av" style="background:#c084fc">D<span class="dot"></span></span><span class="n">dex</span></div>
+    <div style="position:absolute;left:12px;right:12px;bottom:12px;padding:10px 12px;border-radius:12px;background:var(--sunken);font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px">
+      <img src="assets/tether-mark.svg" width="16" height="16" alt="tether" style="display:block;flex:none">
+      Signed in with tether as <b style="color:var(--text2)">josh</b>
+    </div>
+  </aside>
+  <span class="sample">friends &amp; Rocket League hours are sample data</span>
+</div>
+</section>
+
+<!-- ======================= B: LIBRARY ======================= -->
+<section class="stage" id="b">
+<p class="cap"><b>B · Library + stats.</b> Everything in one grid, filtered by store. Selecting a game opens a stats side panel: totals, a 14-day bar chart of sessions, and how this game launches (with per-game toggles).</p>
+<div class="win">
+  <nav class="rail">
+    <div class="r"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 3 10v10a1 1 0 0 0 1 1h5v-6h6v6h5a1 1 0 0 0 1-1V10z"/></svg></div>
+    <div class="sep"></div>
+    <div class="r on"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h4v16H4zm6 0h4v16h-4zm6.3.6 3.8-1 3.9 15.4-3.8 1z" transform="scale(.92) translate(1 1)"/></svg></div>
+    <div class="r"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4 20V10h4v10zm6 0V4h4v16zm6 0v-7h4v7z"/></svg></div>
+    <div class="r"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="me">J<span class="dot"></span></div>
+  </nav>
+
+  <main class="panel" style="flex:1;padding:20px 24px">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <div style="font-size:18px;font-weight:700;color:var(--text);margin-right:8px">Library</div>
+      <button class="tab on" style="padding:5px 12px">All 8</button>
+      <button class="tab" style="padding:5px 12px">Steam 7</button>
+      <button class="tab" style="padding:5px 12px">Epic 1</button>
+      <button class="tab" style="padding:5px 12px">Other 0</button>
+      <label style="margin-left:auto;height:36px;width:220px;padding:0 12px;border-radius:10px;background:var(--raised);display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>Search
+      </label>
+      <select style="height:36px;border-radius:10px;background:var(--raised);color:var(--sec);border:0;padding:0 10px;font:inherit;font-size:14px"><option>Recent</option></select>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px 14px">
+      <div><div class="cover"><img src="assets/1144200-cover.jpg"></div><div class="title">Ready or Not</div><div class="sub">16h 16m</div></div>
+      <div><div class="cover"><img src="assets/730-cover.jpg"></div><div class="title">Counter-Strike 2</div><div class="sub">261h 59m</div></div>
+      <div><div class="cover"><img src="assets/2627570-cover.jpg"></div><div class="title">Goofy Gorillas</div><div class="sub">4h 10m</div></div>
+      <div><div class="cover"><img src="assets/sugar-cover.jpg"><span class="src">EPIC</span></div><div class="title">Rocket League</div><div class="sub">41h 20m</div></div>
+      <div style="outline:2px solid var(--accent);outline-offset:4px;border-radius:12px"><div class="cover"><img src="assets/275850-cover.jpg"></div><div class="title" style="color:var(--text)">No Man's Sky</div><div class="sub">34h 37m</div></div>
+      <div><div class="cover"><img src="assets/1682970-cover.jpg"></div><div class="title">Uncrashed</div><div class="sub">6h 02m</div></div>
+      <div><div class="cover"><img src="assets/4656000-cover.jpg"></div><div class="title">BOMBANANA!</div><div class="sub">2h 23m</div></div>
+      <div><div class="cover"><img src="assets/1478500-cover.jpg"></div><div class="title">Big Walk</div><div class="sub">2h 51m</div></div>
+      <div><div class="cover" style="border:2px dashed var(--border2);background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:13px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Add any game<br><span style="font-size:11px">.exe, AppImage, emulator</span></div></div>
+    </div>
+  </main>
+
+  <aside class="panel" style="flex:0 0 340px;display:flex;flex-direction:column">
+    <div style="position:relative;height:170px">
+      <img src="assets/275850-hero.jpg" style="width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;inset:0;background:linear-gradient(0deg,#18181b 0%,#18181b00 70%)"></div>
+      <img src="assets/275850-logo.png" style="position:absolute;left:20px;bottom:12px;max-width:210px;max-height:60px">
+    </div>
+    <div style="padding:6px 20px 20px;display:flex;flex-direction:column;gap:16px;flex:1">
+      <button class="btn play" style="width:100%;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>Play</button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="background:var(--raised);border-radius:12px;padding:10px 12px"><div class="sub">Total</div><div style="font-size:20px;font-weight:700;color:var(--text)">34h 37m</div></div>
+        <div style="background:var(--raised);border-radius:12px;padding:10px 12px"><div class="sub">Last played</div><div style="font-size:20px;font-weight:700;color:var(--text)">Sep 22</div></div>
+        <div style="background:var(--raised);border-radius:12px;padding:10px 12px"><div class="sub">Sessions</div><div style="font-size:20px;font-weight:700;color:var(--text)">23</div></div>
+        <div style="background:var(--raised);border-radius:12px;padding:10px 12px"><div class="sub">Longest</div><div style="font-size:20px;font-weight:700;color:var(--text)">4h 12m</div></div>
+      </div>
+      <div>
+        <div class="h2" style="display:flex">Last 14 days<span style="margin-left:auto;font-weight:500">5h 40m</span></div>
+        <div style="display:flex;align-items:flex-end;gap:5px;height:64px" id="bars"></div>
+      </div>
+      <div style="background:var(--sunken);border-radius:12px;padding:12px;font-size:13px">
+        <div style="font-weight:600;color:var(--text);margin-bottom:8px">How it launches</div>
+        <div style="color:var(--sec);margin-bottom:10px">Steam starts hidden in the background (needed for Steam DRM), then the game runs straight away. No Steam window.</div>
+        <div style="display:flex;flex-direction:column;gap:7px;color:var(--text2)">
+          <div style="display:flex;justify-content:space-between">GameMode <span style="color:var(--online)">On</span></div>
+          <div style="display:flex;justify-content:space-between">MangoHud overlay <span style="color:var(--muted)">Off</span></div>
+          <div style="display:flex;justify-content:space-between">Close Steam when I quit <span style="color:var(--online)">On</span></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <span class="sample">sessions, chart and non-Steam hours are sample data</span>
+</div>
+</section>
+
+<!-- ======================= C: QUICK LAUNCH ======================= -->
+<section class="stage" id="c">
+<p class="cap"><b>C · Quick launch.</b> A Hyprland overlay on a keybind (Super+G). Type two letters, Enter, you're in the game. No window to manage. This could be the <i>main</i> way you use it, with A/B as the full app.</p>
+<div class="win" style="padding:0;display:block;background:url(assets/730-hero.jpg) center/cover">
+  <div style="position:absolute;inset:0;background:#0c0c0e99;backdrop-filter:blur(18px)"></div>
+  <div style="position:absolute;left:50%;top:120px;transform:translateX(-50%);width:640px;background:#18181bf0;border:1px solid var(--border2);border-radius:20px;box-shadow:0 30px 90px #000c;overflow:hidden">
+    <div style="display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid var(--border)">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <span style="font-size:20px;color:var(--text)">ro<span style="display:inline-block;width:2px;height:22px;background:var(--accent);vertical-align:-4px;margin-left:1px"></span></span>
+      <span style="margin-left:auto" class="sub">2 games</span>
+    </div>
+    <div style="padding:8px">
+      <div style="display:flex;align-items:center;gap:14px;padding:10px;border-radius:12px;background:var(--raised2)">
+        <img src="assets/sugar-cover.jpg" style="width:40px;height:54px;border-radius:7px;object-fit:cover">
+        <div style="flex:1"><div style="font-weight:600;color:var(--text);font-size:16px"><u style="text-decoration-color:var(--accent);text-underline-offset:3px">Ro</u>cket League</div><div class="sub">Epic · direct, no Epic launcher · 41h</div></div>
+        <span class="kbd">↵</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:10px;border-radius:12px">
+        <img src="assets/1144200-cover.jpg" style="width:40px;height:54px;border-radius:7px;object-fit:cover">
+        <div style="flex:1"><div style="font-weight:600;color:var(--text2);font-size:16px">Ready o<u style="text-decoration-color:var(--accent);text-underline-offset:3px">r</u> N<u style="text-decoration-color:var(--accent);text-underline-offset:3px">o</u>t</div><div class="sub">Steam · 16h · played Tuesday</div></div>
+      </div>
+    </div>
+    <div style="padding:12px 20px 16px;border-top:1px solid var(--border)">
+      <div class="h2">Recent</div>
+      <div style="display:flex;gap:10px">
+        <img src="assets/1144200-cover.jpg" style="width:72px;aspect-ratio:2/3;border-radius:8px;object-fit:cover">
+        <img src="assets/730-cover.jpg" style="width:72px;aspect-ratio:2/3;border-radius:8px;object-fit:cover">
+        <img src="assets/2627570-cover.jpg" style="width:72px;aspect-ratio:2/3;border-radius:8px;object-fit:cover">
+        <img src="assets/sugar-cover.jpg" style="width:72px;aspect-ratio:2/3;border-radius:8px;object-fit:cover">
+        <img src="assets/275850-cover.jpg" style="width:72px;aspect-ratio:2/3;border-radius:8px;object-fit:cover">
+        <img src="assets/1682970-cover.jpg" style="width:72px;aspect-ratio:2/3;border-radius:8px;object-fit:cover">
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;padding:10px 20px;background:var(--sunken);font-size:12px;color:var(--muted)">
+      <span><span class="kbd">↵</span> Play</span><span><span class="kbd">Tab</span> Details</span><span><span class="kbd">Esc</span> Close</span><span style="margin-left:auto">DualSense works too: <span class="kbd">✕</span> play</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======================= D: STATES ======================= -->
+<section class="stage" id="d">
+<p class="cap"><b>D · Launching, playing, and how it shows in tether.</b> Left to right: what you see for the second it takes to start, the tiny “playing” card the window shrinks to, and what your friends see in tether. Last: signing in with your tether account the first time.</p>
+<div style="display:grid;grid-template-columns:repeat(4,300px);gap:20px;justify-content:center;align-items:start">
+
+  <div>
+    <div class="h2">1 · Launching (≈1 s)</div>
+    <div class="panel" style="border:1px solid var(--border)">
+      <div style="height:140px;background:url(assets/sugar-hero.jpg) center/cover;position:relative"><div style="position:absolute;inset:0;background:linear-gradient(0deg,#18181b 0%,#18181b00 55%)"></div></div>
+      <div style="padding:4px 18px 18px">
+        <div style="font-size:18px;font-weight:700;color:var(--text)">Rocket League</div>
+        <div class="sub" style="margin-bottom:14px">Epic · direct</div>
+        <div style="display:flex;flex-direction:column;gap:9px;font-size:13px">
+          <div style="display:flex;gap:8px;color:var(--text2)"><span style="color:var(--online)">✓</span>Epic sign-in token<span style="margin-left:auto" class="sub">cached</span></div>
+          <div style="display:flex;gap:8px;color:var(--text2)"><span style="color:var(--online)">✓</span>Proton ready<span style="margin-left:auto" class="sub">GE-Proton</span></div>
+          <div style="display:flex;gap:8px;color:var(--text)"><span style="color:var(--accent-soft)">●</span>Starting game…</div>
+        </div>
+        <div style="height:4px;border-radius:4px;background:var(--control);margin-top:16px;overflow:hidden"><div style="width:70%;height:100%;background:var(--accent)"></div></div>
+        <div class="sub" style="margin-top:10px">No Epic launcher, no Heroic window.</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="h2">2 · While you play</div>
+    <div class="panel" style="border:1px solid var(--border);padding:14px;display:flex;gap:12px;align-items:center">
+      <img src="assets/1144200-cover.jpg" style="width:44px;height:60px;border-radius:7px;object-fit:cover">
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:600;color:var(--text)">Ready or Not</div>
+        <div style="font-size:22px;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums;line-height:1.2">1:12:04</div>
+        <div class="sub" style="display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:var(--online)"></span>Shown in tether</div>
+      </div>
+      <button class="btn" style="background:var(--control);color:var(--text);height:32px;padding:0 12px;font-size:13px">Stop</button>
+    </div>
+    <div class="sub" style="margin-top:10px">Or no window at all: the time goes to your island’s game pill instead.</div>
+  </div>
+
+  <div>
+    <div class="h2">3 · What friends see in tether</div>
+    <div class="panel" style="border:1px solid var(--border);padding:10px">
+      <div class="friend"><span class="av" style="background:#f59e0b">J<span class="dot"></span></span><span><span class="n">josh</span><span class="a"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 6h9a5.5 5.5 0 0 1 5.4 6.6l-.9 4.4a2.6 2.6 0 0 1-4.5 1.2L14.6 16H9.4l-1.9 2.2A2.6 2.6 0 0 1 3 17l-.9-4.4A5.5 5.5 0 0 1 7.5 6z"/></svg>Playing <strong>Ready or Not</strong></span></span></div>
+      <div style="margin:8px 4px 4px;padding:12px;border-radius:14px;background:var(--raised);display:flex;gap:12px;align-items:center">
+        <img src="assets/1144200-cover.jpg" style="width:48px;height:64px;border-radius:8px;object-fit:cover">
+        <div><div class="sub" style="font-weight:600">PLAYING</div><div style="font-weight:600;color:var(--text)">Ready or Not</div><div class="sub">for 1h 12m</div></div>
+      </div>
+    </div>
+    <div class="sub" style="margin-top:10px">Uses tether’s existing game activity (Steam art by app id, uploaded icon for Epic/other).</div>
+  </div>
+
+  <div>
+    <div class="h2">4 · First run: sign in</div>
+    <div class="panel" style="border:1px solid var(--border);padding:26px 22px;text-align:center">
+      <div style="width:76px;height:76px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center"><img src="assets/tether-badge-squircle-white.svg" width="48" height="48" alt="tether" style="display:block"></div>
+      <div style="font-size:18px;font-weight:700;color:var(--text)">Sign in with tether</div>
+      <div class="sub" style="margin:6px 0 18px">Your playtime and now-playing follow your tether account.</div>
+      <button class="btn play" style="width:100%;justify-content:center;height:44px;font-size:15px">Continue in browser</button>
+      <div class="sub" style="margin-top:12px">tether asks “Allow Launcher to show what you play?” and hands back a token for just that.</div>
+      <div style="margin-top:14px;font-size:13px;color:var(--sec)">Skip for now</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+document.querySelectorAll('.tab[data-s]').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab[data-s]').forEach(x=>x.classList.toggle('on',x===t));
+  document.querySelectorAll('.stage').forEach(s=>s.classList.toggle('on',s.id===t.dataset.s));
+});
+const h=[0,0,1.2,0,0,0,2.1,0,0,0,0,1.6,0.7,0], b=document.getElementById('bars');
+h.forEach(v=>{const d=document.createElement('div');d.style.cssText=`flex:1;border-radius:4px;height:${v?Math.max(8,v/2.1*64):4}px;background:${v?'var(--accent)':'var(--control)'}`;b.appendChild(d)});
+</script>
+</body>
+</html>
