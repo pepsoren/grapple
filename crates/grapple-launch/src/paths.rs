@@ -91,7 +91,9 @@ mod windows_tests {
         let dir = tempfile::tempdir().unwrap();
         std::fs::write(dir.path().join("tool.exe"), b"").unwrap();
         let path = format!("C:\\nowhere;{}", dir.path().display());
-        assert_eq!(which_in("tool", &path), Some(dir.path().join("tool.exe")));
+        // The match carries PATHEXT's case ("tool.EXE"); Windows file names ignore case.
+        let found = which_in("tool", &path).map(|p| p.to_string_lossy().to_lowercase());
+        assert_eq!(found, Some(dir.path().join("tool.exe").to_string_lossy().to_lowercase()));
         assert_eq!(which_in("tool.exe", &path), Some(dir.path().join("tool.exe")));
         assert_eq!(which_in(&dir.path().join("tool.exe").to_string_lossy(), ""), Some(dir.path().join("tool.exe")));
         assert_eq!(which_in("missing", &path), None);
