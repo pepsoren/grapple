@@ -55,7 +55,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Tests (every crate and the app's unit tests; the Linux-only ones are cfg(unix))
-        run: cargo test --workspace
+        run: cargo test --workspace --no-fail-fast
 
       - name: UI
         working-directory: app/ui
@@ -105,7 +105,7 @@ jobs:
         run: pnpm install --frozen-lockfile && pnpm build
 
       - name: Tests
-        run: cargo test --workspace
+        run: cargo test --workspace --no-fail-fast
 
       - name: AppImage
         working-directory: app/src-tauri

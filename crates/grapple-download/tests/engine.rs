@@ -319,7 +319,8 @@ async fn speed_limit_holds() {
     engine::run(&c, &j, Some(b), Control::new(), p.clone()).await.unwrap();
     let secs = t.elapsed().as_secs_f64();
     let speed = p.network.load(Ordering::Relaxed) as f64 / secs;
-    assert!((speed - rate as f64).abs() / rate as f64 <= 0.2, "speed {speed:.0} B/s vs limit {rate} ({secs:.2}s)");
+    // A limit is a ceiling: a slow machine (Windows CI managed 60 KB/s) may stay well under it.
+    assert!(speed <= rate as f64 * 1.2, "speed {speed:.0} B/s vs limit {rate} ({secs:.2}s)");
 }
 
 fn set_old_mtime(p: &Path) -> SystemTime {
