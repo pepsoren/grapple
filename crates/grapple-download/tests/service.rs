@@ -321,7 +321,12 @@ async fn steam_without_the_bridge_is_watched() {
     // An installed game with an update waiting, and a tool grapple does not show.
     std::fs::write(w.steam.join("steamapps/appmanifest_1478500.acf"), acf(1478500, 6, 1_340_000_000, 0)).unwrap();
     std::fs::write(w.steam.join("steamapps/appmanifest_228980.acf"), acf(228980, 6, 10, 0)).unwrap();
-    until("Steam download active", || w.dl.snapshot().active.is_some_and(|a| a.game == "steam:252490" && a.state == DlState::Downloading)).await;
+    // The watcher may read the folder between these writes (seen on Windows CI), so wait for all of it.
+    until("Steam download active and the update listed", || {
+        let s = w.dl.snapshot();
+        s.active.is_some_and(|a| a.game == "steam:252490" && a.state == DlState::Downloading) && !s.updates.is_empty()
+    })
+    .await;
     let s = w.dl.snapshot();
     assert_eq!(s.active.as_ref().unwrap().bytes_total, Some(4_000_000));
     assert_eq!(s.updates.iter().map(|u| u.game.as_str()).collect::<Vec<_>>(), ["steam:1478500"]);
